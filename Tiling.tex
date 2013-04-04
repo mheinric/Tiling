@@ -13,6 +13,8 @@
 
 
 \newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{process}{Process}
 
 
 \title{Tiling}
@@ -28,16 +30,22 @@ For the idea of ``throwing a needle uniformly on the plane'' to make sense in a 
 the colouring of the plane is \textit{periodic} - that is, there is a basis of two vectors, $u$ and $v$, such that translations along these vectors leave the colouring unchanged.
 
 We can then consider unit-length needles whose lowest endpoint fall on the parallelogram given by these two vectors.
+
+\begin{process}
+
 Formally, let $P$ be this parallelogram ; and consider the following random variables :
 \begin{itemize}
   \item let $A_1$ (the lowest point of the needle) be a point chosen uniformly in $P$ ;
-  \item let $\theta$ be an independant angle chosen uniformly in $[0;\pi]$ ;
+  \item let $\theta$ be an independent angle chosen uniformly in $[0;\pi]$ ;
   \item let $A_2$ (the highest point of the needle) be $A_1 + e^{i \theta}$.
 \end{itemize}
+\end{process}
 
-Note that $A_2$ may be outside of $P$. In that case, $c(A_2)$ is defined using the periodicity of the coloring.
+Note that $A_2$ may be outside of $P$. In that case, $c(A_2)$ is defined using the periodicity of the colouring.
 
 We show that both $A_1$ and $A_2$ have the same colour at least one third of the time.
+
+\subsection*{First proof}
 
 \begin{lemma}
  Let $p$ be the probability that both $A_1$ and $A_2$ have same colour. Let $\mathcal{A}(P)$ (resp. $\mathcal{P}(P)$) be the area (resp. perimeter) of $P$. We have :
@@ -48,6 +56,8 @@ We show that both $A_1$ and $A_2$ have the same colour at least one third of the
 The main idea is that an equilateral triangle must have at least one edge having both endpoints of the same colour.
 It also gives essentially the same results to choose an equilateral triangle randomly, and then to choose on of its edges as our needle.
 
+
+\begin{process}
 We therefore define a second needle choosing process :
 \begin{itemize}
   \item let $\theta '$ (the orientation of our triangle) be chosen uniformly in $[0;\pi / 3]$ ;
@@ -56,8 +66,9 @@ We therefore define a second needle choosing process :
   \item let $(A'_1,A'_2)$ (lowest and highest endpoints of the needle) be a couple of points chosen uniformly between $(A',B')$, $(A',C')$, $(B',C')$.
 \end{itemize}
 and $p'$ as the probability that $A'_1$ and $A'_2$ have the same colour.
+\end{process}
 
-Clearly, because there are at least two vertex of a triangle with the same color, we have the inequality $p' \geq \frac{1}{3} $.
+Clearly, because there are at least two vertex of a triangle with the same color, we have the inequality $$p' \geq \frac{1}{3} $$.
 
 To conclude the proof, it suffices to prove that $|p' - p| \leq \frac{\mathcal{P}(P)}{\mathcal{A}(P)}$.
 If we denote $U_0$ (resp. $U_1$) the set of points $M$ such that $c(M) = 0$ (resp. $1$), we have :
@@ -76,81 +87,67 @@ Decompose the first probability in three terms corresponding to the final choice
 &+& \frac{1}{3} | \mathbb{P}(A' + e^{i \theta '} \in U_0 , A' + e^{i(\theta ' + \pi / 3 ) } \in U_0) - \mathbb{P}(A_1 \in U_0 , A' + e^{i \theta} \in U_0 \ | \  \frac{2 \pi}{3} < \theta ) |
 \end{eqnarray*}
 
+Once again, let's focus on the first term. Let $\mathcal{P'}$ be the parallelogram  composed of the points of  $\mathcal{P}$ at a distance of at least one from the borders. Conditioning to the fact that the points $A$ and $A'$ fall on $\mathcal{P'}$, the two points are uniformly distributed in $\mathcal{P'}$, and independent of $\theta$ and $\theta'$. Thus this term is overestimated by the probability for $A$ and $A'$ to fall near the borders of the parallelogram. This probability is smaller than : $\mathcal{P}/\mathcal{A}$.
+
 \end{proof}
 
 
-
-
-
--> monter que ça ne dépend pas des vecteurs qu'on prend. (plus facile montrer que si on en colle deux côte à côte, c'est pareil)
-	Properties : 
-	 - the probaility that the endpoints fall on different colors does not depend of the vectors chosen for the basis. (not sure...)
-	 - csq :if we extend the parallelogram (see figure) there is no change
-	 
-
-	-> adapter l'argument des réseaux, considérant les triangles dans le parallélogramme.
-\\
-\\
-An other method : \\
-\\
-Definition : \\ 
+\subsection*{Second proof}
+\begin{definition}
 A graph $(V,E) $ is said to be unit length, if there are complex numbers $(\alpha_i)_{i=1..|V|}$, such that all the edges have length 1.
-\\
-
+\end{definition}
 We consider the following process : \\
-Third Process : \\
-Given a graph $(G,V)$, label all the edges with numbers form $1$ to $|E|$. Choose : \\
+\begin{process}
+Given a unit length graph $(G,V)$, label all the edges with numbers form $1$ to $|E|$. Choose : 
 \begin{itemize}
 \item one point $A_0$ uniformly on the initial parallelogram $\mathcal{P}$ for the origin of the graph.
 \item an angle $\theta$ uniformly in $[0;\pi]$, to rotate the graph
 \item and an index $i$ in $[|1;|E||]$.
 \end{itemize}
-Then, rotate the graph by the angle $\theta$, translate it along $A_0$, and take the needle corresponding to the position of $i^{th}$ edge of the graph obtained. \\
+Then, rotate the graph by the angle $\theta$, translate it along $A_0$, and take the needle corresponding to the position of $i^{th}$ edge of the graph obtained. 
+\end{process}
 \vspace{1 cm} 
 
 \begin{lemma}
-Let $(A,B)$ denote the edge obtained by the original process, and $(A',B')$ the one obtained by the third process. Let $c_1$ and $c_2$ denote two colors, and $c$, the application giving the color of a point. Then, we have :\\
+Let $(A,B)$ denote the needle obtained by the original process, and $(A',B')$ the one obtained by the third process. Let $c_1$ and $c_2$ denote two colors, and $c$, the application giving the color of a point. Then, we have :\\
  $$\mathbb{P}(c(A) = c_1 , c(B) = c_2) = \mathbb{P}(c(A') = c_1, c(B') = c_2) $$ \\
  \\
- In particular, this means that it doesn't depend on the graph chosen.
+ In particular, this means that the probability doesn't depend on the graph chosen. For a graph with only two vertices, we have the exactly the process.
 \end{lemma}
 
 \begin{proof}
-Notations : \\
+Notations : 
 \begin{itemize}
-\item we take a graph $G=(V,E)$, $m = |E|$, the number of edges.
+\item we take a graph $G=(V,E)$, and $m = |E|$, the number of edges.
 
-\item $\mathcal{A(P)}$ is the area of the parallélogram we are considering.
+\item $\mathcal{A(P)}$ is the area of the parallelogram we are considering.
 
 \item $i$ is the index of one of the edges of $G$.
 
 \item we denote $z_i$ the complex coordinates of one vertex of the $i^{th}$ edge.
 
-\item $\theta_i$ denotes the angle made by the $i^{th}$ edge of the graph. The complex coordinates of the vertices of the $i^{th}$ eges before rotaion/translation are then $z_i $ and $z_i + e^{i.theta_i}$.
+\item $\theta_i$ denotes the angle made by the $i^{th}$ edge of the graph. The complex coordinates of the vertices of the $i^{th}$ edges before rotation/translation are then $z_i $ and $z_i + e^{i.theta_i}$.
 
 \end{itemize}
 
 
 \vspace{1 cm}
-We proove the theorem through the following series of equalities :
+We proove it through the following series of equalities :
 
 \begin{eqnarray*}
 & & \mathbb{P}(c(A) = c_1, c(B) = c_2) \\
   &=& \frac{1}{m}\sum_{i=1}^{m} \mathbb{P}(c(A) = c_1, c(B) = c_2 | i)  \\
   &=& \frac{1}{m}\sum_{i=1}^{m}  \frac{1}{2\pi}\int_{\theta =0} ^{2\pi} \frac{1}{\mathcal{A(P)}}\int\int_{A_0 \in \mathcal{P}} \mathbb{P}(c(A) = c_1, c(B) = c_2 | i, \theta, A_0) d\theta dx dy \\  
   &=& \frac{1}{m 2\pi \mathcal{A(P)}}\sum_{i=1}^{m}\int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathcal{P}} \mathds{1}(c(A_0 + z_i e^{i\theta}) = c_1, c(A_0 +z_i e^{i\theta} + e^{i (\theta + \theta_i)}) = c_2) d\theta dx dy \\  
-    &=& \frac{1}{m 2\pi \mathcal{A(P)}}\sum_{i=1}^{m} \int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathcal{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i (\theta + \theta_i)}) = c_2 ) d\theta dx dy \\ 
+    &=& \frac{1}{m 2\pi \mathcal{A(P)}}\sum_{i=1}^{m} \int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathcal{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i (\theta + \theta_i)}) = c_2 ) d\theta dx dy \hspace{1 cm} (*)\\ 
     &=& \frac{1}{m 2\pi \mathcal{A(P)}}\sum_{i=1}^{m} \int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathcal{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
     &=& \frac{1}{2\pi \mathcal{A(P)}}\int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathcal{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
 \end{eqnarray*}
 Which gives exactly the same probability as the first process (except that the angle is taken in $[0;2\pi]$ here, instead of $[0;\pi]$, but it doesn't make any difference when looking only at the colors).
+
+The two firsts equalities derive from the law of total probability.
+The equality $(*)$ is justified by the periodicity of our colouring.
 \end{proof}
-
-
-
-
-
-
 
 \end{document}
 

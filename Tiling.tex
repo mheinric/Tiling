@@ -144,7 +144,8 @@ probability that the endpoints have the same color is at least $\frac{1}{3}$. Th
 Let's prove the following colouring shows that this bound is optimal. 
 
 %IMAGE DU COLORIAGE + preuve optimalité
-\begin{figure}[h]\center
+\begin{figure}[h]
+\center
 \includegraphics[scale=0.5]{path6509.png}
 \caption{\label{étiquette} Find a title}
 \flushleft
@@ -182,7 +183,12 @@ of $\frac 1 6 >\frac 1 {11}$
 The previous process can be modified to match a somewhat more practical view. In this section, we consider the process of needle throwing in a finite table. 
 Formally, it is defined as follows :
 \begin{process}
-Denote by P a parallelogram (representing the table)
+Denote by P a parallelogram (representing the table). 
+\begin{itemize}
+\item Choose a point uniformly in P for the lower point of the needle
+\item Choose an angle theta uniformly in $[]$
+
+\end{itemize}
 
 \end{process}
 Similarly to what was done in the previous section, we define a second process, consisting in throwing a whole graph, and then choosing a edge on this graph.
@@ -193,7 +199,7 @@ The upper bound obtained is less general than the previous result as it provides
 \end{process}
 The result is the following :
 \begin{lemma}
-Considering the previous process, with a finite two-colouring, the probability that both ends of the needle fall on the same colour is at least : $$ \frac13 - \frac{\mathbb{P}}{\mathbb{A}} $$
+Considering the previous process, with a finite two-colouring, the probability that both ends of the needle fall on the same colour is at least : $$ \frac13 - \frac{\mathcal{P}}{\mathcal{A}} $$
 
 In particular, this bound is sharp when the dimensions of the table goes to infinity.\\
 The proof can be adapted to circular tables, or more generally to any table whose shape is not too complicated.

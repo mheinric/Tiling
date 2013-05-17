@@ -188,23 +188,33 @@ Formally, it is defined as follows :
 Denote by P a parallelogram (representing the table). 
 \begin{itemize}
 \item Choose a point uniformly in P for the lower point of the needle
-\item Choose an angle theta uniformly in $[]$
-
+\item Choose an angle theta uniformly in $[0 ; \Pi]$ such that the second end of the needle does not fall out of the table
 \end{itemize}
-
 \end{process}
-Similarly to what was done in the previous section, we define a second process, consisting in throwing a whole graph, and then choosing a edge on this graph.
-The upper bound obtained is less general than the previous result as it provides a bound for only two colours. However, the result is close to the one obtained with a periodic colouring. 
+
+Similarly to what was done in the previous section, we define a second process, consisting in throwing a triangle, and then choosing a edge on this triangle.
+This will provide a bound on the probability for two colours.
 
 \begin{process}
-
+We therefore define an other needle choosing process :
+\begin{itemize}
+  \item let $\theta '$ (the orientation of our triangle) be chosen uniformly in $[0;\pi / 3]$ ;
+  \item let $A'$ (the lowest vertex of the triangle) be a point in $P$ such that $A' + e^{i\theta '}$ is also in $P$, chosen uniformly among the points having this property ;
+  \item let $B' = A' + e^{i \theta '}$ and $C' = A' + e^{i (\theta ' + \pi / 3 ) }$ ;
+  \item let $(A'_1,A'_2)$ (lowest and highest endpoints of the needle) be a couple of points chosen uniformly between $(A',B')$, $(A',C')$, $(B',C')$.
+\end{itemize}
+Finally, let $p'$ be the probability that $A'_1$ and $A'_2$ have the same colour.
 \end{process}
+
+
 The result is the following :
 \begin{lemma}
-Considering the previous process, with a finite two-colouring, the probability that both ends of the needle fall on the same colour is at least : $$ \frac13 - \frac{\mathcal{P}}{\mathcal{A}} $$
+Denote by $p$ the probability that both ends have the same colour when throwing the needle on a finite table, then :
+ $$ | p - p'| \leq \frac{\mathcal{P}}{\mathcal{A}} $$
 
-In particular, this bound is sharp when the dimensions of the table goes to infinity.\\
-The proof can be adapted to circular tables, or more generally to any table whose shape is not too complicated.
+In particular, this bound is sharp when the dimensions of the table goes to infinity. It follows immediately from this that : $p \geq \frac13 + \frac{\mathcal{P}}{\mathcal{A}}$ \\
+The proof can be adapted to circular tables, or more generally to any table whose shape is not too complicated. \\
+(*Say something about wether it can be adapted or not to moser*)
 \end{lemma}
 
 

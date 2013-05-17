@@ -126,7 +126,7 @@ The first two equalities are obtained by the law of total probability.
 The equality $(*)$ is justified by the periodicity of our colouring.
 \end{proof}
 
-\begin{cons}
+\begin{cons} \label{ineg}
 From the previous theorem it follows that :
 $$ \max_{g \in G} c_g(n) \leq \min_{c \in C_n} p(c) $$
 where \begin{itemize} 
@@ -194,7 +194,7 @@ We remark that in higher dimension, the bounds possibly change : for
 example, in 3 dimensions, the regular tetrahedron witnesses a better lower bound
 of $\frac 1 6 >\frac 1 {11}$   
 
-\section{Finite table}
+\section{Finite table} \label{fini}
 
 \begin{figure}[h]
 \center
@@ -259,6 +259,9 @@ $$ \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right
 
 
 \end{proof}
+
+\section{Final notes}
+In the infinite case, it may seem a bit disappointing that we chose to study only periodic colourings. One can indeed hope for some similar results for a larger class of colourings. For instance, we can look at the probability $p_R$ of obtaining two same coloured endpoints when launching the needle on the ball $B(0,R)$ and say that a colouring is \emph{valid} if $p_R$ converges as $R \rightarrow \infty$. If we denote $p$ this limit, section \ref{fini} easily shows that we get the same main results for $p$, especially consequence \ref{ineg} when taking $C_n$ the set of valid colourings with $n$ colours. It's also clear that any periodic colouring is valid. Still, we chose not to use that notion, because $p$ is not a probability.
 
 %\iffalse
 %\subsection*{First proof}

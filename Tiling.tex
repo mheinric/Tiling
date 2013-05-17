@@ -38,10 +38,14 @@ This idea of throwing a needle on a coloured floor was somehow motivated by the 
 
 The problem we are tackling here - maximizing the probability that endpoints fall on different-coloured points - can also be seen as a probabilistic version of the well known \emph{Hadwiger-Nelson problem}. This problem asks for the chromatic number of the unit-distance plane. Some relations with our problem will be studied in paragraph ???. One can first remark that knowing that the answer to the Hadwiger-Nelson problem is at most $7$, with a $7$-colouring of the plane such that two unit distance points have different colours, the maximum probability we are looking for is $1$ if $n \geq 7$.
 
+<<<<<<< HEAD
 ICI L'ANNONCE DU PLAN ET TOUT. DIPLODOCUS A ROULETTES.
 We also try to generalise this idea in higher dimensions, as it is done in section \ref{dim}.
+=======
+In section \ref{def} we define the process more precisely. In particular, we ought to make some assumption on the colouring for the probability to make sense. Our main result, establishing links between finite graphs and our probability, is presented in section \ref{equiv}. We then show some consequances, and also try to generalise this idea in higher dimensions in section \ref{appli}. Finally, we study the problem of launching a needle on a finite table.
+>>>>>>> 84320652627a22fd3e3c9b80cc7403c1ade86e82
 \section{Definitions}
-
+\label{def}
 
 For the intuitive idea of ``throwing a needle uniformly on the plane'' to make sense in a probabilistic approach, we choose to make the following assumption : 
 the colouring of the plane is \textit{periodic} - that is, there is a basis of two vectors, $u$ and $v$, such that translations along these vectors leave the colouring unchanged. Thereafter, we denote $\mathbf{P}$ the parallelogram defined by these vectors. And we consider needle throwing processes on this parallelogram.
@@ -82,6 +86,7 @@ Then, rotate the graph by the angle $\theta$, translate it so that the origin fa
 \vspace{1 cm} 
 
 \section{Process equivalence}
+\label{equiv}
 \begin{lemma}\label{huitre}
 Let $(A,B)$ denote the needle obtained by the original process, and
 $(A',B')$ the one obtained by the second process. Let $c_1$ and $c_2$ denote two colors, and $c$, the application giving the color of a point. Then, we have :\\
@@ -146,7 +151,7 @@ colours is greater than $c_G(n)$. Applying the previous theorem with G, it follo
 that the probability for any colouring is greater than $c_G(n)$    
 \end{proof}
 
-\section{Applications}
+\section{Applications} \label{appli}
 \subsection{2 colours}
 
 

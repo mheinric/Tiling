@@ -214,9 +214,30 @@ Denote by $p$ the probability that both ends have the same colour when throwing 
 
 In particular, this bound is sharp when the dimensions of the table goes to infinity. It follows immediately from this that : $p \geq \frac13 + \frac{\mathcal{P}}{\mathcal{A}}$ \\
 The proof can be adapted to circular tables, or more generally to any table whose shape is not too complicated. \\
-(*Say something about wether it can be adapted or not to moser*)
+%Say something about wether it can be adapted or not to moser ?
 \end{lemma}
 
+\begin{proof}
+
+\begin{eqnarray*}
+|p' - p| 
+  &=& | \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) + \mathbb{P}(A'_1 , A'_2 \in U_1) - \mathbb{P}(A_1 , A_2 \in U_1) | \\
+  &\leq& | \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) | + | \mathbb{P}(A'_1 , A'_2 \in U_1) - \mathbb{P}(A_1 , A_2 \in U_1) | 
+\end{eqnarray*}
+
+Let's focus on the first term. 
+Decompose the first probability in three terms corresponding to the final choice of $(A',B')$, $(A',C')$ or $(B',C')$, and the second one in three terms according to the position of $\theta$ :
+\begin{eqnarray*}
+& & \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \\
+&\leq& \frac{1}{3} \left| \mathbb{P}(A' \in U_0 , B' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ |\  \theta < \frac{\pi}{3} ) \right| \\
+&+& \frac{1}{3} \left| \mathbb{P}(A' \in U_0 , C' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ |\  \frac{\pi}{3} \leq \theta < \frac{2 \pi}{3} ) \right| \\
+&+& \frac{1}{3} \left| \mathbb{P}(B' \in U_0 ,C' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ | \  \frac{2 \pi}{3} > \theta ) \right|
+\end{eqnarray*}
+
+Once again, let's focus on the first term. Let $\mathcal{P'}$ be the parallelogram  composed of the points of  $\mathcal{P}$ at a distance of at least one from the borders. Conditioning on the fact that the points $A$ and $A'$ fall in $\mathcal{P'}$, the two points are uniformly distributed in $\mathcal{P'}$, and independent of $\theta$ and $\theta'$. Thus this term is overestimated by the probability for $A$ and $A'$ to fall near the borders of the parallelogram. This probability is smaller than : $\mathcal{P}/\mathcal{A}$.
+
+
+\end{proof}
 
 %\iffalse
 %\subsection*{First proof}

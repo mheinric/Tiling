@@ -43,7 +43,7 @@ In section \ref{def} we define the process more precisely. In particular, we oug
 \label{def}
 
 For the intuitive idea of ``throwing a needle uniformly on the plane'' to make sense in a probabilistic approach, we choose to make the following assumption : 
-the colouring of the plane is \textit{periodic} - that is, there is a basis of two vectors, $u$ and $v$, such that translations along these vectors leave the colouring unchanged. Thereafter, we denote $\mathcal{P}$ the parallelogram defined by these vectors. And we consider needle throwing processes on this parallelogram.
+the colouring of the plane is \textit{periodic} - that is, there is a basis of two vectors, $u$ and $v$, such that translations along these vectors leave the colouring unchanged. Thereafter, we denote $\mathbf{P}$ the parallelogram defined by these vectors. And we consider needle throwing processes on this parallelogram.
 
 \begin{definition}
 A graph $(V,E) $ is said to be a \emph{unit distance graph}, if it has a representation in the plane, with all edges having length $1$.
@@ -97,7 +97,7 @@ Conventions :
 
 \item as usual, $\mathbf{P}$ is the parallelogram obtained by the periodicity of the colouring.
 
-\item $\mathcal{A(P)}$ is the area of the parallelogram we are considering.
+\item $\mathcal{A}(\mathbf{P})$ is the area of the parallelogram we are considering, and $\mathcal{P}(\mathbf{P})$ its perimeter.
 
 \item $i$ is the index of one of the edges of $G$.
 
@@ -112,8 +112,8 @@ We prove it by the following series of equalities :
 \begin{eqnarray*}
 & & \mathbb{P}(c(A') = c_1, c(B') = c_2) \\
   &=& \frac{1}{m}\sum_{i=1}^{m} \mathbb{P}(c(A') = c_1, c(B') = c_2 | i)  \\
-  &=& \frac{1}{m}\sum_{i=1}^{m}  \frac{1}{2\pi}\int_{\theta =0} ^{2\pi} \frac{1}{\mathcal{A(P)}}\int\int_{A_0 \in \mathbf{P}} \mathbb{P}(c(A') = c_1, c(B') = c_2 | i, \theta, A_0) d\theta dx dy \\  
-  &=& \frac{1}{m 2\pi \mathcal{A(P)}}\sum_{i=1}^{m}\int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0 + z_i e^{i\theta}) = c_1, c(A_0 +z_i e^{i\theta} + e^{i (\theta + \theta_i)}) = c_2) d\theta dx dy \\  
+  &=& \frac{1}{m}\sum_{i=1}^{m}  \frac{1}{2\pi}\int_{\theta =0} ^{2\pi} \frac{1}{\mathcal{A}(\mathbf{P})}\int\int_{A_0 \in \mathbf{P}} \mathbb{P}(c(A') = c_1, c(B') = c_2 | i, \theta, A_0) d\theta dx dy \\  
+  &=& \frac{1}{m 2\pi \mathcal{A}(\mathbf {P})}\sum_{i=1}^{m}\int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0 + z_i e^{i\theta}) = c_1, c(A_0 +z_i e^{i\theta} + e^{i (\theta + \theta_i)}) = c_2) d\theta dx dy \\  
     &=& \frac{1}{m 2\pi \mathcal{A}(\mathbf{P})}\sum_{i=1}^{m} \int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i (\theta + \theta_i)}) = c_2 ) d\theta dx dy \hspace{1 cm} (*)\\ 
     &=& \frac{1}{m 2\pi \mathcal{A}(\mathbf{P})}\sum_{i=1}^{m} \int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
     &=& \frac{1}{2\pi \mathcal{A}(\mathbf{P})}\int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
@@ -200,7 +200,7 @@ Formally, it is defined as follows :
 Denote by P a parallelogram (representing the table). 
 \begin{itemize}
 \item Choose a point uniformly in P for the lower point of the needle
-\item Choose an angle theta uniformly in $[0 ; \Pi]$ such that the second end of the needle does not fall out of the table
+\item Choose an angle theta uniformly in $[0 ; \pi]$ such that the second end of the needle does not fall out of the table
 \end{itemize}
 \end{process}
 
@@ -222,9 +222,9 @@ Finally, let $p'$ be the probability that $A'_1$ and $A'_2$ have the same colour
 The result is the following :
 \begin{lemma}
 Denote by $p$ the probability that both ends have the same colour when throwing the needle on a finite table, then :
- $$ | p - p'| \leq \frac{\mathfrak{P}}{\mathfrak{A}} $$
+ $$ | p - p'| \leq \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})} $$
 
-In particular, this bound is sharp when the dimensions of the table goes to infinity. It follows immediately from this that : $p \geq \frac13 + \frac{\mathbf{P}}{\mathcal{A}}$ \\
+In particular, this bound is sharp when the dimensions of the table goes to infinity. It follows immediately from this that : $p \geq \frac13 + \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})}$ \\
 The proof can be adapted to circular tables, or more generally to any table whose shape is not too complicated. \\
 %Say something about wether it can be adapted or not to moser ?
 \end{lemma}
@@ -246,8 +246,8 @@ Decompose the first probability in three terms corresponding to the final choice
 &+& \frac{1}{3} \left| \mathbb{P}(B' \in U_0 ,C' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ | \  \frac{2 \pi}{3} > \theta ) \right|
 \end{eqnarray*}
 
-Once again, let's focus on the first term. Let $\mathcal{P'}$ be the parallelogram  composed of the points of  $\mathbf{P}$ at a distance of at least one from the borders. Conditioning on the fact that the points $A$ and $A'$ fall in $\mathcal{P'}$, the two points are uniformly distributed in $\mathcal{P'}$, and independent of $\theta$ and $\theta'$. Thus we have : 
-$$ \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \leq \mathbb P(A \not \in \mathcal{P'}) \leq \frac{\mathfrak{P}}{\mathfrak A} $$
+Once again, let's focus on the first term. Let $\mathcal{P'}$ be the parallelogram  composed of the points of  $\mathbf{P}$ at a distance of at least one from the borders. Conditioning on the fact that the points $A$ and $A'$ fall in $\mathbf{P'}$, the two points are uniformly distributed in $\mathbf{P'}$, and independent of $\theta$ and $\theta'$. Thus we have : 
+$$ \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \leq \mathbb P(A \not \in \mathcal{P'}) \leq \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})} $$
 
 
 \end{proof}

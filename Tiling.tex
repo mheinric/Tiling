@@ -39,19 +39,20 @@ This idea of throwing a needle on a coloured floor was somehow motivated by the 
 The problem we are tackling here - maximizing the probability that endpoints fall on different-coloured points - can also be seen as a probabilistic version of the well known \emph{Hadwiger-Nelson problem}. This problem asks for the chromatic number of the unit-distance plane. Some relations with our problem will be studied in paragraph ???. One can first remark that knowing that the answer to the Hadwiger-Nelson problem is at most $7$, with a $7$-colouring of the plane such that two unit distance points have different colours, the maximum probability we are looking for is $1$ if $n \geq 7$.
 
 In section \ref{def} we define the process more precisely. In particular, we ought to make some assumption on the colouring for the probability to make sense. Our main result, establishing links between finite graphs and our probability, is presented in section \ref{equiv}. We then show some consequances, and also try to generalise this idea in higher dimensions in section \ref{appli}. Finally, we study the problem of launching a needle on a finite table.
+
 \section{Definitions}
 \label{def}
+First, we call \emph{colouring} a function $c$ from the euclidian plane to the set of colours $[| 1 ; n |]$. For the probability to be well defined, we will first require that every set $U_i$ for $i \in [| 1 ; n |]$ is Borel-measurable - equivalently, that the function $c$ itself be Borel-measurable. Since it's impossible to ``throw a needle uniformly on the plane'', we also choose to make the following assumption : 
+the colouring is \textit{periodic} - that is, there is a basis of two vectors, $u$ and $v$, such that translations along these vectors leave the colouring unchanged. Thereafter, we will always assume that the colouring is measurable and periodic, and we will denote $\mathbf{P}$ the parallelogram defined by these vectors. Needle throwing processes will be considered on this parallelogram only.
 
-For the intuitive idea of ``throwing a needle uniformly on the plane'' to make sense in a probabilistic approach, we choose to make the following assumption : 
-the colouring of the plane is \textit{periodic} - that is, there is a basis of two vectors, $u$ and $v$, such that translations along these vectors leave the colouring unchanged. Thereafter, we denote $\mathbf{P}$ the parallelogram defined by these vectors. And we consider needle throwing processes on this parallelogram.
-
+The notion of a \emph{unit distance graph} will also be useful :
 \begin{definition}
 A graph $(V,E) $ is said to be a \emph{unit distance graph}, if it has a representation in the plane, with all edges having length $1$.
 \end{definition}
 
-
+We now define formally the needle-throwing process :
 \begin{process}
-Formally, consider the following random variables :
+Consider the following random variables :
 \begin{itemize}
   \item let $A_1$ (the lowest point of the needle) be a point chosen uniformly in $\mathbf{P}$ ;
   \item let $\theta$ be an independent angle chosen uniformly in $[0;\pi[$ ;
@@ -64,11 +65,10 @@ Our goal is to evaluate and minimize the probability that both ends have the sam
 
 \begin{remark}
 Note that there are several couples of vectors $(u,v)$ forming an appropriate basis for the 
-colouring. Nonetheless, we can prove that the probabilities does not depend on this choice. 
+colouring. Nonetheless, it's clear that probabilities do not depend on this choice. 
 \end{remark}
 
-
-We consider the following process : \\
+We consider the following, second process of a unit distance graph on the plane, and then of a needle in the graph : \\
 \begin{process}
 Given a unit distance graph $(G,V)$, label all the edges with numbers from $1$ to $|E|$. Choose : 
 \begin{itemize}

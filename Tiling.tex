@@ -27,23 +27,25 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}  In this paper, we are interested in n-colourings of plane
-that optimize the probability that throwing a needle in the plane the two ends of the
+\begin{abstract}  In this paper, we are interested in $n$-colourings of plane
+that optimize the probability that when throwing a needle in the plane the two endpoints of the
 needle have different colours. Our major result establish a correlation between
-n-colouring of plane and finite unit-distance graphs. Hence, it gives us
-some bounds over the probability.p\end{abstract}
+$n$-colouring of plane and finite unit-distance graphs. It gives us
+some bounds for the optimal probability.\end{abstract}
 
 \section{Introduction}
 This idea of throwing a needle on a coloured floor was somehow motivated by the announcement of cell phones chargers that are only surfaces where a cell phone can be only launched to charge. Indeed, imagine that the endpoints represent two electrodes on our cell phone, and that the colours represent different electric potentials on the conductive plane : we would try to make the colouring optimal so that the cell phone can be charged with a big enough probability. Of course, actual implementations of that technology are not so simple.
 
 The problem we are tackling here - maximizing the probability that endpoints fall on different-coloured points - can also be seen as a probabilistic version of the well known \emph{Hadwiger-Nelson problem}. This problem asks for the chromatic number of the unit-distance plane. Some relations with our problem will be studied in paragraph ???. One can first remark that knowing that the answer to the Hadwiger-Nelson problem is at most $7$, with a $7$-colouring of the plane such that two unit distance points have different colours, the maximum probability we are looking for is $1$ if $n \geq 7$.
 
-In section \ref{def} we define the process more precisely. In particular, we ought to make some assumption on the colouring for the probability to make sense. Our main result, establishing links between finite graphs and our probability, is presented in section \ref{equiv}. We then show some consequances, and also try to generalise this idea in higher dimensions in section \ref{appli}. Finally, we study the problem of launching a needle on a finite table.
+In section \ref{def} we define the process more precisely. In particular, we ought to make some assumption on the colouring for the probability to make sense. Our main result, establishing links between finite graphs and our probability, is presented in section \ref{equiv}. We then show some consequences, and try to generalise this idea in higher dimensions in section \ref{appli}. Finally, we study the problem of launching a needle on a finite table.
 
 \section{Definitions}
 \label{def}
 First, we call \emph{colouring} a function $c$ from the euclidian plane to the set of colours $[| 1 ; n |]$. For the probability to be well defined, we will first require that every set $U_i$ for $i \in [| 1 ; n |]$ is Borel-measurable - equivalently, that the function $c$ itself be Borel-measurable. Since it's impossible to ``throw a needle uniformly on the plane'', we also choose to make the following assumption : 
-the colouring is \textit{periodic} - that is, there is a basis of two vectors, $u$ and $v$, such that translations along these vectors leave the colouring unchanged. Thereafter, we will always assume that the colouring is measurable and periodic, and we will denote $\mathbf{P}$ the parallelogram defined by these vectors. Needle throwing processes will be considered on this parallelogram only.
+the colouring is \textit{periodic} - that is, there is a basis of two vectors, $u$ and $v$, such that translations along these vectors leave the colouring unchanged.
+
+Thereafter, we will always assume that the colouring is measurable and periodic, and we will denote $\mathbf{P}$ the parallelogram defined by these vectors. Needle throwing processes can then be considered on this parallelogram only.
 
 The notion of a \emph{unit distance graph} will also be useful :
 \begin{definition}
@@ -170,7 +172,7 @@ with the same colors.
 \subsection{3 colours}
 \begin{figure}[h]
 \center
-\includegraphics{t.jpeg}
+\includegraphics[scale=0.4]{T.png}
 \caption{\label{color} Find a title}
 \end{figure}
 

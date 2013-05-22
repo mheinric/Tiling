@@ -13,7 +13,8 @@
 
 
 \newtheorem{lemma}{Lemma}
-\newtheorem{cons}{Consequences}
+\newtheorem{cons}{Consequence}
+\newtheorem{theo}{Theorem}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
@@ -27,58 +28,104 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}  In this paper, we are interested in $n$-colourings of plane
-that optimize the probability that when throwing a needle in the plane the two endpoints of the
-needle have different colours. Our major result establish a correlation between
-$n$-colouring of plane and finite unit-distance graphs. It gives us
-some bounds for the optimal probability.\end{abstract}
+\begin{abstract}  In this paper, we are interested in $n$-colourings of plane 
+that maximize the probability that when throwing a needle in the plane the two 
+endpoints of the needle have different colours. Our major result establish a 
+correlation between $n$-colouring of plane and finite unit-distance graphs. 
+It gives us some bounds for the optimal probability.\end{abstract}
 
 \section{Introduction}
-This idea of throwing a needle on a coloured floor was somehow motivated by the announcement of cell phones chargers that are only surfaces where a cell phone can be only launched to charge. Indeed, imagine that the endpoints represent two electrodes on our cell phone, and that the colours represent different electric potentials on the conductive plane : we would try to make the colouring optimal so that the cell phone can be charged with a big enough probability. Of course, actual implementations of that technology are not so simple.
+This idea of throwing a needle on a coloured floor was somehow motivated by 
+the announcement of cell phones chargers that are only surfaces where a cell 
+phone can be only launched to charge. Indeed, imagine that the endpoints 
+represent two electrodes on our cell phone, and that the colours represent 
+different electric potentials on the conductive plane : we would try to make 
+the colouring optimal so that the cell phone can be charged with a big enough 
+probability. Of course, actual implementations of that technology are not so 
+simple
 
-The problem we are tackling here - maximizing the probability that endpoints fall on different-coloured points - can also be seen as a probabilistic version of the well known \emph{Hadwiger-Nelson problem}. This problem asks for the chromatic number of the unit-distance plane. Some relations with our problem will be studied in paragraph ???. One can first remark that knowing that the answer to the Hadwiger-Nelson problem is at most $7$, with a $7$-colouring of the plane such that two unit distance points have different colours, the maximum probability we are looking for is $1$ if $n \geq 7$.
+The problem we are interested in here is the following : if $c$ is a 
+\emph{valid} colouring the plane with $n$ colours, in a  way that will be 
+defined further, define $p(c)$ as the probability that when throwing a needle 
+on $c$, both endpoints have the same colour. What is the minimal $p(c)$ and 
+for what colourings is it obtained ?
 
-In section \ref{def} we define the process more precisely. In particular, we ought to make some assumption on the colouring for the probability to make sense. Our main result, establishing links between finite graphs and our probability, is presented in section \ref{equiv}. We then show some consequences, and try to generalise this idea in higher dimensions in section \ref{appli}. Finally, we study the problem of launching a needle on a finite table.
+This can be seen as a probabilistic version of the well known 
+\emph{Hadwiger-Nelson problem}. This problem asks for the chromatic number 
+of the euclidian plane, where unit-distance points are connected. Some 
+relations with our problem will be presented in paragraph \ref{hn}. One can 
+first remark that knowing that the answer to the Hadwiger-Nelson problem is at 
+most $7$, with a $7$-colouring of the plane such that two unit distance points 
+always have different colours, the maximum probability we are looking for is 
+$1$ if $n \geq 7$.
+
+In section \ref{def} we define the process more precisely. In particular, we 
+ought to make some assumption on the colouring for the probability to make 
+sense. Our main result, establishing links between finite graphs and our 
+probability, is presented in section \ref{equiv}. We then show some 
+consequences, and try to generalise this idea in higher dimensions in section 
+\ref{appli}. Finally, we study the problem of launching a needle on a finite 
+table.
 
 \section{Definitions}
 \label{def}
-First, we call \emph{colouring} a function $c$ from the euclidian plane to the set of colours $[| 1 ; n |]$. For the probability to be well defined, we will first require that every set $U_i$ for $i \in [| 1 ; n |]$ is Borel-measurable - equivalently, that the function $c$ itself be Borel-measurable. Since it's impossible to ``throw a needle uniformly on the plane'', we also choose to make the following assumption : 
-the colouring is \textit{periodic} - that is, there is a basis of two vectors, $u$ and $v$, such that translations along these vectors leave the colouring unchanged.
+First, we call \emph{colouring} a function $c$ from the euclidian plane to the 
+set of colours $[| 1 ; n |]$. For the probability to be well defined, we will 
+first require that every set $U_i$ for $i \in [| 1 ; n |]$ is Borel-measurable 
+- equivalently, that the function $c$ itself be Borel-measurable. Since it's 
+impossible to ``throw a needle uniformly on the plane'', we also choose to make 
+the following assumption : 
+the colouring is \textit{periodic} - that is, there is a basis of two vectors, 
+$u$ and $v$, such that translations along these vectors leave the colouring 
+unchanged.
 
-Thereafter, we will always assume that the colouring is measurable and periodic, and we will denote $\mathbf{P}$ the parallelogram defined by these vectors. Needle throwing processes can then be considered on this parallelogram only.
+Thereafter, we will always assume that the colouring is measurable and 
+periodic, and we will denote $\mathbf{P}$ the parallelogram defined by these 
+vectors. Needle throwing processes can then be considered on this parallelogram only.
 
 The notion of a \emph{unit distance graph} will also be useful :
 \begin{definition}
-A graph $(V,E) $ is said to be a \emph{unit distance graph}, if it has a representation in the plane, with all edges having length $1$.
+
+A graph $(V,E) $ is said to be a \emph{unit distance graph}, if it has a 
+representation in the plane, with all edges having length $1$.
 \end{definition}
 
 We now define formally the needle-throwing process :
 \begin{process}
 Consider the following random variables :
 \begin{itemize}
-  \item let $A_1$ (the lowest point of the needle) be a point chosen uniformly in $\mathbf{P}$ ;
+  \item let $A_1$ (the lowest point of the needle) be a point chosen uniformly 
+  in $\mathbf{P}$ ;
   \item let $\theta$ be an independent angle chosen uniformly in $[0;\pi[$ ;
   \item let $A_2$ (the highest point of the needle) be $A_1 + e^{i \theta}$.
 \end{itemize}
 \end{process}
 
-Note that $A_2$ may be outside of $\mathbf{P}$. In that case, $c(A_2)$ is defined using the periodicity of the colouring.
-Our goal is to evaluate and minimize the probability that both ends have the same color.
+Note that $A_2$ may be outside of $\mathbf{P}$. In that case, $c(A_2)$ is 
+defined using the periodicity of the colouring.
+Our goal is to evaluate and minimize the probability that both ends have the 
+same color.
 
 \begin{remark}
-Note that there are several couples of vectors $(u,v)$ forming an appropriate basis for the 
-colouring. Nonetheless, it's clear that probabilities do not depend on this choice. 
+Note that there are several couples of vectors $(u,v)$ forming an appropriate 
+basis for the colouring. Nonetheless, it's clear that probabilities do not 
+depend on this choice. 
 \end{remark}
 
-We consider the following, second process of a unit distance graph on the plane, and then of a needle in the graph : \\
+We consider the following, second process of a unit distance graph on the 
+plane, and then of a needle in the graph :
 \begin{process}
-Given a unit distance graph $(G,V)$, label all the edges with numbers from $1$ to $|E|$. Choose : 
+Given a unit distance graph $(G,V)$, label all the edges with numbers from 
+$1$ to $|E|$. Choose : 
 \begin{itemize}
-\item one point $A_0$ uniformly on the initial parallelogram $\mathbf{P}$ for the origin of the graph.
+\item one point $A_0$ uniformly on the initial parallelogram $\mathbf{P}$ for 
+the origin of the graph.
 \item an angle $\theta$ uniformly in $[0;2\pi[$, to rotate the graph
 \item and an index $i$ in $[|1;|E||]$.
 \end{itemize}
-Then, rotate the graph by the angle $\theta$, translate it so that the origin falls on  $A_0$, and take the needle corresponding to the position of $i^{th}$ edge of the graph obtained. 
+Then, rotate the graph by the angle $\theta$, translate it so that the origin 
+falls on  $A_0$, and take the needle corresponding to the position of $i^{th}$ 
+edge of the graph obtained. 
 \end{process}
 \vspace{1 cm} 
 
@@ -86,10 +133,13 @@ Then, rotate the graph by the angle $\theta$, translate it so that the origin fa
 \label{equiv}
 \begin{lemma}\label{huitre}
 Let $(A,B)$ denote the needle obtained by the original process, and
-$(A',B')$ the one obtained by the second process. Let $c_1$ and $c_2$ denote two colors, and $c$, the application giving the color of a point. Then, we have :\\
+$(A',B')$ the one obtained by the second process. Let $c_1$ and $c_2$ denote 
+two colors, and $c$, the application giving the color of a point. Then, we 
+have :\\
  $$\mathbb{P}(c(A) = c_1 , c(B) = c_2) = \mathbb{P}(c(A') = c_1, c(B') = c_2) $$ \\
  \\
- In particular, this means that the probability doesn't depend on the graph chosen. For a graph with only two vertices, we exactly get the initial process.
+ In particular, this means that the probability doesn't depend on the graph 
+ chosen. For a graph with only two vertices, we exactly get the initial process.
 \end{lemma}
 
 \begin{proof}
@@ -97,15 +147,20 @@ Conventions :
 \begin{itemize}
 \item we take a graph $G=(V,E)$, and $m = |E|$, the number of edges.
 
-\item as usual, $\mathbf{P}$ is the parallelogram obtained by the periodicity of the colouring.
+\item as usual, $\mathbf{P}$ is the parallelogram obtained by the periodicity 
+of the colouring.
 
-\item $\mathcal{A}(\mathbf{P})$ is the area of the parallelogram we are considering, and $\mathcal{P}(\mathbf{P})$ its perimeter.
+\item $\mathcal{A}(\mathbf{P})$ is the area of the parallelogram we are 
+considering, and $\mathcal{P}(\mathbf{P})$ its perimeter.
 
 \item $i$ is the index of one of the edges of $G$.
 
-\item we denote $z_i$ the complex coordinates of one vertex of the $i^{th}$ edge.
+\item we denote $z_i$ the complex coordinates of one vertex of the $i^{th}$ 
+edge.
 
-\item $\theta_i$ denotes the angle made by the $i^{th}$ edge of the graph. The complex coordinates of the vertices of the $i^{th}$ edges before rotation/translation are then $z_i $ and $z_i + e^{i.theta_i}$.
+\item $\theta_i$ denotes the angle made by the $i^{th}$ edge of the graph. The 
+complex coordinates of the vertices of the $i^{th}$ edges before 
+rotation/translation are then $z_i $ and $z_i + e^{i.theta_i}$.
 
 \end{itemize}
 
@@ -120,7 +175,9 @@ We prove it by the following series of equalities :
     &=& \frac{1}{m 2\pi \mathcal{A}(\mathbf{P})}\sum_{i=1}^{m} \int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
     &=& \frac{1}{2\pi \mathcal{A}(\mathbf{P})}\int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
 \end{eqnarray*}
-Which gives exactly the same probability as the first process (except that the angle is taken in $[0;2\pi[$ here, instead of $[0;\pi[$, but it doesn't make any difference when looking only at the colors).
+Which gives exactly the same probability as the first process (except that the 
+angle is taken in $[0;2\pi[$ here, instead of $[0;\pi[$, but it doesn't make 
+any difference when looking only at the colors).
 
 The first two equalities are obtained by the law of total probability.
 The equality $(*)$ is justified by the periodicity of our colouring.
@@ -144,20 +201,23 @@ ends, on the colouring $c$.
 \begin{proof}
 Consider a graph G, n colours, when choosing a needle
 uniformly on this graph the probability that both ends have the same
-colours is greater than $c_G(n)$. Applying the previous theorem with G, it follows
-that the probability for any colouring is greater than $c_G(n)$    
+colours is greater than $c_G(n)$. Applying the previous theorem with G, 
+it follows that the probability for any colouring is greater than $c_G(n)$    
 \end{proof}
 
 \section{Applications} \label{appli}
 \subsection{2 colours}
 
 
-With two colors, we consider the second process with a triangle as our graph. As there is always
- at least two vertices with the same color, it's clear that the 
-probability that the endpoints have the same color is at least $\frac{1}{3}$. Thanks to lemma ~\ref{huitre}, we have the same inequality for the first process.
-Let's prove the following colouring~\ref{color} shows that this bound is optimal. 
-The colouring is constructed with parallel strips of size $\frac {\sqrt3}
-2.$ with the upper sides opened and the lower sides closed.   
+With two colors, we consider the second process with a triangle as our graph. 
+As there is always at least two vertices with the same color, it's clear that 
+the probability that the endpoints have the same color is at least 
+$\frac{1}{3}$. Thanks to lemma ~\ref{huitre}, we have the same inequality for 
+the first process.
+
+Let's prove the following colouring~\ref{color} shows that this bound is 
+optimal. The colouring is constructed with parallel strips of size 
+$\frac {\sqrt3}{2}.$ with the upper sides opened and the lower sides closed.   
 %IMAGE DU COLORIAGE + preuve optimalité
 \begin{figure}[h]
 \center
@@ -166,20 +226,24 @@ The colouring is constructed with parallel strips of size $\frac {\sqrt3}
 \end{figure}
 
 Indeed, clearly, any unit equilateral triangle cannot have its three vertices
-with the same colors.
+with the same colors, so Lemma \ref{huitre} shows that we get a probability of 
+$\frac{1}{3}$ indeed.
 %CLASSE DE SOLUTIONS?
 
 \subsection{3 colours}
 \begin{figure}[h]
+\label{pasteque}
 \center
 \includegraphics[scale=0.4]{T.png}
-\caption{\label{color} Find a title}
+\caption{\label{color} The Moser spindle}
 \end{figure}
 
 
- With three colors, we use the Moser spindle~\ref{pasteque} - that has at least one of its $11$ edges with both ends of the same colour.
+ With three colors, we use the Moser spindle of Figure~\ref{pasteque} - that 
+ has at least one of its $11$ edges with both ends of the same colour.
  We similarly use lemma ~\ref{huitre} to get that in the case of three colours,
- the probability that both endpoints have the same colour is at least $\frac{1}{11}$ with the first needle throwing process. 
+ the probability that both endpoints have the same colour is at least 
+ $\frac{1}{11}$ with the first needle throwing process. 
 
 We don't know if the previous bound is optimal, however we have found the
 following colouring which approaches this bound.
@@ -194,12 +258,39 @@ process equivalence. %A PRECISER
 %lancer un graphe/choisir une aiguille : choisir un point et d-1 angles.
 %on a la même equalité
 
-We remark that in higher dimension, the bounds possibly change : for
-example, in 3 dimensions, the regular tetrahedron witnesses a better lower bound
+We remark that in higher dimension, the bounds may change : for
+example, with $3$ colours in dimension $3$, the regular tetrahedron witnesses a 
+better lower bound
 of $\frac 1 6 >\frac 1 {11}$   %pour 3 couleurs.
 % mettre d'autres exemples plus généraux
 % dire que si on a une borne pour une dimension, elle reste vraie en dimension supérieure
 
+\subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
+All results shown thereafter will be derived using the axiom of choice. 
+This is important to notice, since the answer to the Hadwiger-Nelson problem is 
+suspected to depend on the set of axioms used. Indeed, we will use the 
+following theorem, which cannot be established without some form of axiom of 
+choice :
+\begin{theo}[De Bruijn - Erdős]
+ A graph $G$ can be coloured with $k$ colours iff all of its finite subgraphs 
+ can be coloured with $k$ colours.
+\end{theo}
+In other words, the chromatic number of a graph is the maximum chromatic number 
+of its finite subgraphs.
+
+If there exist a finite graph that cannot be coloured with $k$ colours, it 
+follows from our study that the probability $p(c)$ for $c$ a periodic borelian 
+$n$-colouring is always greater than a certain constant. Taking the 
+contrapositive of this statement and using the De Bruijn-Erdős theorem, we get  
+the interesting proposition :
+\begin{cons}
+ If there exist a sequence $(c_m)_{m \in \mathbb{N}}$ of periodic borelian 
+ $k$-colourings such that $\lim_{m \to \infty} p(c_m) = 0$, then the 
+ Hadwiger-Nelson graph can be coloured using $k$ colours.
+\end{cons}
+Note that the final colouring of the plane we get is not necessarily periodic 
+or even borelian, since its existence relies on a theorem that highly depends 
+on the axiom of choice.
 
 \section{Finite table} \label{fini}
 
@@ -209,38 +300,49 @@ of $\frac 1 6 >\frac 1 {11}$   %pour 3 couleurs.
 \caption{\label{tablefinie} Find a title}
 %\flushleft
 \end{figure}
-The previous process can be modified to match a somewhat more practical view. In this section, we consider the process of needle throwing in a finite table. 
+The previous process can be modified to match a somewhat more practical view. 
+In this section, we consider the process of needle throwing in a finite table. 
 Formally, it is defined as follows :
 \begin{process}
 Denote by P a parallelogram (representing the table). 
 \begin{itemize}
 \item Choose a point uniformly in P for the lower point of the needle
-\item Choose an angle theta uniformly in $[0 ; \pi]$ such that the second end of the needle does not fall out of the table
+\item Choose an angle theta uniformly in $[0 ; \pi]$ such that the second end 
+of the needle does not fall out of the table
 \end{itemize}
 \end{process}
 
-Similarly to what was done in the previous section, we define a second process, consisting in throwing a triangle, and then choosing a edge on this triangle.
+Similarly to what was done in the previous section, we define a second process, 
+consisting in throwing a triangle, and then choosing a edge on this triangle.
 This will provide a bound on the probability for two colours.
 
 \begin{process}
 We therefore define an other needle choosing process :
 \begin{itemize}
-  \item let $\theta '$ (the orientation of our triangle) be chosen uniformly in $[0;\pi / 3]$ ;
-  \item let $A'$ (the lowest vertex of the triangle) be a point in $P$ such that $A' + e^{i\theta '}$ is also in $P$, chosen uniformly among the points having this property ;
+  \item let $\theta '$ (the orientation of our triangle) be chosen uniformly 
+  in $[0;\pi / 3]$ ;
+  \item let $A'$ (the lowest vertex of the triangle) be a point in $P$ such 
+  that $A' + e^{i\theta '}$ is also in $P$, chosen uniformly among the points 
+  having this property ;
   \item let $B' = A' + e^{i \theta '}$ and $C' = A' + e^{i (\theta ' + \pi / 3 ) }$ ;
-  \item let $(A'_1,A'_2)$ (lowest and highest endpoints of the needle) be a couple of points chosen uniformly between $(A',B')$, $(A',C')$, $(B',C')$.
+  \item let $(A'_1,A'_2)$ (lowest and highest endpoints of the needle) be a 
+  couple of points chosen uniformly between $(A',B')$, $(A',C')$, $(B',C')$.
 \end{itemize}
-Finally, let $p'$ be the probability that $A'_1$ and $A'_2$ have the same colour.
+Finally, let $p'$ be the probability that $A'_1$ and $A'_2$ have the same 
+colour.
 \end{process}
 
 
 The result is the following :
 \begin{lemma}
-Denote by $p$ the probability that both ends have the same colour when throwing the needle on a finite table, then :
+Denote by $p$ the probability that both ends have the same colour when throwing 
+the needle on a finite table, then :
  $$ | p - p'| \leq \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})} $$
 
-In particular, this bound is sharp when the dimensions of the table goes to infinity. It follows immediately from this that : $p \geq \frac13 + \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})}$ \\
-The proof can be adapted to circular tables, or more generally to any table whose shape is not too complicated. \\
+In particular, this bound is sharp when the dimensions of the table goes to 
+infinity. It follows immediately from this that : $p \geq \frac13 + \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})}$ \\
+The proof can be adapted to circular tables, or more generally to any table 
+whose shape is not too complicated. \\
 %Say something about wether it can be adapted or not to moser ?
 \end{lemma}
 
@@ -253,7 +355,9 @@ The proof can be adapted to circular tables, or more generally to any table whos
 \end{eqnarray*}
 
 Let's focus on the first term. 
-Decompose the first probability in three terms corresponding to the final choice of $(A',B')$, $(A',C')$ or $(B',C')$, and the second one in three terms according to the position of $\theta$ :
+Decompose the first probability in three terms corresponding to the final 
+choice of $(A',B')$, $(A',C')$ or $(B',C')$, and the second one in three terms 
+according to the position of $\theta$ :
 \begin{eqnarray*}
 & & \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \\
 &\leq& \frac{1}{3} \left| \mathbb{P}(A' \in U_0 , B' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ |\  \theta < \frac{\pi}{3} ) \right| \\
@@ -261,14 +365,29 @@ Decompose the first probability in three terms corresponding to the final choice
 &+& \frac{1}{3} \left| \mathbb{P}(B' \in U_0 ,C' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ | \  \frac{2 \pi}{3} > \theta ) \right|
 \end{eqnarray*}
 
-Once again, let's focus on the first term. Let $\mathcal{P'}$ be the parallelogram  composed of the points of  $\mathbf{P}$ at a distance of at least one from the borders. Conditioning on the fact that the points $A$ and $A'$ fall in $\mathbf{P'}$, the two points are uniformly distributed in $\mathbf{P'}$, and independent of $\theta$ and $\theta'$. Thus we have : 
+Once again, let's focus on the first term. Let $\mathcal{P'}$ be the 
+parallelogram  composed of the points of  $\mathbf{P}$ at a distance of at 
+least one from the borders. Conditioning on the fact that the points $A$ and 
+$A'$ fall in $\mathbf{P'}$, the two points are uniformly distributed in 
+$\mathbf{P'}$, and independent of $\theta$ and $\theta'$. Thus we have : 
 $$ \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \leq \mathbb P(A \not \in \mathcal{P'}) \leq \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})} $$
 
 
 \end{proof}
 
 \section{Final notes}
-In the infinite case, it may seem a bit disappointing that we chose to study only periodic colourings. One can indeed hope for some similar results for a larger class of colourings. For instance, we can look at the probability $p_R$ of obtaining two same coloured endpoints when launching the needle on the ball $B(0,R)$, and then say that a colouring is \emph{acceptable} if $p_R$ converges as $R \rightarrow \infty$. If we denote $p$ this limit, section \ref{fini} easily shows that we get the same main results for $p$, especially consequence \ref{ineg} when taking $C_n$ the set of acceptable colourings with $n$ colours. It's also clear that any periodic colouring is acceptable. Still, we chose not to use that notion, because $p$ is not a probability, and shouldn't be considered as such. It may though be the most natural way to give a sense to the (impossible) idea of ``launching a needle uniformly on the whole plane''.
+In the infinite case, it may seem a bit disappointing that we chose to study 
+only periodic colourings. One can indeed hope for some similar results for a 
+larger class of colourings. For instance, we can look at the probability $p_R$ 
+of obtaining two same coloured endpoints when launching the needle on the ball 
+$B(0,R)$, and then say that a colouring is \emph{acceptable} if $p_R$ converges 
+as $R \rightarrow \infty$. If we denote $p$ this limit, section \ref{fini} 
+easily shows that we get the same main results for $p$, especially consequence 
+\ref{ineg} when taking $C_n$ the set of acceptable colourings with $n$ colours. 
+It's also clear that any periodic colouring is acceptable. Still, we chose not 
+to use that notion, because $p$ is not a probability, and shouldn't be 
+considered as such. It may though be the most natural way to give a sense to 
+the (impossible) idea of ``launching a needle uniformly on the whole plane''.
 
 %\iffalse
 %\subsection*{First proof}

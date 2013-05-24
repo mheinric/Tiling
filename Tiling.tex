@@ -262,23 +262,35 @@ still far away from $\frac{1}{11}$.
 
 \subsection{Other extensions}
 \label{dim}
-We can generalize the two processes in higher dimensions, and use the same 
-proof to establish Lemma~\ref{huitre} and Corollary~\ref{ineg} in any 
-dimension $d$.
 
-%graphe unitaire en dimension d
-%lancer un graphe/choisir une aiguille : choisir un point et d-1 angles.
-%on a la même equalité
+The previous considerations can be extended to dimension $n \geq 3$, however, 
+it becomes much more complicated to write down. We consider a basis of vector 
+leaving our colouring unchanged, and still denote by $\mathbf{P}$ the parallelepiped
+induced by these vectors.
+
+The process of choosing a needle in the plane consist in : 
+\begin{itemize}
+	\item choosing one point in the parallelepiped $ \mathbf{P} $ for one point of the needle
+	\item choosing one point on the sphere to give the relative position of the second point
+\end{itemize}
+Sending a unit-length graph on the n-dimensional space becomes much more complicated. We have to choose 
+one initial point in $ \mathbf{P} $, and a rotation of a our graph (given by $n$ angles, however, we cannot choose these angles uniformly).
+In dimension 3, we can say that choosing a rotation, is the same as choosing a point on the sphere (for the 
+first vector of the basis), and then a second vector on a circle (for the second vector of the basis). In dimension $n$, it comes to choosing vectors on spheres of successively decreasing dimensions. 
+
+We strongly believe (but won't show it), that the previous results still hold. Namely, the probability that both ends fall on the same colour remain the same for the two processes. Thus, to find lower bonds on this probability, it suffice to find unit-length graphs with at least a certain number of 'bad coloured' edges.
+
+Considering a triangle, with two colours, the probability to get a 'bad needle' (ie: monochrome) is at least $\frac{1}{3}$, no matter the dimension $n \geq 2$. In fact, if we find a bound this way for a certain dimension, the same bound holds for higher dimensions. It still remain unknown (to our knowledge) whether the bound of $\frac{1}{3}$ is achieved or not in dimensions $\geq 3$. 
+
 
 Remark that in higher dimension, better bonds may be provided, since new graphs can 
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
 tetrahedron witnesses a better lower bound 
 of $\frac 1 6 >\frac 1 {11}$.
 
-Since a unit-length graph in dimension $d$ is also
-unit-length in higher dimensions, the bounds on $p$ are always sharper in higher
-dimensions.
-% mettre d'autres exemples plus généraux
+
+More generally, considering the complete graph $K_n$ in dimension $n$, the probability of getting 
+a 'bad needle' is at least $ \frac{1}{\binom 2 n}$.
 
 \subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
 All results shown thereafter will be derived using the axiom of choice. 

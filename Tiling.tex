@@ -204,6 +204,7 @@ uniformly on this graph the probability that both ends have the same
 colours is greater than $c_G(n)$. Applying the previous theorem with G, 
 it follows that the probability for any colouring is greater than $c_G(n)$    
 \end{proof}
+We still don't know wether or not this is actually an equality. 
 
 \section{Applications} \label{appli}
 \subsection{2 colours}
@@ -217,12 +218,12 @@ the first process.
 
 Let's prove the following colouring~\ref{color} shows that this bound is 
 optimal. The colouring is constructed with parallel strips of size 
-$\frac {\sqrt3}{2}.$ with the upper sides opened and the lower sides closed.   
+$l = \frac {\sqrt3}{2}.$ with the upper sides opened and the lower sides closed.   
 %IMAGE DU COLORIAGE + preuve optimalité
 \begin{figure}[h]
 \center
 \includegraphics[scale=0.5]{path6509.png}
-\caption{\label{couleur} Find a title}
+\caption{\label{couleur} The parallel stripes $2$-colouring}
 \end{figure}
 
 Indeed, clearly, any unit equilateral triangle cannot have its three vertices
@@ -320,34 +321,41 @@ on the axiom of choice.
 
 \section{Finite table} \label{fini}
 
-\begin{figure}[h]
-\center
-\includegraphics[scale=0.5]{tablefinie.png}
-\caption{\label{tablefinie} Find a title}
-%\flushleft
-\end{figure}
 The previous process can be modified to match a somewhat more practical view. 
 In this section, we consider the process of needle throwing in a finite table. 
 Formally, it is defined as follows :
+
+
 \begin{process}
-Denote by P a parallelogram (representing the table). 
+Denote by $\mathbf{P}$ a parallelogram (representing the table). 
 \begin{itemize}
-\item Choose a point uniformly in P for the lower point of the needle
-\item Choose an angle theta uniformly in $[0 ; \pi]$ such that the second end 
+\item Choose a point uniformly in $\mathbf{P}$ for the lower point of the needle
+\item Choose an angle theta uniformly in $[0 ; \pi[$ such that the second end 
 of the needle does not fall out of the table
 \end{itemize}
 \end{process}
+
+\begin{definition}
+Let $K(\mathbf{P},r)$ the set obtained by taking $\mathbf{P}$ 
+and removing the border, that is a $r$-length stripe.
+\end{definition}
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.5]{tablefinie.png}
+\caption{\label{tablefinie} The set $K(\mathbf{P},r)$ in green}
+\end{figure}
 
 Similarly to what was done in the previous section, we define a second process, 
 consisting in throwing a triangle, and then choosing a edge on this triangle.
 This will provide a bound on the probability for two colours.
 
 \begin{process}
-We therefore define an other needle choosing process :
+We now define an other needle choosing process, obtained by launching a graph :
 \begin{itemize}
   \item let $\theta '$ (the orientation of our triangle) be chosen uniformly 
-  in $[0;\pi / 3]$ ;
-  \item let $A'$ (the lowest vertex of the triangle) be a point in $P$ such 
+  in $[0;\pi / 3[$ ;
+  \item let $A'$ (the lowest vertex of the triangle) be a point in $\mathbf{P}$ such 
   that $A' + e^{i\theta '}$ is also in $P$, chosen uniformly among the points 
   having this property ;
   \item let $B' = A' + e^{i \theta '}$ and $C' = A' + e^{i (\theta ' + \pi / 3 ) }$ ;
@@ -363,10 +371,10 @@ The result is the following :
 \begin{lemma}
 Denote by $p$ the probability that both ends have the same colour when throwing 
 the needle on a finite table, then :
- $$ | p - p'| \leq \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})} $$
+ $$ | p - p'| \leq \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})} $$
 
 In particular, this bound is sharp when the dimensions of the table goes to 
-infinity. It follows immediately from this that : $p \geq \frac13 + \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})}$ \\
+infinity. It follows immediately from this that : $p \geq \frac13 + \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})} $ \\
 The proof can be adapted to circular tables, or more generally to any table 
 whose shape is not too complicated. \\
 %Say something about wether it can be adapted or not to moser ?
@@ -391,12 +399,10 @@ according to the position of $\theta$ :
 &+& \frac{1}{3} \left| \mathbb{P}(B' \in U_0 ,C' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ | \  \frac{2 \pi}{3} > \theta ) \right|
 \end{eqnarray*}
 
-Once again, let's focus on the first term. Let $\mathbf{P'}$ be the 
-parallelogram  composed of the points of  $\mathbf{P}$ at a distance of at 
-least one from the borders. Conditioning on the fact that the points $A$ and 
-$A'$ fall in $\mathbf{P'}$, the two points are uniformly distributed in 
-$\mathbf{P'}$, and independent of $\theta$ and $\theta'$. Thus we have : 
-$$ \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \leq \mathbb P(A \not \in \mathcal{P'}) \leq \frac{\mathcal{P}(\mathbf{P})}{\mathcal{A}(\mathbf{P})} $$
+Once again, let's focus on the first term. When the points $A$ and 
+$A'$ fall in $K(\mathbf{P},1)$, then the two points are uniformly distributed in 
+$K(\mathbf{P},1)$, and independent of $\theta$ and $\theta'$. Thus we have : 
+$$ \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \leq \mathbb P(A \not \in K(\mathbf{P},1)) \leq \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})} $$
 
 
 \end{proof}

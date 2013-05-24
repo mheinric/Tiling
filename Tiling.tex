@@ -13,7 +13,7 @@
 
 
 \newtheorem{lemma}{Lemma}
-\newtheorem{cons}{Consequence}
+\newtheorem{cons}{Corollary}
 \newtheorem{theo}{Theorem}
 
 \theoremstyle{definition}
@@ -222,7 +222,7 @@ $\frac {\sqrt3}{2}.$ with the upper sides opened and the lower sides closed.
 \begin{figure}[h]
 \center
 \includegraphics[scale=0.5]{path6509.png}
-\caption{\label{color} Find a title}
+\caption{\label{couleur} Find a title}
 \end{figure}
 
 Indeed, clearly, any unit equilateral triangle cannot have its three vertices
@@ -245,25 +245,39 @@ $\frac{1}{3}$ indeed.
  the probability that both endpoints have the same colour is at least 
  $\frac{1}{11}$ with the first needle throwing process. 
 
-We don't know if the previous bound is optimal, however we have found the
-following colouring which approaches this bound.
+We don't know if the previous bound is optimal. We believe that Figure~\ref{trois} 
+can give a rather good $3$ colouring of the plane, for some well chosen length 
+of the needle. Rough simulations have shown that this gave us a $p$ of about 
+$0.12$ for a needle of length about $1.6$, if the edge of a hexagon is $1$. 
+Still, we did not compute the exact optimum in that case because this bound is 
+still far away from $\frac{1}{11}$.
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.5]{trois.png}
+\caption{\label{trois} A hexagonal $3$-colouring and its parallelogram of periodicity}
+\end{figure}
   %Mettre les exemples de coloriages, avec les probas obtenues.
 
 \subsection{Other extensions}
 \label{dim}
-We can generalize the two processes in higher dimensions, and prove the
-process equivalence. %A PRECISER
+We can generalize the two processes in higher dimensions, and use the same 
+proof to establish Lemma~\ref{huitre} and Corollary~\ref{ineg} in any 
+dimension $d$.
 
 %graphe unitaire en dimension d
 %lancer un graphe/choisir une aiguille : choisir un point et d-1 angles.
 %on a la même equalité
 
-We remark that in higher dimension, the bounds may change : for
-example, with $3$ colours in dimension $3$, the regular tetrahedron witnesses a 
-better lower bound
-of $\frac 1 6 >\frac 1 {11}$   %pour 3 couleurs.
+Remark that in higher dimension, better bonds may be provided, since new graphs can 
+become unit-length. For example, with $3$ colours in dimension $3$, the regular 
+tetrahedron witnesses a better lower bound 
+of $\frac 1 6 >\frac 1 {11}$.
+
+Since a unit-length graph in dimension $d$ is also
+unit-length in higher dimensions, the bounds on $p$ are always sharper in higher
+dimensions.
 % mettre d'autres exemples plus généraux
-% dire que si on a une borne pour une dimension, elle reste vraie en dimension supérieure
 
 \subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
 All results shown thereafter will be derived using the axiom of choice. 

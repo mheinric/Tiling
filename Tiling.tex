@@ -28,27 +28,27 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}  In this paper, we are interested in $n$-colourings of plane 
+\begin{abstract}  In this paper, we study $n$-colourings of plane 
 that maximize the probability that when throwing a needle in the plane the two 
 endpoints of the needle have different colours. Our major result establish a 
 correlation between $n$-colouring of plane and finite unit-distance graphs. 
-It gives us some bounds for the optimal probability.\end{abstract}
+It provides some bounds for the optimal probability.\end{abstract}
 
 \section{Introduction}
 This idea of throwing a needle on a coloured floor was somehow motivated by 
-the announcement of cell phones chargers that are only surfaces where a cell 
-phone can be only launched to charge. Indeed, imagine that the endpoints 
+the announcement of cell phones chargers that are simple surfaces where a cell 
+phone can be put to start charging. Imagine that the endpoints 
 represent two electrodes on our cell phone, and that the colours represent 
-different electric potentials on the conductive plane : we would try to make 
+different electric potentials on the conductive plane~: we would try to make 
 the colouring optimal so that the cell phone can be charged with a big enough 
 probability. Of course, actual implementations of that technology are not so 
-simple
+simple.
 
-The problem we are interested in here is the following : if $c$ is a 
+The problem we are interested in is the following : if $c$ is a 
 \emph{valid} colouring the plane with $n$ colours, in a  way that will be 
 defined further, define $p(c)$ as the probability that when throwing a needle 
-on $c$, both endpoints have the same colour. What is the minimal $p(c)$ and 
-for what colourings is it obtained ?
+on $c$, both endpoints have the same colour. What is the minimal $p(c)$ with a 
+fixed number of colours $n$, and for what colourings is it obtained ?
 
 This can be seen as a probabilistic version of the well known 
 \emph{Hadwiger-Nelson problem}. This problem asks for the chromatic number 
@@ -60,44 +60,48 @@ always have different colours, the maximum probability we are looking for is
 $1$ if $n \geq 7$.
 
 In section~\ref{def} we define the process more precisely. In particular, we 
-ought to make some assumption on the colouring for the probability to make 
+need to make some assumption on the colouring for the probability to make 
 sense. Our main result, establishing links between finite graphs and our 
 probability, is presented in section~\ref{equiv}. We then show some 
 consequences, and try to generalise this idea in higher dimensions in
-section~\ref{appli}. Finally, we study the problem of launching a needle on a finite 
-table.
+section~\ref{appli}. Finally, we study the problem of throwing a needle on a 
+finite table.
 
 \section{Definitions}
 \label{def}
 First, we call \emph{colouring} a function $c$ from the euclidian plane to the 
-set of colours $[| 1 ; n |]$. For the probability to be well defined, we will 
-first require that every set $U_i$ for $i \in [| 1 ; n |]$ is Borel-measurable 
-- equivalently, that the function $c$ itself be Borel-measurable. Since it's 
-impossible to ``throw a needle uniformly on the plane'', we also choose to make 
-the following assumption : 
-the colouring is \textit{periodic} - that is, there is a basis of two vectors, 
-$u$ and $v$, such that translations along these vectors leave the colouring 
+set of colours , represented by the integers $[| 1 ; n |]$. For the probability 
+to be well defined, we will 
+first require that every set $U_i = c^{-1}(i)$ for $i \in [| 1 ; n |]$ be 
+Lebesgue-measurable - equivalently, that the function $c$ itself be 
+Lebesgue-measurable. Since it's impossible to ``throw a needle uniformly on the 
+whole plane'', we also choose to make the following assumption : 
+the colouring has to be \textit{periodic} - that is, there are some free vectors 
+$u$ and $v$ such that translations along these vectors leave the colouring 
 unchanged.
 
-Thereafter, we will always assume that the colouring is measurable and 
-periodic, and we will denote $\mathbf{P}$ the parallelogram defined by these 
-vectors. Needle throwing processes can then be considered on this parallelogram only.
+A colouring is said to be \emph{valid} if it is Lebesgue-measurable and 
+periodic. Thereafter, we 
+will always assume that the colouring is valid. We will denote $\mathbf{P}$ the 
+parallelogram defined by the two vectors of periodicity. Using periodicity, 
+we can then throw needles on this parallelogram only, so 
+that probabilities actually make sense.
 
 The notion of a \emph{unit distance graph} will also be useful :
 \begin{definition}
 
-A graph $(V,E) $ is said to be a \emph{unit distance graph}, if it has a 
-representation in the plane, with all edges having length $1$.
+A graph $(V,E) $ is said to be \emph{unit distance} if it has a 
+representation in the plane in which all edges have length $1$.
 \end{definition}
 
 We now define formally the needle-throwing process :
 \begin{process}
 Consider the following random variables :
 \begin{itemize}
-  \item let $A_1$ (the lowest point of the needle) be a point chosen uniformly 
+  \item let $A_1$ (the lowest end of the needle) be a point chosen uniformly 
   in $\mathbf{P}$ ;
   \item let $\theta$ be an independent angle chosen uniformly in $[0;\pi[$ ;
-  \item let $A_2$ (the highest point of the needle) be $A_1 + e^{i \theta}$.
+  \item let $A_2$ (the highest end of the needle) be $A_1 + e^{i \theta}$.
 \end{itemize}
 \end{process}
 
@@ -109,23 +113,24 @@ same color.
 \begin{remark}
 Note that there are several couples of vectors $(u,v)$ forming an appropriate 
 basis for the colouring. Nonetheless, it's clear that probabilities do not 
-depend on this choice. 
+depend on that choice. 
 \end{remark}
 
-We consider the following, second process of a unit distance graph on the 
-plane, and then of a needle in the graph :
+We consider the following, second process that will be very useful in our 
+proofs. The idea is to throw a unit distance graph on the 
+plane, and then to choose a needle on that graph :
 \begin{process}
 Given a unit distance graph $(G,V)$, label all the edges with numbers from 
 $1$ to $|E|$. Choose : 
 \begin{itemize}
 \item one point $A_0$ uniformly on the initial parallelogram $\mathbf{P}$ for 
-the origin of the graph.
-\item an angle $\theta$ uniformly in $[0;2\pi[$, to rotate the graph
-\item and an index $i$ in $[|1;|E||]$.
+the origin of the graph ;
+\item an angle $\theta$ uniformly in $[0;2\pi[$, to rotate the graph ;
+\item an index $i$ in $[|1;|E||]$.
 \end{itemize}
 Then, rotate the graph by the angle $\theta$, translate it so that the origin 
-falls on  $A_0$, and take the needle corresponding to the position of $i^{th}$ 
-edge of the graph obtained. 
+falls on  $A_0$, and take the needle corresponding to the $i^{th}$ 
+edge of the obtained graph. 
 \end{process}
 \vspace{1 cm} 
 
@@ -188,12 +193,13 @@ From the previous theorem it follows that :
 $$ \max_{g \in G} c_g(n) \leq \min_{c \in C_n} p(c) $$
 where \begin{itemize} 
   \item $G$ is the set of finite unit-distance graphs 
-  \item $C_n$ is the set of periodic n-colourings.
+  \item $C_n$ is the set of valid $n$-colourings.
   \item $c_g(n)$ is the minimal number of edges with both ends with de
-same colours when colouring g with n colours over the number of edges.
+same colours when colouring the graph $g$ with $n$ colours, divided by the 
+number of edges in $g$.
 (For example : $\frac 1 {11}$ for Moser Spindle.)
-  \item $p(c)$ is the probability of throwing a needle with the same two
-ends, on the colouring $c$.
+  \item $p(c)$ is the probability of getting the same colour on both ends, when 
+throwing a needle on the colouring $c$.
 \end{itemize}
 
 \end{cons}
@@ -204,7 +210,8 @@ uniformly on this graph the probability that both ends have the same
 colours is greater than $c_G(n)$. Applying the previous theorem with G, 
 it follows that the probability for any colouring is greater than $c_G(n)$    
 \end{proof}
-We still don't know wether or not this is actually an equality. 
+We still don't know wether or not this is actually an equality. For $n=2$, it 
+is an equality, as will be shown thereafter.
 
 \section{Applications} \label{appli}
 \subsection{2 colours}

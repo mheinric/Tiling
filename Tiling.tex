@@ -8,7 +8,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath, amsthm, amssymb} 
 \usepackage{dsfont}  % pour les indicatrices 
-\usepackage{graphicx}                               
+\usepackage{graphicx} 
+\usepackage{textcomp}                               
 \sloppy              % Ne pas faire déborder les lignes dans la marge
 
 
@@ -64,13 +65,13 @@ need to make some assumption on the colouring for the probability to make
 sense. Our main result, establishing links between finite graphs and our 
 probability, is presented in section~\ref{equiv}. We then show some 
 consequences, and try to generalise this idea in higher dimensions in
-section~\ref{appli}. Finally, we study the problem of throwing a needle on a 
-finite table.
+section~\ref{appli}. Finally, we study in section~\ref{fini} the problem of 
+throwing a needle on a finite table.
 
 \section{Definitions}
 \label{def}
 First, we call \emph{colouring} a function $c$ from the euclidian plane to the 
-set of colours , represented by the integers $[| 1 ; n |]$. For the probability 
+set of colours, represented by the integers $ [| 1 ; n |]$. For the probability 
 to be well defined, we will 
 first require that every set $U_i = c^{-1}(i)$ for $i \in [| 1 ; n |]$ be 
 Lebesgue-measurable - equivalently, that the function $c$ itself be 
@@ -86,15 +87,22 @@ will always assume that the colouring is valid. We will denote $\mathbf{P}$ the
 parallelogram defined by the two vectors of periodicity. Using periodicity, 
 we can then throw needles on this parallelogram only, so 
 that probabilities actually make sense.
+\begin{remark}
+Note that there are several couples of vectors $(u,v)$ forming an appropriate 
+basis for the colouring. Nonetheless, it's clear that probabilities do not 
+depend on that choice. 
+\end{remark}
 
-The notion of a \emph{unit distance graph} will also be useful :
+The notion of a \emph{unit distance graph} will also be useful~:
 \begin{definition}
 
-A graph $(V,E) $ is said to be \emph{unit distance} if it has a 
+A finite graph $(V,E) $ is said to be \emph{unit distance} if it has a 
 representation in the plane in which all edges have length $1$.
 \end{definition}
 
-We now define formally the needle-throwing process :
+We now define formally the needle-throwing process we use to study probabilities. 
+In this definition, and throughout the whole paper, when no further precision 
+is given the words ``uniform'' and ``uniformly'' refer to the Lebesgue measure.
 \begin{process}
 Consider the following random variables :
 \begin{itemize}
@@ -110,15 +118,9 @@ defined using the periodicity of the colouring.
 Our goal is to evaluate and minimize the probability that both ends have the 
 same color.
 
-\begin{remark}
-Note that there are several couples of vectors $(u,v)$ forming an appropriate 
-basis for the colouring. Nonetheless, it's clear that probabilities do not 
-depend on that choice. 
-\end{remark}
-
 We consider the following, second process that will be very useful in our 
 proofs. The idea is to throw a unit distance graph on the 
-plane, and then to choose a needle on that graph :
+plane, and then to choose a needle on that graph~:
 \begin{process}
 Given a unit distance graph $(G,V)$, label all the edges with numbers from 
 $1$ to $|E|$. Choose : 
@@ -126,24 +128,22 @@ $1$ to $|E|$. Choose :
 \item one point $A_0$ uniformly on the initial parallelogram $\mathbf{P}$ for 
 the origin of the graph ;
 \item an angle $\theta$ uniformly in $[0;2\pi[$, to rotate the graph ;
-\item an index $i$ in $[|1;|E||]$.
+\item an index $i$ in $	[| 1;|E|\ |]$.
 \end{itemize}
 Then, rotate the graph by the angle $\theta$, translate it so that the origin 
 falls on  $A_0$, and take the needle corresponding to the $i^{th}$ 
 edge of the obtained graph. 
 \end{process}
-\vspace{1 cm} 
 
 \section{Process equivalence}
 \label{equiv}
 \begin{lemma}\label{huitre}
-Let $(A,B)$ denote the needle obtained by the original process, and
+Let $(A,B)$ be the needle obtained by the first process, and
 $(A',B')$ the one obtained by the second process. Let $c_1$ and $c_2$ denote 
-two colors, and $c$, the application giving the color of a point. Then, we 
-have :\\
+two colors, and $c$ a valid colouring. Then, we 
+have~:\\
  $$\mathbb{P}(c(A) = c_1 , c(B) = c_2) = \mathbb{P}(c(A') = c_1, c(B') = c_2) $$ \\
- \\
- In particular, this means that the probability doesn't depend on the graph 
+ In particular, the probability doesn't depend on the graph 
  chosen. For a graph with only two vertices, we exactly get the initial process.
 \end{lemma}
 
@@ -155,21 +155,18 @@ Conventions :
 \item as usual, $\mathbf{P}$ is the parallelogram obtained by the periodicity 
 of the colouring.
 
-\item $\mathcal{A}(\mathbf{P})$ is the area of the parallelogram we are 
-considering, and $\mathcal{P}(\mathbf{P})$ its perimeter.
+\item $\mathcal{A}(\mathbf{P})$ is the area of the parallelogram
 
-\item $i$ is the index of one of the edges of $G$.
+\item $i \in [|1;m|]$ is the index of one of the edges of $G$.
 
-\item we denote $z_i$ the complex coordinates of one vertex of the $i^{th}$ 
-edge.
-
-\item $\theta_i$ denotes the angle made by the $i^{th}$ edge of the graph. The 
+\item $\theta_i$ denotes the angle made by a horizontal line and the $i^{th}$ 
+edge of the graph. The 
 complex coordinates of the vertices of the $i^{th}$ edges before 
-rotation/translation are then $z_i $ and $z_i + e^{i.theta_i}$.
+rotation/translation are named $z_i $ and $z_i + e^{i.\theta_i}$.
 
 \end{itemize}
 
-We prove it by the following series of equalities :
+We prove our lemma by the following series of equalities :
 
 \begin{eqnarray*}
 & & \mathbb{P}(c(A') = c_1, c(B') = c_2) \\
@@ -184,20 +181,19 @@ Which gives exactly the same probability as the first process (except that the
 angle is taken in $[0;2\pi[$ here, instead of $[0;\pi[$, but it doesn't make 
 any difference when looking only at the colors).
 
-The first two equalities are obtained by the law of total probability.
-The equality $(*)$ is justified by the periodicity of our colouring.
+Equality $(*)$ is justified by the periodicity of our colouring.
 \end{proof}
 
 \begin{cons} \label{ineg}
 From the previous theorem it follows that :
-$$ \max_{g \in G} c_g(n) \leq \min_{c \in C_n} p(c) $$
+$$ \max_{g \in G} c_n(g) \leq \min_{c \in C_n} p(c) $$
 where \begin{itemize} 
   \item $G$ is the set of finite unit-distance graphs 
   \item $C_n$ is the set of valid $n$-colourings.
-  \item $c_g(n)$ is the minimal number of edges with both ends with de
-same colours when colouring the graph $g$ with $n$ colours, divided by the 
-number of edges in $g$.
-(For example : $\frac 1 {11}$ for Moser Spindle.)
+  \item $c_n(g)$ is the minimal number of edges having the same colours of both 
+ends when colouring the graph $g$ with $n$ colours, divided by the 
+number of edges in $g$
+(for example, $\frac 1 {3}$ for an equilateral triangle with $n=2$.)
   \item $p(c)$ is the probability of getting the same colour on both ends, when 
 throwing a needle on the colouring $c$.
 \end{itemize}
@@ -205,27 +201,28 @@ throwing a needle on the colouring $c$.
 \end{cons}
 
 \begin{proof}
-Consider a graph G, n colours, when choosing a needle
-uniformly on this graph the probability that both ends have the same
-colours is greater than $c_G(n)$. Applying the previous theorem with G, 
-it follows that the probability for any colouring is greater than $c_G(n)$    
+Consider a graph $g$ coloured with $n$ colours. When one chooses a needle
+randomly on this graph the probability that both ends have the same
+colours is clearly greater than $c_n(g)$. Applying lemma \ref{huitre} with $g$, 
+it follows from the description of the second process that the probability 
+$p(c)$ for any colouring $c$ is greater than $c_n(g)$.
 \end{proof}
-We still don't know wether or not this is actually an equality. For $n=2$, it 
-is an equality, as will be shown thereafter.
+We still don't know wether or not this is actually an equality. It is for 
+$n=2$, as will be shown thereafter.
 
 \section{Applications} \label{appli}
 \subsection{2 colours}
 
 
-With two colors, we consider the second process with a triangle as our graph. 
+With two colors, we consider a triangle as our graph. 
 As there is always at least two vertices with the same color, it's clear that 
-the probability that the endpoints have the same color is at least 
-$\frac{1}{3}$. Thanks to lemma~\ref{huitre}, we have the same inequality for 
-the first process.
+the probability that $c_2(g) = \frac{1}{3}$. Thanks to Corollary~\ref{ineg}, 
+we know that $p(c) \geq \frac13$ for any valid $c$.
 
-Let's prove the following colouring~\ref{color} shows that this bound is 
-optimal. The colouring is constructed with parallel strips of size 
-$l = \frac {\sqrt3}{2}.$ with the upper sides opened and the lower sides closed.   
+This bound is optimal. Indeed, consider the colouring in figure~\ref{color}, 
+constructed with parallel strips of width 
+$l = \frac {\sqrt3}{2}$, with the upper side opened and the lower side closed. 
+It is clearly a valid colouring.  
 %IMAGE DU COLORIAGE + preuve optimalité
 \begin{figure}[h]
 \center
@@ -233,32 +230,32 @@ $l = \frac {\sqrt3}{2}.$ with the upper sides opened and the lower sides closed.
 \caption{\label{couleur} The parallel stripes $2$-colouring}
 \end{figure}
 
-Indeed, clearly, any unit equilateral triangle cannot have its three vertices
-with the same colors, so Lemma~\ref{huitre} shows that we get a probability of 
-$\frac{1}{3}$ indeed.
+For this colouring, the probability of getting the same colour using the first 
+process is $\frac13$. This fact can be shown by direct computation, or one can 
+more simply remark that no unit-lengthed equilateral triangle can have its 
+three vertices with the same colors. Applying Lemma~\ref{huitre}, we conclude 
+that this colouring achieves a probability of $\frac{1}{3}$ indeed.
 %CLASSE DE SOLUTIONS?
 
 \subsection{3 colours}
+ With three colors, we use the Moser spindle of Figure~\ref{color} - that 
+ has at least one of its $11$ edges with both ends of the same colour.
+ We similarly get that for $n=3$, the probability that both endpoints have the 
+ same colour is at least 
+ $\frac{1}{11}$ for any valid colouring. 
+
 \begin{figure}[h]
-\label{pasteque}
 \center
 \includegraphics[scale=0.4]{T.png}
 \caption{\label{color} The Moser spindle}
 \end{figure}
 
-
- With three colors, we use the Moser spindle of Figure~\ref{pasteque} - that 
- has at least one of its $11$ edges with both ends of the same colour.
- We similarly use lemma~\ref{huitre} to get that in the case of three colours,
- the probability that both endpoints have the same colour is at least 
- $\frac{1}{11}$ with the first needle throwing process. 
-
 We don't know if the previous bound is optimal. We believe that Figure~\ref{trois} 
-can give a rather good $3$ colouring of the plane, for some well chosen length 
-of the needle. Rough simulations have shown that this gave us a $p$ of about 
-$0.12$ for a needle of length about $1.6$, if the edge of a hexagon is $1$. 
-Still, we did not compute the exact optimum in that case because this bound is 
-still far away from $\frac{1}{11}$.
+can give a rather good $3$-colouring of the plane, for some well chosen length 
+of the edge of the hexagons. Rough simulations have shown that this gave us a 
+$p$ of about $0.12$ for an edge of length about $0.61$. 
+Still, we did not compute the exact optimum in that case because this 
+estimation is still far away from $\frac{1}{11}$.
 
 \begin{figure}[h]
 \center
@@ -270,39 +267,54 @@ still far away from $\frac{1}{11}$.
 \subsection{Other extensions}
 \label{dim}
 
-The previous considerations can be extended to dimension $n \geq 3$, however, 
-it becomes much more complicated to write down. We consider a basis of vector 
-leaving our colouring unchanged, and still denote by $\mathbf{P}$ the parallelepiped
-induced by these vectors.
+The previous considerations can be extended to dimension $d \geq 3$, however, 
+it becomes more complicated to write down. We have to consider a basis of 
+vector leaving our colouring unchanged, and still denote by $\mathbf{P}$ the 
+parallelepiped induced by these vectors.
 
-The process of choosing a needle in the plane consist in : 
+The first process for choosing a needle now consist in~: 
 \begin{itemize}
-	\item choosing one point in the parallelepiped $ \mathbf{P} $ for one point of the needle
-	\item choosing one point on the sphere to give the relative position of the second point
+	\item choosing one point uniformly in the parallelepiped $ \mathbf{P} $ as 
+	one point of the needle~;
+	\item choosing independently one point uniformly on the unit sphere 
+	$S^{d-1}$, uniformly to give the relative position of the second point.
 \end{itemize}
-Sending a unit-length graph on the n-dimensional space becomes much more complicated. We have to choose 
-one initial point in $ \mathbf{P} $, and a rotation of a our graph (given by $n$ angles, however, we cannot choose these angles uniformly).
-In dimension 3, we can say that choosing a rotation, is the same as choosing a point on the sphere (for the 
-first vector of the basis), and then a second vector on a circle (for the second vector of the basis). In dimension $n$, it comes to choosing vectors on spheres of successively decreasing dimensions. 
 
-We strongly believe (but won't show it), that the previous results still hold. Namely, the probability that both ends fall on the same colour remain the same for the two processes. Thus, to find lower bonds on this probability, it suffice to find unit-length graphs with at least a certain number of 'bad coloured' edges.
+Sending a unit-length graph on the $d$-dimensional space becomes somehow more 
+complicated. We have to choose one initial point in $ \mathbf{P} $, and a 
+rotation of our graph uniformly among vectorial rotations~; this can be achieved 
+by using the Haar measure of $SO(d)$ uniformly. The second process now consists 
+in~: rotating the graph thanks to the matrix of $SO(d)$ chosen, translating it 
+to the point of $\mathbf{P}$ chosen, and chosing one of the 
+edges as your needle.
 
-Considering a triangle, with two colours, the probability to get a 'bad needle' (ie: monochrome) is at least $\frac{1}{3}$, no matter the dimension $n \geq 2$. In fact, if we find a bound this way for a certain dimension, the same bound holds for higher dimensions. It still remains unknown (to our knowledge) whether the bound of $\frac{1}{3}$ is achieved or not in dimensions $\geq 3$. 
+One can verify that the proof of Lemma~\ref{huitre} adapts to that definitions. 
+It means that previous results still hold - namely, the probability that both 
+ends fall on the same colour remains the same for the two processes. Crucial 
+points are the invariance of the Haar measure under matrix product, and the 
+fact that the image measure of said Haar measure by the application 
+$M\mapsto Mv$, where $v$ is a given unit vector, is the uniform Lebesgue 
+measure of $S^{d-1}$.
 
+Thus, to find lower bonds on our probability, the same techniques may be applied 
+in any finite dimension. For instance, 
+considering a triangle, with two colours, the probability to get a monochromatic  
+needle is at least $\frac{1}{3}$, no matter what the dimension $d$ may be. 
+We still don't know whether the bound of $\frac{1}{3}$ is achieved or not in 
+dimension $3$ or more. 
 
-Remark that in higher dimension, better bonds may be provided, since new graphs can 
+Remark that in higher dimension, better minorants may be provided by 
+Corollary~\ref{ineg} (but never worse minorants), since new graphs can 
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
 tetrahedron witnesses a better lower bound 
-of $\frac 1 6 >\frac 1 {11}$.
-
-
-More generally, considering the complete graph $K_n$ in dimension $n$, the probability of getting 
-a 'bad needle' is at least $ \frac{1}{\binom 2 n}$.
+of $\frac 1 6 >\frac 1 {11}$. More generally, considering the complete graph 
+$K_n$ in dimension $n$, which is unit length, and $n$-colourings, the 
+probability of getting a monochromatic needle is at least $ \frac{1}{\binom n 2}$.
 
 \subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
-All results shown thereafter will be derived using the axiom of choice. 
+All results shown in this section will be derived using the axiom of choice. 
 This is important to notice, since the answer to the Hadwiger-Nelson problem is 
-suspected to depend on the set of axioms used. Indeed, we will use the 
+suspected to depend on the set of axioms used. We will use the 
 following theorem, which cannot be established without some form of axiom of 
 choice :
 \begin{theo}[De Bruijn - Erdős]
@@ -312,7 +324,8 @@ choice :
 In other words, the chromatic number of a graph is the maximum chromatic number 
 of its finite subgraphs.
 
-If there exist a finite graph that cannot be coloured with $k$ colours, it 
+If there exist a unit length graph (which is finite by definition) that cannot 
+be coloured with $k$ colours, it 
 follows from our study that the probability $p(c)$ for $c$ a periodic borelian 
 $k$-colouring is always greater than a certain constant. Taking the 
 contrapositive of this statement and using the De Bruijn-Erdős theorem, we get  
@@ -323,7 +336,7 @@ the interesting proposition :
  Hadwiger-Nelson graph can be coloured using $k$ colours.
 \end{cons}
 Note that the final colouring of the plane we get is not necessarily periodic 
-or even borelian, since its existence relies on a theorem that highly depends 
+or even measurable, since its existence relies on a theorem that highly depends 
 on the axiom of choice.
 
 \section{Finite table} \label{fini}

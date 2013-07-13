@@ -102,18 +102,19 @@ representation in the plane in which all edges have length $1$.
 
 We now define formally the needle-throwing process we use to study probabilities. 
 In this definition, and throughout the whole paper, when no further precision 
-is given the words ``uniform'' and ``uniformly'' refer to the Lebesgue measure.
+is given the words ``uniform'' and ``uniformly'' refer to the Lebesgue measure -
+except when we chose in a finite set, where it has its usual meaning.
 \begin{process}
 Consider the following random variables :
 \begin{itemize}
-  \item let $A_1$ (the lowest end of the needle) be a point chosen uniformly 
+  \item let $A$ (the lowest end of the needle) be a point chosen uniformly 
   in $\mathbf{P}$ ;
   \item let $\theta$ be an independent angle chosen uniformly in $[0;\pi[$ ;
-  \item let $A_2$ (the highest end of the needle) be $A_1 + e^{i \theta}$.
+  \item let $A$ (the highest end of the needle) be $A + e^{i \theta}$.
 \end{itemize}
 \end{process}
 
-Note that $A_2$ may be outside of $\mathbf{P}$. In that case, $c(A_2)$ is 
+Note that $B$ may fall outside of $\mathbf{P}$. In that case, $c(B)$ is 
 defined using the periodicity of the colouring.
 Our goal is to evaluate and minimize the probability that both ends have the 
 same color.
@@ -123,16 +124,16 @@ proofs. The idea is to throw a unit distance graph on the
 plane, and then to choose a needle on that graph~:
 \begin{process}
 Given a unit distance graph $(G,V)$, label all the edges with numbers from 
-$1$ to $|E|$. Choose : 
+$1$ to $m$. Choose : 
 \begin{itemize}
 \item one point $A_0$ uniformly on the initial parallelogram $\mathbf{P}$ for 
 the origin of the graph ;
 \item an angle $\theta$ uniformly in $[0;2\pi[$, to rotate the graph ;
-\item an index $i$ in $	[| 1;|E|\ |]$.
+\item an index $i$ in $	[| 1;m|]$.
 \end{itemize}
 Then, rotate the graph by the angle $\theta$, translate it so that the origin 
-falls on  $A_0$, and take the needle corresponding to the $i^{th}$ 
-edge of the obtained graph. 
+falls on  $A_0$, and take the needle $(A',B')$ corresponding to the $i^{th}$ 
+edge of the obtained graph.
 \end{process}
 
 \section{Process equivalence}
@@ -308,7 +309,7 @@ Corollary~\ref{ineg} (but never worse minorants), since new graphs can
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
 tetrahedron witnesses a better lower bound 
 of $\frac 1 6 >\frac 1 {11}$. More generally, considering the complete graph 
-$K_n$ in dimension $n$, which is unit length, and $n$-colourings, the 
+$K_n$ in dimension $n$, which is unit distance, and $n$-colourings, the 
 probability of getting a monochromatic needle is at least $ \frac{1}{\binom n 2}$.
 
 \subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
@@ -324,9 +325,9 @@ choice :
 In other words, the chromatic number of a graph is the maximum chromatic number 
 of its finite subgraphs.
 
-If there exist a unit length graph (which is finite by definition) that cannot 
+If there exist a unit distance graph (finite by definition) which cannot 
 be coloured with $k$ colours, it 
-follows from our study that the probability $p(c)$ for $c$ a periodic borelian 
+follows from our study that the probability $p(c)$ for $c$ a periodic measurable 
 $k$-colouring is always greater than a certain constant. Taking the 
 contrapositive of this statement and using the De Bruijn-Erdős theorem, we get  
 the interesting proposition :
@@ -343,21 +344,26 @@ on the axiom of choice.
 
 The previous process can be modified to match a somewhat more practical view. 
 In this section, we consider the process of needle throwing in a finite table. 
-Formally, it is defined as follows :
-
+Formally, it is defined as follows~:
 
 \begin{process}
-Denote by $\mathbf{P}$ a parallelogram (representing the table). 
+Denote by $\mathbf{P}$ an open parallelogram, representing the table. 
 \begin{itemize}
-\item Choose a point uniformly in $\mathbf{P}$ for the lower point of the needle
-\item Choose an angle theta uniformly in $[0 ; \pi[$ such that the second end 
-of the needle does not fall out of the table
+\item Choose a point $A$ uniformly in $\mathbf{P}$ as the lower point of the needle ;
+\item Choose an angle $\theta$ in $[0 ; \pi[$ such that the second end 
+$B = A+e^{i \theta}$ does not fall out of the table, uniformly among these 
+acceptable angles.
 \end{itemize}
 \end{process}
 
+Similarly to what was done in the previous sections, we define a second process, 
+consisting in throwing a unit distance graph, and then choosing a edge on this 
+graph. To do so, we need some definitions that will be used to ensure that the 
+edge we will chose falls inside of $\mathbf{P}$.
+
 \begin{definition}
-Let $K(\mathbf{P},r)$ the set obtained by taking $\mathbf{P}$ 
-and keeping only a $r$-wide inner border.
+For $r>0$, let $K(\mathbf{P},r)$ the $r$-wide inner border of $\mathbf{P}$~:
+\[K(\mathbf{P},r) = \{ z \in \mathbf{P} \mid d(z,\mathbf{P}^c) < r\} \] 
 \end{definition}
 
 \begin{figure}[h]
@@ -366,35 +372,26 @@ and keeping only a $r$-wide inner border.
 \caption{\label{tablefinie} The set $K(\mathbf{P},r)$ in grey}
 \end{figure}
 
--------------------------------------------------------------------------------
+\begin{definition}
+If $G$ is a unit distance graph, given with a unit distance representation 
+$f:G\rightarrow \mathbb{R}^2$, let $\partial (G,f)$ be the diameter of the 
+figure $f(G)$ in the plane.
+\end{definition}
 
-from then on we prove unequality only for 2 colours and an equilateral
-triangle. This may be generalised to any graph.
-
--------------------------------------------------------------------------------
-
-Similarly to what was done in the previous section, we define a second process, 
-consisting in throwing a triangle, and then choosing a edge on this triangle.
-This will provide a bound on the probability for two colours.
-
-\begin{process}
-We now define an other needle choosing process, obtained by launching a graph :
+\begin{process}$G$ denotes a unit distance graph, and $r=\partial (G,f)$ for some 
+unit legth representation $f$ of $G$.
 \begin{itemize}
-  \item let $\theta '$ (the orientation of our triangle) be chosen uniformly 
-  in $[0;\pi / 3[$ ;
-  \item let $A'$ (the lowest vertex of the triangle) be a point in $\mathbf{P}$ such 
-  that $A' + e^{i\theta '}$ is also in $P$, chosen uniformly among the points 
-  having this property ;
-  \item let $B' = A' + e^{i \theta '}$ and $C' = A' + e^{i (\theta ' + \pi / 3 ) }$ ;
-  \item let $(A'_1,A'_2)$ (lowest and highest endpoints of the needle) be a 
-  couple of points chosen uniformly between $(A',B')$, $(A',C')$, $(B',C')$.
+  \item let $\theta '$ (the orientation of our graph) be chosen uniformly 
+  in $[0; 2 \pi[$ ;
+  \item let $A_0$ be a point chosen uniformly in $\mathbf{P} \setminus K(\mathbf{P},r)$ ;
+  \item let $i$ be an index chosen uniformly in $[|1;m|]$.
 \end{itemize}
-Finally, let $p'$ be the probability that $A'_1$ and $A'_2$ have the same 
-colour.
+Then, rotate the figure $f(G)$ by the angle $\theta$, translate it so that the origin 
+falls on  $A_0$, and take the needle $(A',B')$ corresponding to the $i^{th}$ 
+edge of the obtained graph. It is clearly inside of $\mathbf{P}$, by definition 
+of $\partial(G,f)$.
 \end{process}
 
-
-The result is the following :
 \begin{lemma}
 Denote by $p$ the probability that both ends have the same colour when throwing 
 the needle on a finite table, then :

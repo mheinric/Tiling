@@ -123,13 +123,14 @@ We consider the following, second process that will be very useful in our
 proofs. The idea is to throw a unit distance graph on the 
 plane, and then to choose a needle on that graph~:
 \begin{process}
-Given a unit distance graph $(G,V)$, label all the edges with numbers from 
-$1$ to $m$. Choose : 
+Given a unit distance graph $(G,V)$, implicitly represented in the plane in 
+a unit distance way, label the edges with numbers from 
+$1$ to $m$. Choose~: 
 \begin{itemize}
 \item one point $A_0$ uniformly on the initial parallelogram $\mathbf{P}$ for 
 the origin of the graph ;
-\item an angle $\theta$ uniformly in $[0;2\pi[$, to rotate the graph ;
-\item an index $i$ in $	[| 1;m|]$.
+\item an independent angle $\theta$ uniformly in $[0;2\pi[$, to rotate the graph ;
+\item an independent index $i$ in $[| 1;m|]$.
 \end{itemize}
 Then, rotate the graph by the angle $\theta$, translate it so that the origin 
 falls on  $A_0$, and take the needle $(A',B')$ corresponding to the $i^{th}$ 
@@ -186,7 +187,6 @@ Equality $(*)$ is justified by the periodicity of our colouring.
 \end{proof}
 
 \begin{cons} \label{ineg}
-From the previous theorem it follows that :
 $$ \max_{g \in G} c_n(g) \leq \min_{c \in C_n} p(c) $$
 where \begin{itemize} 
   \item $G$ is the set of finite unit-distance graphs 
@@ -282,12 +282,12 @@ The first process for choosing a needle now consist in~:
 \end{itemize}
 
 Sending a unit-length graph on the $d$-dimensional space becomes somehow more 
-complicated. We have to choose one initial point in $ \mathbf{P} $, and a 
+complicated. We have to choose one initial point in $ \mathbf{P} $, and an independent 
 rotation of our graph uniformly among vectorial rotations~; this can be achieved 
 by using the Haar measure of $SO(d)$ uniformly. The second process now consists 
 in~: rotating the graph thanks to the matrix of $SO(d)$ chosen, translating it 
 to the point of $\mathbf{P}$ chosen, and chosing one of the 
-edges as your needle.
+edges independently as your needle.
 
 One can verify that the proof of Lemma~\ref{huitre} adapts to that definitions. 
 It means that previous results still hold - namely, the probability that both 
@@ -346,11 +346,11 @@ The previous process can be modified to match a somewhat more practical view.
 In this section, we consider the process of needle throwing in a finite table. 
 Formally, it is defined as follows~:
 
-\begin{process}
+\begin{process} \label{encore}
 Denote by $\mathbf{P}$ an open parallelogram, representing the table. 
 \begin{itemize}
 \item Choose a point $A$ uniformly in $\mathbf{P}$ as the lower point of the needle ;
-\item Choose an angle $\theta$ in $[0 ; \pi[$ such that the second end 
+\item Choose an independent angle $\theta$ in $[0 ; \pi[$ such that the second end 
 $B = A+e^{i \theta}$ does not fall out of the table, uniformly among these 
 acceptable angles.
 \end{itemize}
@@ -378,13 +378,15 @@ $f:G\rightarrow \mathbb{R}^2$, let $\partial (G,f)$ be the diameter of the
 figure $f(G)$ in the plane.
 \end{definition}
 
-\begin{process}$G$ denotes a unit distance graph, and $r=\partial (G,f)$ for some 
+\begin{process}\label{toujours}
+$G$ denotes a unit distance graph, and $r=\partial (G,f)$ for some 
 unit legth representation $f$ of $G$.
 \begin{itemize}
   \item let $\theta '$ (the orientation of our graph) be chosen uniformly 
   in $[0; 2 \pi[$ ;
-  \item let $A_0$ be a point chosen uniformly in $\mathbf{P} \setminus K(\mathbf{P},r)$ ;
-  \item let $i$ be an index chosen uniformly in $[|1;m|]$.
+  \item let $A_0$ be an independent point chosen uniformly in 
+  $\mathbf{P} \setminus K(\mathbf{P},r)$ ;
+  \item let $i$ be an independent index chosen uniformly in $[|1;m|]$.
 \end{itemize}
 Then, rotate the figure $f(G)$ by the angle $\theta$, translate it so that the origin 
 falls on  $A_0$, and take the needle $(A',B')$ corresponding to the $i^{th}$ 
@@ -394,14 +396,9 @@ of $\partial(G,f)$.
 
 \begin{lemma}
 Denote by $p$ the probability that both ends have the same colour when throwing 
-the needle on a finite table, then :
- $$ | p - p'| \leq \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})} $$
-
-In particular, this bound is sharp when the dimensions of the table goes to 
-infinity. It follows immediately from this that : $p \geq \frac13 + \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})} $ \\
-The proof can be adapted to circular tables, or more generally to any table 
-whose shape is not too complicated. \\
-%Say something about wether it can be adapted or not to moser ?
+the needle with Process~\ref{encore}, an $p'$ for Process~\ref{toujours}, then 
+$$ | p - p'| \leq \frac{\mathcal{A}(K(\mathbf{P},r))}{\mathcal{A}(\mathbf{P})} $$
+where $r$ is still $\partial(G,f)$ for a representation $f$ of $G$.
 \end{lemma}
 
 \begin{proof}
@@ -427,74 +424,32 @@ Once again, let's focus on the first term. When the points $A$ and
 $A'$ fall in $K(\mathbf{P},1)$, then the two points are uniformly distributed in 
 $K(\mathbf{P},1)$, and independent of $\theta$ and $\theta'$. Thus we have : 
 $$ \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \leq \mathbb P(A \not \in K(\mathbf{P},1)) \leq \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})} $$
-
-
 \end{proof}
+The proof can be adapted to circular tables, or more generally to any table 
+whose shape is not too complicated.
+
+We can similarly deduce bounds on the probabilities given by Process~\ref{encore}, 
+since the ones given by Process~\ref{toujours} are always greater than $c_n(G)$.
+For instance, taking an equilateral triangle with $2$ colours, we see that 
+$p(c) \geq \frac13 - \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$, 
+if $p(c)$ is the probability given in Process~\ref{encore} by the $2$-colouring 
+$c$ of $\mathbf{P}$. 
+This bound becames sharp as parallelogram $\mathbf{P}$ becomes bigger.
 
 \section{Final notes}
 In the infinite case, it may seem a bit disappointing that we chose to study 
 only periodic colourings. One can indeed hope for some similar results for a 
-larger class of colourings. For instance, we can look at the probability $p_R$ 
+larger class of colourings. For instance, one can think of the probability $p_R$ 
 of obtaining two same coloured endpoints when launching the needle on the ball 
-$B(0,R)$, and then say that a colouring is \emph{acceptable} if $p_R$ converges 
+$B(0,R)$ : we could have said that a colouring is \emph{valid} if $p_R$ converges 
 as $R \rightarrow \infty$. If we denote $p$ this limit, section~\ref{fini} 
 easily shows that we get the same main results for $p$, especially
-consequence~\ref{ineg} when taking $C_n$ the set of acceptable colourings with $n$ colours. 
-It's also clear that any periodic colouring is acceptable. Still, we chose not 
-to use that notion, because $p$ is not a probability, and shouldn't be 
-considered as such. It may though be the most natural way to give a sense to 
-the (impossible) idea of ``launching a needle uniformly on the whole plane''.
-
-%\iffalse
-%\subsection*{First proof}
-%
-%\begin{lemma}
-% Let $p$ be the probability that both $A_1$ and $A_2$ have same colour. Let $\mathcal{A}(P)$ (resp. $\mathbf{P}(P)$) be the area (resp. perimeter) of $P$. We have :
-% \[p \geq \frac{1}{3} - \frac{\mathbf{P}(P)}{\mathcal{A}(P)} \]
-%\end{lemma}
-%
-%\begin{proof}
-%The main idea is that an equilateral triangle must have at least one edge having both endpoints of the same colour.
-%It also gives essentially the same results to choose an equilateral triangle randomly, and then to choose on of its edges as our needle.
-%
-%
-%\begin{process}
-%We therefore define a second needle choosing process :
-%\begin{itemize}
-%  \item let $\theta '$ (the orientation of our triangle) be chosen uniformly in $[0;\pi / 3]$ ;
-%  \item let $A'$ (the lowest vertex of the triangle) be a point in $P$ such that $A' + e^{i\theta '}$ is also in $P$, chosen uniformly among the points having this property ;
-%  \item let $B' = A' + e^{i \theta '}$ and $C' = A' + e^{i (\theta ' + \pi / 3 ) }$ ;
-%  \item let $(A'_1,A'_2)$ (lowest and highest endpoints of the needle) be a couple of points chosen uniformly between $(A',B')$, $(A',C')$, $(B',C')$.
-%\end{itemize}
-%and $p'$ as the probability that $A'_1$ and $A'_2$ have the same colour.
-%\end{process}
-%
-%Clearly, because there are at least two vertex of a triangle with the same color, we have the inequality $$p' \geq \frac{1}{3} $$.
-%
-%To conclude the proof, it suffices to prove that $|p' - p| \leq \frac{\mathcal{P}(P)}{\mathcal{A}(P)}$.
-%If we denote $U_0$ (resp. $U_1$) the set of points $M$ such that $c(M) = 0$ (resp. $1$), we have :
-%\begin{eqnarray*}
-%|p' - p| 
-%  &=& | \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) + \mathbb{P}(A'_1 , A'_2 \in U_1) - \mathbb{P}(A_1 , A_2 \in U_1) | \\
-%  &\leq& | \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) | + | \mathbb{P}(A'_1 , A'_2 \in U_1) - \mathbb{P}(A_1 , A_2 \in U_1) |
-%\end{eqnarray*}
-%
-%Let's focus on the first term. 
-%Decompose the first probability in three terms corresponding to the final choice of $(A',B')$, $(A',C')$ or $(B',C')$, and the second one in three terms according to the position of $\theta$ :
-%\begin{eqnarray*}
-%& & | \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) | \\
-%&\leq& \frac{1}{3} | \mathbb{P}(A' \in U_0 , A' + e^{i \theta '} \in U_0) - \mathbb{P}(A_1 \in U_0 , A' + e^{i \theta} \in U_0 \ |\  \theta < \frac{\pi}{3} ) | \\
-%&+& \frac{1}{3} | \mathbb{P}(A' \in U_0 , A' + e^{i(\theta ' + \pi / 3 ) } \in U_0) - \mathbb{P}(A_1 \in U_0 , A' + e^{i \theta} \in U_0 \ |\  \frac{\pi}{3} \leq \theta < \frac{2 \pi}{3} ) | \\
-%&+& \frac{1}{3} | \mathbb{P}(A' + e^{i \theta '} \in U_0 , A' + e^{i(\theta ' + \pi / 3 ) } \in U_0) - \mathbb{P}(A_1 \in U_0 , A' + e^{i \theta} \in U_0 \ | \  \frac{2 \pi}{3} < \theta ) |
-%\end{eqnarray*}
-%
-%Once again, let's focus on the first term. Let $\mathcal{P'}$ be the parallelogram  composed of the points of  $\mathcal{P}$ at a distance of at least one from the borders. Conditioning to the fact that the points $A$ and $A'$ fall on $\mathcal{P'}$, the two points are uniformly distributed in $\mathcal{P'}$, and independent of $\theta$ and $\theta'$. Thus this term is overestimated by the probability for $A$ and $A'$ to fall near the borders of the parallelogram. This probability is smaller than : $\mathcal{P}/\mathcal{A}$.
-%
-%\end{proof}
-%
-%
-%\subsection*{Second proof}
-%\fi
-
+Corollary~\ref{ineg} when taking $C_n$ the set of ``new'' valid colourings 
+with $n$ colours. It's also clear that any periodic colouring is valid to that 
+definition. Still, we chose not to use that notion, because $p$ is not a 
+probability but what we may call an asymptotic probability, so it shouldn't be 
+seen as a probability. It may though be the most natural way to give a sense to 
+the (impossible) idea of ``throwing a needle uniformly on the whole plane''.
+points $A$ and $A'$ fall on $\mathcal{P'}$, the two points are uniformly distributed in $\mathcal{P'}$, and independent of $\theta$ and $\theta'$. Thus this term is overestimated by the probability for $A$ and $A'$ to fall near the borders of the parallelogram. This probability is smaller than : $\mathcal{P}/\mathcal{A}$.
 
 \end{document}

@@ -300,9 +300,9 @@ $M\mapsto Mv$, where $v$ is a given unit vector, is the uniform Lebesgue
 measure of $S^{d-1}$.
 
 Thus, to find lower bonds on our probability, the same techniques may be applied 
-in any finite dimension. For instance, 
-considering a triangle, with two colours, the probability to get a monochromatic  
-needle is at least $\frac{1}{3}$, no matter what the dimension $d$ may be. 
+in any finite dimension. For instance, in any dimension $d$ with $2$ colours,
+the probability to get a monochromatic  
+needle is always at least $\frac{1}{3}$ because of the equilateral triangle. 
 We still don't know whether the bound of $\frac{1}{3}$ is achieved or not in 
 dimension $3$ or more. 
 
@@ -349,7 +349,9 @@ In this section, we consider the process of needle throwing in a finite table.
 Formally, it is defined as follows~:
 
 \begin{process} \label{encore}
-Denote by $\mathbf{P}$ an open parallelogram, representing the table. 
+Denote by $\mathbf{P}$ an open parallelogram, representing the table. For the 
+process to be well defined, we need to assume that $\mathbf{P}$ can contain at
+least one needle. 
 \begin{itemize}
 \item Choose a point $A$ uniformly in $\mathbf{P}$ as the lower point of the needle ;
 \item Choose an independent angle $\theta$ in $[0 ; \pi[$ such that the second end 
@@ -382,7 +384,8 @@ figure $f(G)$ in the plane.
 
 \begin{process}\label{toujours}
 $G$ denotes a unit distance graph, and $r=\partial (G,f)$ for some 
-unit legth representation $f$ of $G$.
+unit legth representation $f$ of $G$. For this process to be well defined we 
+need to assume that $\mathbf{P} \setminus K(\mathbf{P},r)$ is nonempty.
 \begin{itemize}
   \item let $\theta '$ (the orientation of our graph) be chosen uniformly 
   in $[0; 2 \pi[$ ;
@@ -442,15 +445,17 @@ This bound becames sharp as parallelogram $\mathbf{P}$ becomes bigger.
 In the infinite case, it may seem a bit disappointing that we chose to study 
 only periodic colourings. One can indeed hope for some similar results for a 
 larger class of colourings. For instance, one can think of the probability $p_R$ 
-of obtaining two same coloured endpoints when launching the needle on the ball 
-$B(0,R)$ : we could have said that a colouring is \emph{valid} if $p_R$ converges 
+of obtaining two same coloured endpoints when launching the needle on the square 
+$S(R)$ of side $R$ centered on $O$~: we could have said that a colouring is 
+\emph{valid} if $p_R$ converges 
 as $R \rightarrow \infty$. If we denote $p$ this limit, section~\ref{fini} 
-easily shows that we get the same main results for $p$, especially
+easily shows that all of the inequalities obtained are true for $p$, especially
 Corollary~\ref{ineg} when taking $C_n$ the set of ``new'' valid colourings 
 with $n$ colours. It's also clear that any periodic colouring is valid to that 
 definition. Still, we chose not to use that notion, because $p$ is not a 
-probability but what we may call an asymptotic probability, so it shouldn't be 
-seen as a probability. It may though be the most natural way to give a sense to 
-the (impossible) idea of ``throwing a needle uniformly on the whole plane''.
+probability and shouldn't be 
+seen as such. It may though be the most natural way to give a sense to 
+the (impossible) idea of ``throwing a needle uniformly on the whole plane'', by 
+considering what we may call an asymptotic probability.
 
 \end{document}

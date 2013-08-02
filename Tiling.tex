@@ -112,11 +112,11 @@ Consider the following random variables :
   \item let $A$ (the lowest end of the needle) be a point chosen uniformly 
   in $\mathbf{P}$ ;
   \item let $\theta$ be an independent angle chosen uniformly in $[0;\pi[$ ;
-  \item let $A$ (the highest end of the needle) be $A + e^{i \theta}$.
+  \item let $B$ (the highest end of the needle) be $A + e^{i \theta}$.
 \end{itemize}
 \end{process}
 
-Note that $B$ may fall outside of $\mathbf{P}$. In that case, $c(B)$ is 
+Note that $B$ may all outside of $\mathbf{P}$. In that case, $c(B)$ is 
 defined using the periodicity of the colouring.
 Our goal is to evaluate and minimize the probability that both ends have the 
 same color.
@@ -311,8 +311,9 @@ Corollary~\ref{ineg} (but never worse minorants), since new graphs can
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
 tetrahedron witnesses a better lower bound 
 of $\frac 1 6 >\frac 1 {11}$. More generally, considering the complete graph 
-$K_n$ in dimension $n$, which is unit distance, and $n$-colourings, the 
-probability of getting a monochromatic needle is at least $ \frac{1}{\binom n 2}$.
+$K_{n+1}$ in dimension $n$, which is unit distance and not $n$-colourable, the 
+probability of getting a monochromatic needle is at least $\frac{1}{\binom{n+1}{2}}$ 
+for $n$ colours in dimension $n$.
 
 \subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
 All results shown in this section will be derived using the axiom of choice. 
@@ -333,7 +334,7 @@ follows from our study that the probability $p(c)$ for $c$ a periodic measurable
 $k$-colouring is always greater than a certain constant. Taking the 
 contrapositive of this statement and using the De Bruijn-Erdős theorem, we get  
 the interesting proposition :
-\begin{cons}
+\begin{cons} \label{suite}
  If there exist a sequence $(c_m)_{m \in \mathbb{N}}$ of periodic borelian 
  $k$-colourings such that $\lim_{m \to \infty} p(c_m) = 0$, then the 
  Hadwiger-Nelson graph can be coloured using $k$ colours.
@@ -451,8 +452,8 @@ $S(R)$ of side $R$ centered on $O$~: we could have said that a colouring is
 as $R \rightarrow \infty$. If we denote $p$ this limit, section~\ref{fini} 
 easily shows that all of the inequalities obtained are true for $p$. In particular, 
 Corollary~\ref{ineg} holds for this new definition when taking $C_n$ the set of 
-``new'' valid colourings 
-with $n$ colours. It's also clear that any periodic colouring is valid to that 
+``new'' valid colourings with $n$ colours, and Corollary~\ref{suite} holds too. 
+It's also clear that any periodic colouring is valid to that 
 definition. Still, we chose not to use that notion, because $p$ is not a 
 probability and shouldn't be 
 seen as such. We may call it an asymptotic probability. It may though be the 

@@ -91,7 +91,7 @@ we can then throw needles on this parallelogram only, so
 that probabilities actually make sense.
 \begin{remark}
 Note that there are several couples of vectors $(u, v)$ forming an appropriate 
-basis for the colouring. Nonetheless, it's clear that probabilities do not 
+basis for the colouring. Nonetheless, it will be clear that probabilities do not 
 depend on that choice. 
 \end{remark}
 
@@ -105,8 +105,8 @@ representation in the plane in which all edges have length $1$.
 We now define formally the needle-throwing process we use to study probabilities. 
 In this definition, as in the whole paper, when no further precision 
 is given the words ``uniform'' and ``uniformly'' refer to the Lebesgue measure -
-except when we chose in a finite set, where they have their usual meaning.
-\begin{process}
+except when we choose in a finite set, where they have their usual meaning.
+\begin{process} \label{premier}
 Consider the following random variables :
 \begin{itemize}
   \item let $A$ (the lowest end of the needle) be a point chosen uniformly 
@@ -154,12 +154,12 @@ have~:\\
 \begin{proof}
 Conventions : 
 \begin{itemize}
-\item we take a graph $G=(V,E)$, and $m = |E|$, the number of edges.
+\item we take a graph $G=(V,E)$, and let $m = |E|$ be the number of its edges.
 
 \item as usual, $\mathbf{P}$ is the parallelogram obtained by the periodicity 
 of the colouring.
 
-\item $\mathcal{A}(\mathbf{P})$ is the area of the parallelogram
+\item $\mathcal{A}(\mathbf{P})$ is the area of the parallelogram.
 
 \item $i \in [|1;m|]$ is the index of one of the edges of $G$.
 
@@ -309,7 +309,7 @@ dimension $3$ or more.
 Remark that in higher dimension, better minorants may be provided by 
 Corollary~\ref{ineg} (but never worse minorants), since new graphs can 
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
-tetrahedron witnesses a better lower bound 
+tetrahedron gives a better lower bound 
 of $\frac 1 6 >\frac 1 {11}$. More generally, considering the complete graph 
 $K_{n+1}$ in dimension $n$, which is unit distance and not $n$-colourable, the 
 probability of getting a monochromatic needle is at least $\frac{1}{\binom{n+1}{2}}$ 
@@ -343,6 +343,118 @@ Note that the final colouring of the plane we get is not necessarily periodic
 or even measurable, since its existence relies on a theorem that highly depends 
 on the axiom of choice.
 
+\section{Finite table} \label{fini}
+
+Previously we used periodicity so that we didn't have to worry about the second 
+endpoint $B$ falling outside of $\mathbf{P}$, which made things much easier. We now 
+try to require that $B$ fall in $\mathbf{P}$ to match a somewhat more practical 
+view : we want to describe the throwing of the needle on an actual table. The 
+first difficulty is to find a natural distribution law for our needle.
+
+\begin{process} \label{encore}
+Denote by $\mathbf{P}$ an open parallelogram, representing the table. For the 
+process to be well defined, we need to assume that $\mathbf{P}$ can contain at
+least one needle - equivalently, that $P(B \in \mathbf{P}) > 0$ since $\mathbf{P}$ 
+is an open set.
+\begin{itemize}
+\item Consider the law of $(A,B)$ given by Pocess~\ref{premier}.
+\item Take for your law the conditional probability given the event 
+$\{B \in \mathbf{P} \}$.
+\end{itemize}
+\end{process}
+
+To evaluate $P(B \in \mathbf{P})$ we need to define the border of a parallelogram~:
+\begin{definition}
+For $r>0$, let $K(\mathbf{P},r)$ the $r$-wide inner border of $\mathbf{P}$~:
+\[K(\mathbf{P},r) = \{ z \in \mathbf{P} \mid d(z,\mathbf{P}^c) < r\} \] 
+\end{definition}
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.5]{tablefinie.png}
+\caption{\label{tablefinie} The set $K(\mathbf{P},r)$ in grey}
+\end{figure}
+
+\begin{lemma}
+Let $c$ be a $n$-colouring of $\mathbf{P}$. Denote by $p(c)$ the probability 
+that both ends have the same colour when throwing 
+the needle with Process~\ref{premier}, and $p'(c)$ for Process~\ref{encore}. Then 
+there is a positive constant $\kappa \leq 2$ so that 
+$$ | p'(c) - p(c)| \leq \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}.$$
+\end{lemma}
+
+\begin{proof}
+Notice that there is a one-to-one correspondance between needles given by 
+Process~\ref{premier} and points of $E := \mathbf{P} \times [0;\pi ]$, moreover, the 
+law of the needle is exactly the normalised Lebesgue measure on the set $E$.
+
+We still define $c$ outside of $\mathbf{P}$ by using periodicity. Now consider 
+the following subsets~:
+\begin{eqnarray*}
+E' & = & \{ (A,\theta) \in \mathbf{P} \times [0;\pi ] \mid A+e^{i \theta} \in \mathbf{P} \}, \\
+F & = & \{ (A,\theta) \in \mathbf{P} \times [0;\pi ] \mid c(A) = c(A+e^{i \theta}) \}, \\
+F' & = & E' \cap F,
+\end{eqnarray*}
+and denote by $V$, $V'$, $W$, $W'$ the volumes of, respectively, 
+$E$, $E'$, $F$, $F'$. Then we simply have $p(c) = \frac{W}{V}$ and 
+$p'(c) = \frac{W'}{V'} $.
+
+When the point $A$'s distance to the border is more than $1$, B has to fall in 
+$\mathbf{P}$, which implies that
+$E \setminus E' \subsetneq K(\mathbf{P},1) \times [0;\pi[$.
+There is therefore a number $t \in ]0;1[$ so that 
+$$V-V' = u \pi \mathcal{A} (K(\mathbf{P},1)). $$
+Similarly, there is a number $u \in [0;1[$ so that 
+$$W-W' = t \pi \mathcal{A} (K(\mathbf{P},1)). $$
+
+Then, by direct computation, 
+\begin{eqnarray*}
+p'(c) - p(c) & = & \frac{W'}{V'} - \frac{W}{V} \\
+& = & \frac{W}{V} \frac{V-V'}{V'} - \frac{W-W'}{V'} \\
+& = & p(c) \frac{t \mathcal{A} (K(\mathbf{P},1))}{\mathcal{A} (\mathbf{P}) - t \mathcal{A} (K(\mathbf{P},1))} - \frac{u \mathcal{A} (K(\mathbf{P},1))}{\mathcal{A} (\mathbf{P}) - t \mathcal{A} (K(\mathbf{P},1))}.
+\end{eqnarray*}
+If we denote $r = \frac{\mathcal{A} (K(\mathbf{P},1))}{\mathcal{A} (\mathbf{P})} \leq 1 $, 
+we get
+$$p'(c) - p(c) = p(c) \frac{tr}{1-tr} - \frac{ur}{1-tr},$$
+so that
+\begin{eqnarray*}
+|p'(c) - p(c)| & = & \frac{r}{1-tr} |t p(c) - u| \\
+& \leq & \frac{1}{1-tr} r
+\end{eqnarray*}
+because $t p(c)$ and $u$ are in $[0;1]$.
+
+Now we set $\kappa = 2$. Indeed, when $r \leq \frac12$ the previous inequality 
+implies $|p'(c) - p(c)| \leq 2r$, and when $r > \frac12$ this is obvious.
+\end{proof}
+
+Since we already have bounds on $p$, we can therefore deduce bounds on $p'$.
+For instance, with $2$ colours, we see that 
+$p'(c) \geq \frac13 - \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$. 
+This bound becames sharper as the table parallelogram $\mathbf{P}$ becomes bigger.
+
+\section{Final notes}
+In the infinite case, it may seem a bit disappointing that we chose to study 
+only periodic colourings. One can indeed hope for some similar results for a 
+larger class of colourings. For instance, one can think of the probability $p_R$ 
+of obtaining two same coloured endpoints when launching the needle on the square 
+$S(R)$ of side $R$ centered on $O$~: we could have said that a colouring is 
+\emph{valid} if $p_R$ converges 
+as $R \rightarrow \infty$. If we denote $p$ this limit, section~\ref{fini} 
+easily shows that all of the inequalities obtained are true for $p$. In 
+particular, Corollary~\ref{ineg} holds for this new definition when taking $C_n$ 
+the set of ``new'' valid colourings with $n$ colours, and Corollary~\ref{suite} 
+holds too for this class of colourings. 
+It's also clear that any periodic colouring is valid to that 
+definition. Still, we chose not to use that notion, because $p$ is not a 
+probability and shouldn't be 
+seen as such. It may though be the most natural way to give a sense to 
+the (impossible) idea of ``throwing a needle uniformly on the whole plane''.
+
+\end{document}
+
+
+
+\iffalse
 \section{Finite table} \label{fini}
 
 The previous process can be modified to match a somewhat more practical view. 
@@ -441,23 +553,5 @@ $p(c) \geq \frac13 - \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})
 if $p(c)$ is the probability given in Process \ref{encore} by the $2$-colouring 
 $c$ of $\mathbf{P}$. 
 This bound becames sharper as the table parallelogram $\mathbf{P}$ becomes bigger.
+\fi
 
-\section{Final notes}
-In the infinite case, it may seem a bit disappointing that we chose to study 
-only periodic colourings. One can indeed hope for some similar results for a 
-larger class of colourings. For instance, one can think of the probability $p_R$ 
-of obtaining two same coloured endpoints when launching the needle on the square 
-$S(R)$ of side $R$ centered on $O$~: we could have said that a colouring is 
-\emph{valid} if $p_R$ converges 
-as $R \rightarrow \infty$. If we denote $p$ this limit, section~\ref{fini} 
-easily shows that all of the inequalities obtained are true for $p$. In particular, 
-Corollary~\ref{ineg} holds for this new definition when taking $C_n$ the set of 
-``new'' valid colourings with $n$ colours, and Corollary~\ref{suite} holds too. 
-It's also clear that any periodic colouring is valid to that 
-definition. Still, we chose not to use that notion, because $p$ is not a 
-probability and shouldn't be 
-seen as such. We may call it an asymptotic probability. It may though be the 
-most natural way to give a sense to 
-the (impossible) idea of ``throwing a needle uniformly on the whole plane''.
-
-\end{document}

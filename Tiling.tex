@@ -38,16 +38,16 @@ correlation between $n$-colouring of plane and finite unit-distance graphs.
 It provides some bounds for the optimal probability.\end{abstract}
 
 \section{Introduction}
-This idea of throwing a needle on a coloured floor was somehow motivated by 
+The idea of throwing a needle on a coloured floor was somehow motivated by 
 the announcement of cell phones chargers that are simple surfaces where a cell 
 phone can be put to start charging. Imagine that the endpoints 
 represent two electrodes on our cell phone, and that the colours represent 
-different electric potentials on the conductive plane~: we would try to make 
+different electric potentials on the conductive plane : we would try to make 
 the colouring optimal so that the cell phone can be charged with a big enough 
-probability. Of course, actual implementations of that technology are not so 
-simple.
+probability. Actual implementations don't work this way at all and use 
+elctromagnetic induction, but our problem can now be stated.
 
-The problem we are interested in is the following : if $c$ is a 
+We are interested in the following questions : if $c$ is a 
 \emph{valid} colouring the plane with $n$ colours, in a  way that will be 
 defined further, define $p(c)$ as the probability that when throwing a needle 
 on $c$, both endpoints have the same colour. What is the minimal $p(c)$ with a 
@@ -55,7 +55,8 @@ fixed number of colours $n$, and for what colourings is it obtained ?
 
 This can be seen as a probabilistic version of the well known 
 \emph{Hadwiger-Nelson problem}. This problem asks for the chromatic number 
-of the euclidian plane, where unit-distance points are connected. Some 
+of the euclidian plane, where unit-distance points are connected - for 
+a nice review on this problem, see \cite{hadwiger}. Some 
 relations with our problem will be presented in paragraph~\ref{hn}. One can 
 first remark that knowing that the answer to the Hadwiger-Nelson problem is at 
 most $7$, with a $7$-colouring of the plane such that two unit distance points 
@@ -319,8 +320,8 @@ for $n$ colours in dimension $n$.
 All results shown in this section will be derived using the axiom of choice. 
 This is important to notice, since the answer to the Hadwiger-Nelson problem is 
 suspected to depend on the set of axioms used. We will use the 
-following theorem, which cannot be established without some form of axiom of 
-choice :
+De Bruijn - Erd\H{o}s theorem, established in \cite{erdos}, whose proof uses 
+the axiom of choice.
 \begin{theo}[De Bruijn - Erdős]
  A graph $G$ can be coloured with $k$ colours iff all of its finite subgraphs 
  can be coloured with $k$ colours.
@@ -427,10 +428,12 @@ seen as such. It may though be the most natural way to give a sense to
 the intuitive idea of ``throwing a needle uniformly on the whole plane''.
 
 \subsection*{Acknowledgements}
-The authors thank David Naccache for his constant help in the writing of
-this paper, and Eric Brier for many ideas and insight on the subject of 
+We are very grateful to David Naccache for his constant help in the writing of
+this paper, and to Eric Brier for many ideas and insight on the subject of 
 unit distance graphs.
 
+\bibliographystyle{abbrv}
+\bibliography{Tiling}
 
 \end{document}
 

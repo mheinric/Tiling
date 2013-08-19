@@ -235,7 +235,7 @@ It is clearly a valid colouring.
 \end{figure}
 
 For this colouring, the probability of getting the same colour using the first 
-process is $\frac13$. This fact can be shown by direct computation, or one can 
+process is $\frac13$. This can be shown by direct computation, or one can 
 more simply remark that no unit-lengthed equilateral triangle can have its 
 three vertices with the same colors. Applying Lemma~\ref{huitre}, we conclude 
 that this colouring achieves a probability of $\frac{1}{3}$ indeed.
@@ -256,9 +256,9 @@ that this colouring achieves a probability of $\frac{1}{3}$ indeed.
 
 We don't know if the previous bound is optimal. We believe that Figure~\ref{trois} 
 can give a rather good $3$-colouring of the plane, for some well chosen length 
-of the edge of the hexagons. Rough simulations have shown that this gave us a 
-$p$ of about $0.12$ for an edge of length about $0.61$. 
-Still, we did not compute the exact optimum in that case because this 
+of the edge of the hexagons. Rough simulations have shown that this colouring gives a 
+$p(c)$ of about $0.12$ for an edge of length about $0.61$, which seems to be optimal. 
+Still, we did not compute the exact optimum in that case because the 
 estimation is still far away from $\frac{1}{11}$.
 
 \begin{figure}[h]
@@ -286,16 +286,16 @@ The first process for choosing a needle now consist in~:
 
 Sending a unit-length graph on the $d$-dimensional space becomes somehow more 
 complicated. We have to choose one initial point in $ \mathbf{P} $, and an independent 
-rotation of our graph uniformly among vectorial rotations~; this can be achieved 
+rotation of the graph ; this can be achieved 
 by using the Haar measure of $SO(d)$ uniformly. The second process now consists 
-in~: rotating the graph thanks to the matrix of $SO(d)$ chosen, translating it 
+in : rotating the graph thanks to the matrix of $SO(d)$ chosen, translating it 
 to the point of $\mathbf{P}$ chosen, and chosing one of the 
 edges independently as your needle.
 
 One can verify that the proof of Lemma~\ref{huitre} adapts to that definitions. 
 It means that previous results still hold - namely, the probability that both 
 ends fall on the same colour remains the same for the two processes. Crucial 
-points are the invariance of the Haar measure under matrix product, and the 
+points of the proof are the invariance of the Haar measure under matrix product, and the 
 fact that the image measure of said Haar measure by the application 
 $M\mapsto Mv$, where $v$ is a given unit vector, is the uniform Lebesgue 
 measure of $S^{d-1}$.
@@ -308,7 +308,7 @@ We still don't know whether the bound of $\frac{1}{3}$ is achieved or not in
 dimension $3$ or more. 
 
 Remark that in higher dimension, better minorants may be provided by 
-Corollary~\ref{ineg} (but never worse minorants), since new graphs can 
+Corollary~\ref{ineg}, since new graphs can 
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
 tetrahedron gives a better lower bound 
 of $\frac 1 6 >\frac 1 {11}$. More generally, considering the complete graph 
@@ -350,7 +350,7 @@ Previously we used periodicity so that we didn't have to worry about the second
 endpoint $B$ falling outside of $\mathbf{P}$, which made things much easier. We now 
 try to require that $B$ fall in $\mathbf{P}$ to match a somewhat more practical 
 view : we want to describe the throwing of the needle on an ``actual'' bounded 
-table. The first difficulty is to find a natural distribution law for our needle.
+table. The first difficulty is to find a natural distribution for our needle.
 
 \begin{process} \label{encore}
 Denote by $\mathbf{P}$ an open parallelogram, representing the table. For the 
@@ -448,7 +448,7 @@ Formally, it is defined as follows~:
 
 \begin{process} \label{encore}
 Denote by $\mathbf{P}$ an open parallelogram, representing the table. For the 
-process to be well defined, we need to assume that $\mathbf{P}$ can contain at
+process to be well defined, we need to assume that $\mathbf{P}$ can containat
 least one needle. 
 \begin{itemize}
 \item Choose a point $A$ uniformly in $\mathbf{P}$ as the lower point of the needle ;

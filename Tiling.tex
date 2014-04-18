@@ -9,7 +9,8 @@
 \usepackage{amsmath, amsthm, amssymb} 
 \usepackage{dsfont}  % pour les indicatrices 
 \usepackage{graphicx} 
-\usepackage{textcomp}                               
+\usepackage{textcomp}  
+\usepackage{enumerate}                             
 \sloppy              % Ne pas faire déborder les lignes dans la marge
 
 
@@ -31,82 +32,89 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}  In this paper, we study $n$-colourings of plane 
-that maximize the probability that when throwing a needle in the plane the two 
-endpoints of the needle have different colours. Our major result establish a 
-correlation between $n$-colouring of plane and finite unit-distance graphs. 
-It provides some bounds for the optimal probability.\end{abstract}
+\begin{abstract} Colour the euclidian plane with $k$ colours, and throw a needle
+``randomly'' on it. You get a certain probablity that the endpoints fall on 
+different colours. How can one make this probability maximal?
+This problem is related to finite graphs having unit-lengthed edges, to provide 
+some bounds on the optimal probability.\end{abstract}
 
 \section{Introduction}
-The idea of throwing a needle on a coloured floor was somehow motivated by 
-the announcement of cell phones chargers that are simple surfaces where a cell 
-phone can be put to start charging. Imagine that the endpoints 
-represent two electrodes on our cell phone, and that the colours represent 
-different electric potentials on the conductive plane : we would try to make 
-the colouring optimal so that the cell phone can be charged with a big enough 
-probability. Actual implementations don't work this way at all and use 
-elctromagnetic induction, but our problem can now be stated.
+A well-known problem of geometric graph theory is the following: how many colors
+are needed to color the plane so that no two points at unit distance are the 
+same color? This is known as the Hadwiger-Nelson problem, and the answer to that
+question is often refered as the \textit{chromatic number of the plane}. It 
+seems the problem was first stated by Nelson in 1950, and first published by 
+Gardner in \cite{gardner}.
+For a nice review about this problem and close relatives, see Soifer's book
+\cite{soifer}. This question is still very mysterious to that day, and all that 
+is known for sure is that the chromatic number of the plane is at least 4 and at
+most 7.
 
-We are interested in the following questions : if $c$ is a 
-\emph{valid} colouring the plane with $n$ colours, in a  way that will be 
-defined further, define $p(c)$ as the probability that when throwing a needle 
-on $c$, both endpoints have the same colour. What is the minimal $p(c)$ with a 
-fixed number of colours $n$, and for what colourings is it obtained ?
-
-This can be seen as a probabilistic version of the well known 
-\emph{Hadwiger-Nelson problem}. This problem asks for the chromatic number 
-of the euclidian plane, where unit-distance points are connected - for 
-a nice review on this problem, see \cite{hadwiger}. Some 
-relations with our problem will be presented in paragraph~\ref{hn}. One can 
-first remark that knowing that the answer to the Hadwiger-Nelson problem is at 
-most $7$, with a $7$-colouring of the plane such that two unit distance points 
-always have different colours, the maximum probability we are looking for is 
-$1$ if $n \geq 7$.
-
-In section~\ref{def} we define the process more precisely. In particular, we 
-need to make some assumption on the colouring for the probability to make 
-sense. Our main result, establishing links between finite graphs and our 
-probability, is presented in section~\ref{equiv}. We then show some 
-consequences, and try to generalise this idea in higher dimensions in
-section~\ref{appli}. Finally, we study in section~\ref{fini} the problem of 
-throwing a needle on a bounded table.
-
-\section{Definitions}
-\label{def}
-First, we call \emph{colouring} a function $c$ from the euclidian plane to the 
-set of colours, represented by the integers $ [| 1 ; n |]$. For the probability 
-to be well defined, we will 
-first require that every set $U_i = c^{-1}(i)$ for $i \in [| 1 ; n |]$ be 
-Lebesgue-measurable - equivalently, that the function $c$ itself be 
-Lebesgue-measurable. Since it's impossible to ``throw a needle uniformly on the 
-whole plane'', we also choose to make the following assumption : 
-the colouring has to be \textit{periodic} - that is, there are some free vectors 
-$u$ and $v$ such that translations along these vectors leave the colouring 
-unchanged.
-
-A colouring is said to be \emph{valid} if it is Lebesgue-measurable and 
-periodic. Thereafter, we 
-will always assume that the colouring is valid. We will denote $\mathbf{P}$ the 
-parallelogram defined by the two vectors of periodicity. Using periodicity, 
-we can then throw needles on this parallelogram only, so 
-that probabilities actually make sense.
-\begin{remark}
-Note that there are several couples of vectors $(u, v)$ forming an appropriate 
-basis for the colouring. Nonetheless, it will be clear that probabilities do not 
-depend on that choice. 
-\end{remark}
-
-The notion of a \emph{unit distance graph} will also be useful~:
+The questions presented here may be seen as a probabilistic version of this 
+problem, since we don't try to make \textit{every} unit-lengthed segment 
+bichromatic but only a large fraction of them.
 \begin{definition}
+A $k$-\textit{colouring} of the plane is a function from the euclidian 
+plane~$\mathbb{R} ^2$ to the finite set $\{1, \dots , k \}$.
 
-A finite graph $(V, E) $ is said to be a \emph{unit distance graph} if it has a 
-representation in the plane in which all edges have length $1$.
+If $B_R$ denotes the euclidian ball of center O and radius $R$ in 
+$\mathbb{R} ^2$, and $d$ is the usual euclidian distance, the set of
+\textit{needles} inside $B_R$ is noted
+\[N_R = \{(x,y) \in B_R ^2 \mid d(x,y)=1\}. \]
+
+A $k$-colouring $c$ is said to be \textit{valid} if, for any $R>0$, the set
+\[ E_R = \{(x,y) \in N_R \mid c(x) = c(y) \} \]
+is measurable, and the ratio $\frac{\lambda (E_R)}{\lambda (N_R)}$ 
+converges to a limit $p(c) \in [0,1]$ as $R$ tends to infinity, where $\lambda$ 
+is the Lebesgue measure (on $\mathbb{R}^4$).
 \end{definition}
 
-We now define formally the needle-throwing process we use to study probabilities. 
-In this definition, as in the whole paper, when no further precision 
-is given the words ``uniform'' and ``uniformly'' refer to the Lebesgue measure -
-except when we choose in a finite set, where they have their usual meaning.
+For instance, a borelian periodic colouring is valid ; we will use this
+particular case quite a lot.
+%In that case $p(c)$ is
+%an natural probability : if $c$ is $P$-periodic for a parallelogram $P$, throw one
+%point uniformly on $P$ and choose the other endpoint uniformly on the circle of
+%radius 1 around the firs point, using periodic border conditions when needed.
+%Then one easil checks that the probability of getting a monochromatic needle is
+%$p(c)$.
+Throughout the article, we will always implicitely assume that our colourings be
+valid. Our aim will be to make $p(c)$ as small as possible, since it is not hard
+to make it big.
+
+Some other defintions are needed in order to relate this problem to finite
+graphs.
+\begin{definition}
+\ 
+\begin{enumerate}[a)]
+\item For a finite graph $G=(V,E)$ and a $k$-colouring $c$ of the vertices of $G$, 
+let $M(c)$ be the number of monochromatic edges in $G$ couloured with $c$.
+Then define:
+\[m_k(G) = \min_{c \ k-\mathrm{colouring \ of} \ G} \frac{M(c)}{|E|}.\]
+\item A finite graph is said to be a \emph{unit distance graph} if it has 
+an embedding in $\mathbb{R}^2$ in which all edges have length $1$.
+\end{enumerate}
+\end{definition}
+In section~\ref{equiv} we prove the following:
+\begin{theo} \label{ineg}
+Let $\mathcal{G}$ be the set of unit distance graphs and $\mathcal{C}_k$ the set 
+of valid $k$-colourings of the plane, then
+$$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \mathcal{C}_k} \ p(c) \leq \frac{1}{k}. $$
+\end{theo}
+
+The particular cases $k=2,3$ are discussed in section~\ref{appli}, as well as a 
+simple consequence using a strong theorem of De Bruijn and Erd\H{o}s :
+\begin{cons}\label{con}
+If $\inf_{c \in \mathcal{C}_k} \ p(c) = 0$ then the chromatic number of the
+plane is at most $k$.
+\end{cons}
+Finally, we study in section~\ref{ext} the case of higher dimensions, and the
+case of a finite table instead of the whole plane.
+
+\section{Process equivalence}
+\label{equiv}
+%In this definition, as in the whole paper, when no further precision 
+%is given the words ``uniform'' and ``uniformly'' refer to the Lebesgue measure -
+%except when we choose in a finite set, where they have their usual meaning.
 \begin{process} \label{premier}
 Consider the following random variables :
 \begin{itemize}
@@ -126,7 +134,7 @@ We consider the following, second process that will be very useful in our
 proofs. The idea is to throw a unit distance graph on the 
 plane, and then to choose a needle on that graph~:
 \begin{process}
-Given a unit distance graph $(G,V)$, implicitly represented in the plane in 
+Given a unit distance graph $(G,V)$, represented in the plane in 
 a unit distance way, label the edges with numbers from 
 $1$ to $m$. Choose~: 
 \begin{itemize}
@@ -140,8 +148,6 @@ falls on  $A_0$, and take the needle $(A',B')$ corresponding to the $i^{th}$
 edge of the obtained graph.
 \end{process}
 
-\section{Process equivalence}
-\label{equiv}
 \begin{lemma}\label{huitre}
 Let $(A,B)$ be the needle obtained by the first process, and
 $(A',B')$ the one obtained by the second process. Let $c_1$ and $c_2$ denote 
@@ -189,21 +195,6 @@ any difference when looking only at the colors).
 Equality $(*)$ is justified by the periodicity of our colouring.
 \end{proof}
 
-\begin{cons} \label{ineg}
-$$ \max_{g \in G} c_n(g) \leq \min_{c \in C_n} p(c) $$
-where \begin{itemize} 
-  \item $G$ is the set of finite unit-distance graphs 
-  \item $C_n$ is the set of valid $n$-colourings.
-  \item $c_n(g)$ is the minimal number of edges having the same colours of both 
-ends when colouring the graph $g$ with $n$ colours, divided by the 
-number of edges in $g$
-(for example, $\frac 1 {3}$ for an equilateral triangle with $n=2$.)
-  \item $p(c)$ is the probability of getting the same colour on both ends, when 
-throwing a needle on the colouring $c$.
-\end{itemize}
-
-\end{cons}
-
 \begin{proof}
 Consider a graph $g$ coloured with $n$ colours. When one chooses a needle
 randomly on this graph the probability that both ends have the same
@@ -217,7 +208,6 @@ $n=2$, as will be shown thereafter.
 \section{Applications} \label{appli}
 \subsection{2 colours}
 
-
 With two colors, we consider a triangle as our graph. 
 As there is always at least two vertices with the same color, it's clear that 
 the probability that $c_2(g) = \frac{1}{3}$. Thanks to Corollary~\ref{ineg}, 
@@ -226,7 +216,6 @@ we know that $p(c) \geq \frac13$ for any valid $c$.
 This bound is optimal. Indeed, consider the colouring in figure~\ref{color}, 
 constructed with parallel strips of width 
 $l = \frac {\sqrt3}{2}$, with the upper side opened and the lower side closed. 
-It is clearly a valid colouring.
 
 \begin{figure}[h]
 \center
@@ -257,20 +246,44 @@ that this colouring achieves a probability of $\frac{1}{3}$ indeed.
 We don't know if the previous bound is optimal. We believe that Figure~\ref{trois} 
 can give a rather good $3$-colouring of the plane, for some well chosen length 
 of the edge of the hexagons. Rough simulations have shown that this colouring gives a 
-$p(c)$ of about $0.12$ for an edge of length about $0.61$, which seems to be optimal. 
-Still, we did not compute the exact optimum in that case because the 
-estimation is still far away from $\frac{1}{11}$.
+$p(c)$ of about $0.12$ for an edge of length about $0.61$. 
+%Still, we did not compute the exact optimum in that case because the 
+%estimation is still far away from $\frac{1}{11}$.
 
 \begin{figure}[h]
 \center
 \includegraphics[scale=0.5]{trois.png}
 \caption{\label{trois} A hexagonal $3$-colouring and its parallelogram of periodicity}
 \end{figure}
-  %Mettre les exemples de coloriages, avec les probas obtenues.
 
-\subsection{Other extensions}
+\subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
+All results shown in this section will be derived using the axiom of choice. 
+This is important to notice, since the answer to the Hadwiger-Nelson problem is 
+suspected to depend on the set of axioms used. We will use the 
+De Bruijn - Erd\H{o}s theorem, established in \cite{erdos}, whose proof uses 
+the axiom of choice.
+\begin{theo}[De Bruijn - Erdős]
+ A graph $G$ can be coloured with $k$ colours iff all of its finite subgraphs 
+ can be coloured with $k$ colours.
+\end{theo}
+In other words, the chromatic number of a graph is the maximum chromatic number 
+of its finite subgraphs.
+
+If there exist a unit distance graph (finite by definition) which cannot 
+be coloured with $k$ colours, it 
+follows from our study that the probability $p(c)$ for $c$ a periodic measurable 
+$k$-colouring is always greater than a certain constant. Taking the 
+contrapositive of this statement and using the De Bruijn-Erdős theorem, we get  
+the interesting proposition :
+
+Note that the final colouring of the plane we get is not necessarily periodic 
+or even measurable, since its existence relies on a theorem that highly depends 
+on the axiom of choice.
+
+\section{Extensions}
+\label{ext}
+\subsection{Higher dimensions}
 \label{dim}
-
 The previous considerations can be extended to dimension $d \geq 3$, however, 
 it becomes more complicated to write down. We have to consider a basis of 
 vector leaving our colouring unchanged, and still denote by $\mathbf{P}$ the 
@@ -312,39 +325,12 @@ Corollary~\ref{ineg}, since new graphs can
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
 tetrahedron gives a better lower bound 
 of $\frac 1 6 >\frac 1 {11}$. More generally, considering the complete graph 
-$K_{n+1}$ in dimension $n$, which is unit distance and not $n$-colourable, the 
-probability of getting a monochromatic needle is at least $\frac{1}{\binom{n+1}{2}}$ 
-for $n$ colours in dimension $n$.
+$K_{k+1}$ in dimension $n$, which is unit distance and not $k$-colourable, the 
+probability of getting a monochromatic needle is at least $\frac{1}{\binom{k+1}{2}}$ 
+for $k$ colours in dimension $k$.
 
-\subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
-All results shown in this section will be derived using the axiom of choice. 
-This is important to notice, since the answer to the Hadwiger-Nelson problem is 
-suspected to depend on the set of axioms used. We will use the 
-De Bruijn - Erd\H{o}s theorem, established in \cite{erdos}, whose proof uses 
-the axiom of choice.
-\begin{theo}[De Bruijn - Erdős]
- A graph $G$ can be coloured with $k$ colours iff all of its finite subgraphs 
- can be coloured with $k$ colours.
-\end{theo}
-In other words, the chromatic number of a graph is the maximum chromatic number 
-of its finite subgraphs.
-
-If there exist a unit distance graph (finite by definition) which cannot 
-be coloured with $k$ colours, it 
-follows from our study that the probability $p(c)$ for $c$ a periodic measurable 
-$k$-colouring is always greater than a certain constant. Taking the 
-contrapositive of this statement and using the De Bruijn-Erdős theorem, we get  
-the interesting proposition :
-\begin{cons} \label{suite}
- If there exist a sequence $(c_m)_{m \in \mathbb{N}}$ of periodic borelian 
- $k$-colourings such that $\lim_{m \to \infty} p(c_m) = 0$, then the 
- Hadwiger-Nelson graph can be coloured using $k$ colours.
-\end{cons}
-Note that the final colouring of the plane we get is not necessarily periodic 
-or even measurable, since its existence relies on a theorem that highly depends 
-on the axiom of choice.
-
-\section{Bounded table} \label{fini}
+\subsection{Finite table}
+\label{fini}
 
 Previously we used periodicity so that we didn't have to worry about the second 
 endpoint $B$ falling outside of $\mathbf{P}$, which made things much easier. We now 
@@ -409,23 +395,23 @@ For instance, with $2$ colours, we see that
 $p'(c) \geq \frac13 - \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$. 
 This bound becames sharper as the table parallelogram $\mathbf{P}$ becomes bigger.
 
-\section{Final notes}
-In the unbounded case, it may seem a bit disappointing that we chose to study 
-only periodic colourings. One can indeed hope for some similar results for a 
-larger class of colourings. For instance, one can think of the probability $p_R$ 
-of obtaining two same coloured endpoints when launching the needle on the square 
-$S(R)$ of side $R$ centered on $O$~: we could have said that a colouring is 
-\emph{valid} if $p_R$ converges 
-as $R \rightarrow \infty$. If we denote $p$ this limit, section~\ref{fini} 
-easily shows that all of the inequalities obtained are true for $p$. In 
-particular, Corollary~\ref{ineg} holds for this new definition when taking $C_n$ 
-the set of ``new'' valid colourings with $n$ colours, and Corollary~\ref{suite} 
-holds too for this class of colourings. 
-It's also clear that any periodic colouring is valid to that 
-definition. Still, we chose not to use that notion, because $p$ is not a 
-probability and shouldn't be 
-seen as such. It may though be the most natural way to give a sense to 
-the intuitive idea of ``throwing a needle uniformly on the whole plane''.
+%\section{Final notes}
+%In the unbounded case, it may seem a bit disappointing that we chose to study 
+%only periodic colourings. One can indeed hope for some similar results for a 
+%larger class of colourings. For instance, one can think of the probability $p_R$ 
+%of obtaining two same coloured endpoints when launching the needle on the square 
+%$S(R)$ of side $R$ centered on $O$~: we could have said that a colouring is 
+%\emph{valid} if $p_R$ converges 
+%as $R \rightarrow \infty$. If we denote $p$ this limit, section~\ref{fini} 
+%easily shows that all of the inequalities obtained are true for $p$. In 
+%particular, Corollary~\ref{ineg} holds for this new definition when taking $C_n$ 
+%the set of ``new'' valid colourings with $n$ colours, and Corollary~\ref{suite} 
+%holds too for this class of colourings. 
+%It's also clear that any periodic colouring is valid to that 
+%definition. Still, we chose not to use that notion, because $p$ is not a 
+%probability and shouldn't be 
+%seen as such. It may though be the most natural way to give a sense to 
+%the intuitive idea of ``throwing a needle uniformly on the whole plane''.
 
 \subsection*{Acknowledgements}
 We are very grateful to David Naccache for his constant help in the writing of
@@ -436,107 +422,3 @@ unit distance graphs.
 \bibliography{Tiling}
 
 \end{document}
-
-
-
-\iffalse
-\section{Finite table} \label{fini}
-
-The previous process can be modified to match a somewhat more practical view. 
-In this section, we consider the process of needle throwing in a finite table. 
-Formally, it is defined as follows~:
-
-\begin{process} \label{encore}
-Denote by $\mathbf{P}$ an open parallelogram, representing the table. For the 
-process to be well defined, we need to assume that $\mathbf{P}$ can containat
-least one needle. 
-\begin{itemize}
-\item Choose a point $A$ uniformly in $\mathbf{P}$ as the lower point of the needle ;
-\item Choose an independent angle $\theta$ in $[0 ; \pi[$ such that the second end 
-$B = A+e^{i \theta}$ does not fall out of the table, uniformly among these 
-acceptable angles.
-\end{itemize}
-\end{process}
-
-Similarly to what was done in the previous sections, we define a second process, 
-consisting in throwing a unit distance graph, and then choosing an edge on this 
-graph. To do so, we need some definitions that will be used to ensure that the 
-edge we will choose falls inside of $\mathbf{P}$.
-
-\begin{definition}
-For $r>0$, let $K(\mathbf{P},r)$ the $r$-wide inner border of $\mathbf{P}$~:
-\[K(\mathbf{P},r) = \{ z \in \mathbf{P} \mid d(z,\mathbf{P}^c) < r\} \] 
-\end{definition}
-
-\begin{figure}[h]
-\center
-\includegraphics[scale=0.5]{tablefinie.png}
-\caption{\label{tablefinie} The set $K(\mathbf{P},r)$ in grey}
-\end{figure}
-
-\begin{definition}
-If $G$ is a unit distance graph, given with a unit distance representation 
-$f:G\rightarrow \mathbb{R}^2$, let $\partial (G,f)$ be the diameter of the 
-figure $f(G)$ in the plane.
-\end{definition}
-
-\begin{process}\label{toujours}
-$G$ denotes a unit distance graph, and $r=\partial (G,f)$ for some 
-unit legth representation $f$ of $G$. For this process to be well defined we 
-need to assume that $\mathbf{P} \setminus K(\mathbf{P},r)$ is nonempty.
-\begin{itemize}
-  \item let $\theta '$ (the orientation of our graph) be chosen uniformly 
-  in $[0; 2 \pi[$ ;
-  \item let $A_0$ be an independent point chosen uniformly in 
-  $\mathbf{P} \setminus K(\mathbf{P},r)$ ;
-  \item let $i$ be an independent index chosen uniformly in $[|1;m|]$.
-\end{itemize}
-Then, rotate the figure $f(G)$ by the angle $\theta$, translate it so that the origin 
-falls on  $A_0$, and take the needle $(A',B')$ corresponding to the $i^{th}$ 
-edge of the obtained graph. It is clearly inside of $\mathbf{P}$, by definition 
-of $\partial(G,f)$.
-\end{process}
-
-\begin{lemma}
-Denote by $p$ the probability that both ends have the same colour when throwing 
-the needle with Process~\ref{encore}, and $p'$ for Process~\ref{toujours}, then 
-$$ | p - p'| \leq \frac{\mathcal{A}(K(\mathbf{P},r))}{\mathcal{A}(\mathbf{P})} $$
-where $r$ is still $\partial(G,f)$ for a representation $f$ of $G$.
-\end{lemma}
-
-\begin{proof}
-
-\begin{eqnarray*}
-|p' - p| 
-  &=& | \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) + \mathbb{P}(A'_1 , A'_2 \in U_1) - \mathbb{P}(A_1 , A_2 \in U_1) | \\
-  &\leq& | \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) | + | \mathbb{P}(A'_1 , A'_2 \in U_1) - \mathbb{P}(A_1 , A_2 \in U_1) | 
-\end{eqnarray*}
-
-Let's focus on the first term. 
-Decompose the first probability in three terms corresponding to the final 
-choice of $(A',B')$, $(A',C')$ or $(B',C')$, and the second one in three terms 
-according to the position of $\theta$ :
-\begin{eqnarray*}
-& & \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \\
-&\leq& \frac{1}{3} \left| \mathbb{P}(A' \in U_0 , B' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ |\  \theta < \frac{\pi}{3} ) \right| \\
-&+& \frac{1}{3} \left| \mathbb{P}(A' \in U_0 , C' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ |\  \frac{\pi}{3} \leq \theta < \frac{2 \pi}{3} ) \right| \\
-&+& \frac{1}{3} \left| \mathbb{P}(B' \in U_0 ,C' \in U_0) - \mathbb{P}(A_1 \in U_0 , A_1 + e^{i \theta} \in U_0 \ | \  \frac{2 \pi}{3} > \theta ) \right|
-\end{eqnarray*}
-
-Once again, let's focus on the first term. When the points $A$ and 
-$A'$ fall in $K(\mathbf{P},1)$, then the two points are uniformly distributed in 
-$K(\mathbf{P},1)$, and independent of $\theta$ and $\theta'$. Thus we have : 
-$$ \left| \mathbb{P}(A'_1 , A'_2 \in U_0) - \mathbb{P}(A_1 , A_2 \in U_0) \right| \leq \mathbb P(A \not \in K(\mathbf{P},1)) \leq \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})} $$
-\end{proof}
-The proof can be adapted to circular tables, or more generally to any table 
-whose shape is not too complicated.
-
-We can similarly deduce bounds on the probabilities given by Process \ref{encore}, 
-since the ones given by Process \ref{toujours} are always greater than $c_n(G)$.
-For instance, taking an equilateral triangle with $2$ colours, we see that 
-$p(c) \geq \frac13 - \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$, 
-if $p(c)$ is the probability given in Process \ref{encore} by the $2$-colouring 
-$c$ of $\mathbf{P}$. 
-This bound becames sharper as the table parallelogram $\mathbf{P}$ becomes bigger.
-\fi
-

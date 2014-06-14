@@ -29,8 +29,11 @@
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\C}{\mathcal{C}}
-\newcommand{\Cp}{\mathcal{C}^{p}}
-\newcommand{\Ca}{\mathcal{C}^{a}}
+\renewcommand{\Pr}{\mathbb{P}}
+\renewcommand{\P}{\mathbf{P}}
+\newcommand{\pper}{p^{\mathrm{per}}}
+\newcommand{\Cp}{\mathcal{C}^{\mathrm{per}}}
+\newcommand{\Ca}{\mathcal{C}}
 
 \title{Throwing needles on a coloured plane.}
 \author{Thomas Bourgeat \and Marc Heinrich \and Paul Melotti 
@@ -72,15 +75,34 @@ the latter being a generalization of the former.
 \begin{definition}
 \
 \begin{enumerate}[i)] 
-\item A $k$-\textit{colouring} of the plane is a function $c$ from the euclidian 
-plane~$\R ^2$ to the finite set $\{1, \dots , k \}$, so that the set of
-\textit{monochromatic needles}
-\[ \M (c) = \{x,y \in \R ^2 \times \R ^2 \mid c(x) = c(y) \} \]
-is a measurable subset of $\R ^4$.
+\item A $k$-\textit{colouring} of the plane is a borelian function $c$ from the euclidian 
+plane~$\R ^2$ to the finite set $\{1, \dots , k \}$.
 
 A \textit{colouring} is a $k$-colouring for some $k$.
+\item The set of \textit{monochromatic needles} of a colouring $c$ is the set
+\[ \M (c) = \{x,y \in \R ^2 \times \R ^2 \mid c(x) = c(y) \} \]
+which is a measurable subset of $\R ^4$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\
+\begin{enumerate}[i)] 
 \item A colouring $c$ is said to be \textit{periodic} if there are two free
-vectors $(u,v)$ so that for any $x$ in $\R ^2$, $c(x+u)=c(x+v)=c(x)$.
+vectors $(u,v)$ so that for any $x$ in $\R ^2$, $c(x+u)=c(x+v)=c(x)$. In that
+case we note $\P_c$ the parallelogram formed on $u$ and $v$.
+\item For a periodic coloring $c$, consider the following random variables :
+let $A$ be a point chosen uniformly in $\P_c$, and $B=A + e^{i \theta}$ where
+$\theta$ is a random angle taken uniformly in $[0;2 \pi[$ indepedently of $A$.
+
+Then we note $\pper(c)$ the probability
+$$\pper(c) = \Pr(c(A)=c(B)).$$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+\
+\begin{enumerate}[i)] 
 \item If $A$ is a measurable subset of $\R^2$ and $c$ a colouring, let $\N_A$ be
 the set of \textit{needles inside} $A$, and $\M_A$ the set of \textit{monochromatic
 needles inside} A :
@@ -94,12 +116,13 @@ is the Lebesgue measure on $\mathbb{R}^4$).
 \end{enumerate}
 \end{definition}
 
-%In that case $p(c)$ is
-%an natural probability : if $c$ is $P$-periodic for a parallelogram $P$, throw one
-%point uniformly on $P$ and choose the other endpoint uniformly on the circle of
-%radius 1 around the firs point, using periodic border conditions when needed.
-%Then one easil checks that the probability of getting a monochromatic needle is
-%$p(c)$.
+It should be clear that a periodic colouring $c$ is also an asymptotic colouring,
+but $\pper(c)$ and $p(c)$ may differ in that case. This will be discussed 
+thereafter.
+%%%%%%%
+%Discuss it thereafter
+%%%%%%%
+
 Our aim will be to make $p(c)$ as small as possible, since it is not hard
 to make it big.
 \\
@@ -112,8 +135,11 @@ than $k$.
 \ 
 \begin{enumerate}[i)]
 \item For a finite graph $G=(V,E)$ and a $k$-colouring $c$ of the vertices of $G$, 
-let $M_G(c)$ be the number of monochromatic edges in $G$ when couloured with $c$.
-Then define:
+let $M_G(c)$ be the number of monochromatic edges in $G$ when couloured with $c$:
+$$M_G(c) = \sum_{i \sim j} \mathds{1}_{c(i)=c(j)}.$$
+where the sum is on the edges of $G$.
+
+Then we define $m_k(G)$ as:
 \[m_k(G) = \min_{c \ k-\mathrm{colouring \ of} \ G} \frac{M_G(c)}{|E|}.\]
 \item A finite graph is said to be a \emph{unit distance graph} if it has 
 an embedding in $\R^2$ in which all edges have length $1$.
@@ -123,16 +149,18 @@ In section~\ref{equiv} we prove the following:
 \begin{theo} \label{ineg}
 Let $\mathcal{G}$ be the set of unit distance graphs and $\Cp_k$ the set 
 of periodic $k$-colourings of the plane, then
-$$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \Cp_k} \ p(c) \leq \frac{1}{k}. $$
+$$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \Cp_k} \ \pper(c) \leq \frac{1}{k}. $$
 \end{theo}
-The rest of the paper aims at proving the generalization :
+The rest of the paper aims at proving the equivalent theorem for asymptotic 
+colourings, whose proof is ended in section~\ref{ext}:
 \begin{theo} \label{ineg2}
-Theorem~\ref{ineg} remains true if one replaces $\Cp_k$ with $\Ca_k$, the set of
-asymptotic $k$-colourings of the plane.
+Let $\mathcal{G}$ be the set of unit distance graphs and $\C_k$ the set 
+of asymptotic $k$-colourings of the plane, then
+$$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \C_k} \ p(c) \leq \frac{1}{k}. $$
 \end{theo}
 
-The particular cases $k=2,3$ are discussed in section~\ref{appli}, as well as a 
-simple consequence using a strong theorem of De Bruijn and Erd\H{o}s :
+In section~\ref{appli} we study the particular cases $k=2,3$ are discussed,
+and prove the following consiquence of the theorems:
 \begin{cons}\label{con}
 If \ $\inf_{c \in \Ca_k} \ p(c) = 0$ \ then the chromatic number of the
 plane is at most $k$.
@@ -144,20 +172,14 @@ generalizations to higher dimentions.
 \section{Process equivalence}
 \label{equiv}
 
-%%%%%%
-%dire que p(c) est la proba avec conditions aux limites périodiques pour c périodique
-%%%%%%
-
-%In this definition, as in the whole paper, when no further precision 
-%is given the words ``uniform'' and ``uniformly'' refer to the Lebesgue measure -
-%except when we choose in a finite set, where they have their usual meaning.
+Let $c$ be a periodic colouring, and consider the needle-throwing ``processes'':
 \begin{process} \label{premier}
 Consider the following random variables :
 \begin{itemize}
-  \item let $A$ (the lowest end of the needle) be a point chosen uniformly 
-  in $\mathbf{P}$ ;
-  \item let $\theta$ be an independent angle chosen uniformly in $[0;\pi[$ ;
-  \item let $B$ (the highest end of the needle) be $A + e^{i \theta}$.
+  \item let $A$ be a point chosen uniformly 
+  in $\P_c$ ;
+  \item let $\theta$ be an independent angle chosen uniformly in $[0;2 \pi[$ ;
+  \item let $B$ be $A + e^{i \theta}$.
 \end{itemize}
 \end{process}
 
@@ -170,68 +192,49 @@ We consider the following, second process that will be very useful in our
 proofs. The idea is to throw a unit distance graph on the 
 plane, and then to choose a needle on that graph~:
 \begin{process}
-Given a unit distance graph $(G,V)$, represented in the plane in 
-a unit distance way, label the edges with numbers from 
-$1$ to $m$. Choose~: 
+Given a unit distance graph $G = (V,E)$, embedded in the plane in 
+a unit distance way. Label its edges with numbers from 
+$1$ to $m$. The complex coordinates of the vertices of the $j^{th}$ edges are 
+named $z_j $ and $z_j + e^{i.\theta_j}$. Choose~: 
 \begin{itemize}
-\item one point $A_0$ uniformly on the initial parallelogram $\mathbf{P}$ for 
-the origin of the graph ;
-\item an independent angle $\theta$ uniformly in $[0;2\pi[$, to rotate the graph ;
-\item an independent index $i$ in $[| 1;m|]$.
+\item one point $A_0$ uniformly in $\P_c$ (
+\item an independent angle $\theta$ uniformly in $[0;2\pi[$ (to rotate the graph) ;
+\item an independent integer $J$ in $[| 1;m|]$.
 \end{itemize}
 Then, rotate the graph by the angle $\theta$, translate it so that the origin 
-falls on  $A_0$, and take the needle $(A',B')$ corresponding to the $i^{th}$ 
-edge of the obtained graph.
+falls on $A_0$, and take the needle $(A',B')$ corresponding to the $J^{th}$ 
+edge of the obtained graph. In other words:
+$$A' = e^{i.\theta} z_J + A_0, \ B' = e^{i.\theta} (z_J + e^{i.\theta_J}) + A_J.$$
 \end{process}
 
 \begin{lemma}\label{huitre}
-Let $(A,B)$ be the needle obtained by the first process, and
-$(A',B')$ the one obtained by the second process. Let $c_1$ and $c_2$ denote 
-two colors, and $c$ a valid colouring. Then, we 
+Let $c_1$ and $c_2$ denote 
+two colors. Then, we 
 have~:\\
  $$\mathbb{P}(c(A) = c_1, c(B) = c_2) = \mathbb{P}(c(A') = c_1, c(B') = c_2) $$ \\
  In particular, the probability doesn't depend on the graph 
- chosen. For a graph with only two vertices, we exactly get the initial process.
+ chosen.
 \end{lemma}
 
 \begin{proof}
-Conventions : 
-\begin{itemize}
-\item we take a graph $G=(V,E)$, and let $m = |E|$ be the number of its edges.
-
-\item as usual, $\mathbf{P}$ is the parallelogram obtained by the periodicity 
-of the colouring.
-
-\item $\mathcal{A}(\mathbf{P})$ is the area of the parallelogram.
-
-\item $i \in [|1;m|]$ is the index of one of the edges of $G$.
-
-\item $\theta_i$ denotes the angle made by a horizontal line and the $i^{th}$ 
-edge of the graph. The 
-complex coordinates of the vertices of the $i^{th}$ edges before 
-rotation/translation are named $z_i $ and $z_i + e^{i.\theta_i}$.
-
-\end{itemize}
+We call $\mathcal{A}(\P_c)$ the area of $\P_c$.
 
 We prove the lemma by the following series of equalities :
-
 \begin{eqnarray*}
 & & \mathbb{P}(c(A') = c_1, c(B') = c_2) \\
-  &=& \frac{1}{m}\sum_{i=1}^{m} \mathbb{P}(c(A') = c_1, c(B') = c_2 | i)  \\
-  &=& \frac{1}{m}\sum_{i=1}^{m}  \frac{1}{2\pi}\int_{\theta =0} ^{2\pi} \frac{1}{\mathcal{A}(\mathbf{P})}\int\int_{A_0 \in \mathbf{P}} \mathbb{P}(c(A') = c_1, c(B') = c_2 | i, \theta, A_0) d\theta dx dy \\  
-  &=& \frac{1}{m 2\pi \mathcal{A}(\mathbf {P})}\sum_{i=1}^{m}\int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0 + z_i e^{i\theta}) = c_1, c(A_0 +z_i e^{i\theta} + e^{i (\theta + \theta_i)}) = c_2) d\theta dx dy \\  
-    &=& \frac{1}{m 2\pi \mathcal{A}(\mathbf{P})}\sum_{i=1}^{m} \int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i (\theta + \theta_i)}) = c_2 ) d\theta dx dy \hspace{1 cm} (*)\\ 
-    &=& \frac{1}{m 2\pi \mathcal{A}(\mathbf{P})}\sum_{i=1}^{m} \int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
-    &=& \frac{1}{2\pi \mathcal{A}(\mathbf{P})}\int_{\theta =0} ^{2\pi} \int\int_{A_0 \in \mathbf{P}} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
+  &=& \frac{1}{m}\sum_{j=1}^{m} \mathbb{P}(c(A') = c_1, c(B') = c_2 | J=j)  \\
+  &=& \frac{1}{m}\sum_{j=1}^{m}  \frac{1}{2\pi}\int_{\theta =0} ^{2\pi} \frac{1}{\mathcal{A}(\P_c)}\int_{A_0 \in \P_c} \mathbb{P}(c(A') = c_1, c(B') = c_2 | J=j, \theta, A_0) d\theta dx dy \\  
+  &=& \frac{1}{m 2\pi \mathcal{A}(\P_c)}\sum_{j=1}^{m}\int_{\theta =0} ^{2\pi} \int_{A_0 \in \P_c} \mathds{1}(c(A_0 + z_i e^{i\theta}) = c_1, c(A_0 +z_j e^{i\theta} + e^{i (\theta + \theta_j)}) = c_2) d\theta dx dy \\  
+    &=& \frac{1}{m 2\pi \mathcal{A}(\P_c)}\sum_{j=1}^{m} \int_{\theta =0} ^{2\pi} \int_{A_0 \in \P_c} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i (\theta + \theta_j)}) = c_2 ) d\theta dx dy \hspace{1 cm} (*)\\ 
+    &=& \frac{1}{m 2\pi \mathcal{A}(\P_c)}\sum_{j=1}^{m} \int_{\theta =0} ^{2\pi} \int_{A_0 \in \P_c} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
+    &=& \frac{1}{2\pi \mathcal{A}(\P_c)}\int_{\theta =0} ^{2\pi} \int_{A_0 \in \P_c} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
 \end{eqnarray*}
-Which gives exactly the same probability as the first process (except that the 
-angle is taken in $[0;2\pi[$ here, instead of $[0;\pi[$, but it doesn't make 
-any difference when looking only at the colors).
+Which gives exactly the same probability as the first process.
 
 Equality $(*)$ is justified by the periodicity of our colouring.
 \end{proof}
 
-\begin{proof}
+\begin{proof}[Proof of theorem~\ref{ineg}]
 Consider a graph $g$ coloured with $k$ colours. When one chooses a needle
 randomly on this graph the probability that both ends have the same
 colours is clearly greater than $m_k(g)$. Applying lemma \ref{huitre} with $g$, 
@@ -388,7 +391,7 @@ $p'(c) \geq \frac13 - \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\ma
 This bound becames sharper as the table parallelogram $\mathbf{P}$ becomes bigger.
 %%%%%%%
 % Finir preuve théorème 2
-% Parler du choix du carré dans la def 1 iii. Exemple de coloriage qui difère pour une boule mais mêmes estimations
+% Parler du choix du carré dans la def 3ii. Exemple de coloriage qui diffère pour une boule mais mêmes estimations
 %%%%%%%
 \subsection{Higher dimensions}
 \label{dim}

@@ -30,6 +30,7 @@
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\C}{\mathcal{C}}
 \renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\Esp}{\mathbb{E}}
 \renewcommand{\P}{\mathbf{P}}
 \newcommand{\pper}{p^{\mathrm{per}}}
 \newcommand{\Cp}{\mathcal{C}^{\mathrm{per}}}
@@ -117,7 +118,7 @@ is the Lebesgue measure on $\mathbb{R}^4$).
 \end{definition}
 
 It should be clear that a periodic colouring $c$ is also an asymptotic colouring,
-but $\pper(c)$ and $p(c)$ may differ in that case. This will be discussed 
+and $\pper(c)=p(c)$ in that case. If this isn't clear already, it will be proven
 thereafter.
 %%%%%%%
 %Discuss it thereafter
@@ -151,7 +152,7 @@ Let $\mathcal{G}$ be the set of unit distance graphs and $\Cp_k$ the set
 of periodic $k$-colourings of the plane, then
 $$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \Cp_k} \ \pper(c) \leq \frac{1}{k}. $$
 \end{theo}
-The rest of the paper aims at proving the equivalent theorem for asymptotic 
+The rest of the paper aims at proving the analogous theorem for asymptotic 
 colourings, whose proof is ended in section~\ref{ext}:
 \begin{theo} \label{ineg2}
 Let $\mathcal{G}$ be the set of unit distance graphs and $\C_k$ the set 
@@ -183,7 +184,7 @@ Consider the following random variables :
 \end{itemize}
 \end{process}
 
-Note that $B$ may all outside of $\mathbf{P}$. In that case, $c(B)$ is 
+Note that $B$ may fall outside of $\P_c$. In that case, $c(B)$ is 
 defined using the periodicity of the colouring.
 Our goal is to evaluate and minimize the probability that both ends have the 
 same color.
@@ -197,14 +198,14 @@ a unit distance way. Label its edges with numbers from
 $1$ to $m$. The complex coordinates of the vertices of the $j^{th}$ edges are 
 named $z_j $ and $z_j + e^{i.\theta_j}$. Choose~: 
 \begin{itemize}
-\item one point $A_0$ uniformly in $\P_c$ (
+\item one point $A_0$ uniformly in $\P_c$ ;
 \item an independent angle $\theta$ uniformly in $[0;2\pi[$ (to rotate the graph) ;
 \item an independent integer $J$ in $[| 1;m|]$.
 \end{itemize}
 Then, rotate the graph by the angle $\theta$, translate it so that the origin 
 falls on $A_0$, and take the needle $(A',B')$ corresponding to the $J^{th}$ 
 edge of the obtained graph. In other words:
-$$A' = e^{i.\theta} z_J + A_0, \ B' = e^{i.\theta} (z_J + e^{i.\theta_J}) + A_J.$$
+$$A' = e^{i.\theta} z_J + A_0, \ B' = e^{i.\theta} (z_J + e^{i.\theta_J}) + A_0.$$
 \end{process}
 
 \begin{lemma}\label{huitre}
@@ -239,23 +240,31 @@ Consider a graph $g$ coloured with $k$ colours. When one chooses a needle
 randomly on this graph the probability that both ends have the same
 colours is clearly greater than $m_k(g)$. Applying lemma \ref{huitre} with $g$, 
 it follows from the description of the second process that the probability 
-$p(c)$ for any colouring $c$ is greater than $m_k(g)$.
+$\pper(c)$ for any colouring $c$ is greater than $m_k(g)$.
+
+Now to get the right-hand side of the theorem, let $\P$ be a square of side $R$,
+and cut $\P$ into $n^2$ squares of side $R/n$. Let $C$ be a \textit{random} 
+colouring obtained by assigning to these $n^2$ smaller squares i.i.d. colours
+taken uniformly in $\{1,\dots,k\}$ and repeating $\P$ to get a periodic 
+colouring. Then one easily checks that for $R$ large enough and $R/n$ small
+enough, for any needle $(A,B)$, $A$ and $B$ are in distinct small squares so
+$$\Pr(C(A)=C(B)) = \frac1k$$
+and an application of Fubini's theorem shows that
+$$\Esp[\pper(C)] = \frac1k$$
+so that there is a realisation $c_0$ with $\pper(c_0) \leq \frac1k$.
 \end{proof}
-%%%%%%%
-% prouver le membre de droite du théorème
-%%%%%%%
 We still don't know wether or not the left-hand inequality of theorem~\ref{ineg} is actually an equality. It is for 
 $n=2$, as will be shown thereafter.
 
 \section{Applications} \label{appli}
 \subsection{2 colours}
 
-With two colors, we consider a triangle as our unit distance graph. 
+With two colors, we consider an equilateral triangle as a unit distance graph. 
 As there are always at least two vertices with the same color, it's clear that 
-the probability that $c_2(g) = \frac{1}{3}$. Thanks to Theorem~\ref{ineg}, 
-we know that $p(c) \geq \frac13$ for any valid $c$.
+$m_2(g) = \frac{1}{3}$. Thanks to Theorem~\ref{ineg}, 
+we know that $\pper(c) \geq \frac13$ for any periodic colouring $c$.
 
-This bound is optimal. Indeed, consider the colouring in figure~\ref{color}, 
+This bound is optimal. Indeed, consider the colouring in figure~\ref{couleur}, 
 constructed with parallel strips of width 
 $l = \frac {\sqrt3}{2}$, with the upper side opened and the lower side closed. 
 
@@ -266,18 +275,16 @@ $l = \frac {\sqrt3}{2}$, with the upper side opened and the lower side closed.
 \end{figure}
 
 For this colouring, the probability of getting the same colour using the first 
-process is $\frac13$. This can be shown by direct computation, or one can 
+process is $\frac13$. This can be shown by direct computation, or we can 
 more simply remark that no unit-lengthed equilateral triangle can have its 
 three vertices with the same colors. Applying Lemma~\ref{huitre}, we conclude 
 that this colouring achieves a probability of $\frac{1}{3}$ indeed.
 %CLASSE DE SOLUTIONS?
 
 \subsection{3 colours}
- With three colors, we use the Moser spindle of Figure~\ref{color} - that 
- has at least one of its $11$ edges with both ends of the same colour.
- We similarly get that for $n=3$, the probability that both endpoints have the 
- same colour is at least 
- $\frac{1}{11}$ for any valid colouring. 
+ With three colors, we use the Moser spindle of figure~\ref{color} - a unit 
+ distance graph with $m_3(g) = \frac{1}{11}$.
+ We similarly get that for $k=3$, $p(c) \geq \frac{1}{11}$ for any valid colouring. 
 
 \begin{figure}[h]
 \center
@@ -288,7 +295,8 @@ that this colouring achieves a probability of $\frac{1}{3}$ indeed.
 We don't know if the previous bound is optimal. We believe that Figure~\ref{trois} 
 can give a rather good $3$-colouring of the plane, for some well chosen length 
 of the edge of the hexagons. Rough simulations and optimisation have shown that 
-this colouring gives a $p(c)$ of about $0.12$ for an edge of length about $0.61$. 
+this colouring gives a $\pper(c)$ of about $0.12$ for an edge of length about 
+$0.61$, but $0.12$ is still greater than $\frac{1}{11} \simeq 0.091$.
 %Still, we did not compute the exact optimum in that case because the 
 %estimation is still far away from $\frac{1}{11}$.
 
@@ -299,7 +307,7 @@ this colouring gives a $p(c)$ of about $0.12$ for an edge of length about $0.61$
 \end{figure}
 
 \subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
-All results shown in this section will be derived using the axiom of choice. 
+The results shown in this section will be derived using the axiom of choice. 
 This is important to notice, since the answer to the Hadwiger-Nelson problem is 
 suspected to depend on the set of axioms used. We will use the 
 De Bruijn - Erd\H{o}s theorem, established in \cite{erdos}, whose proof uses 
@@ -313,14 +321,10 @@ of its finite subgraphs.
 
 If there exist a unit distance graph (finite by definition) which cannot 
 be coloured with $k$ colours, it 
-follows from our study that the probability $p(c)$ for $c$ a periodic measurable 
+follows from our study that the probability $p(c)$ for $c$ a valid 
 $k$-colouring is always greater than a certain constant. Taking the 
 contrapositive of this statement and using the De Bruijn-Erdős theorem yields 
 corollary~\ref{con}.
-
-Note that this would ensure that a $k$-colouring of the plane exists, but this 
-colouring is not necessarily asymptotic, and its set of monochromatic needles 
-may not be measurable.
 
 \section{Extensions}
 \label{ext}
@@ -328,7 +332,7 @@ may not be measurable.
 \label{fini}
 
 Previously we used periodicity so that we didn't have to worry about the second 
-endpoint $B$ falling outside of $\mathbf{P}$, which made things much easier. We now 
+endpoint $B$ falling outside of $\mathbf{P}$, which made things technically easier. We now 
 try to require that $B$ fall in $\mathbf{P}$ to match a somewhat more practical 
 view : we want to describe the throwing of the needle on an ``actual'' bounded 
 table. The first difficulty is to find a natural distribution for our needle.
@@ -336,16 +340,15 @@ table. The first difficulty is to find a natural distribution for our needle.
 \begin{process} \label{encore}
 Denote by $\mathbf{P}$ an open parallelogram, representing the table. For the 
 process to be well defined, we need to assume that $\mathbf{P}$ can contain at
-least one needle - equivalently, that $P(B \in \mathbf{P}) > 0$ since $\mathbf{P}$ 
-is an open set.
+least one needle.
 \begin{itemize}
-\item Consider the law of $(A,B)$ given by Pocess~\ref{premier}.
-\item Take for your law the conditional probability given the event 
-$\{B \in \mathbf{P} \}$.
+\item Consider the law $\mathcal{L}$ of $(A,B)$ given by Pocess~\ref{premier} on $\P$.
+\item Let $(A'',B'')$ be random points in $\P$ following the conditional law
+$\mathcal{L}$ given the event $\{B \in \mathbf{P} \}$.
 \end{itemize}
 \end{process}
 
-To evaluate $P(B \in \mathbf{P})$ we need to define the border of a parallelogram~:
+%To evaluate $P(B \in \mathbf{P})$ we need to define the border of a parallelogram~:
 \begin{definition}
 For $r>0$, let $K(\mathbf{P},r)$ the $r$-wide inner border of $\mathbf{P}$~:
 \[K(\mathbf{P},r) = \{ z \in \mathbf{P} \mid d(z,\mathbf{P}^c) < r\} \] 
@@ -358,16 +361,23 @@ For $r>0$, let $K(\mathbf{P},r)$ the $r$-wide inner border of $\mathbf{P}$~:
 \end{figure}
 
 \begin{lemma}
-Let $c$ be a $n$-colouring of $\mathbf{P}$. Denote by $p(c)$ the probability 
-that both ends have the same colour when throwing 
-the needle with Process~\ref{premier}, and $p'(c)$ for Process~\ref{encore}. Then 
-there is a positive constant $\kappa \leq 2$ so that 
+Let $c$ be a $k$-colouring of $\mathbf{P}$. Denote by $p_1(c)$ the probability 
+$\pper(c')$ where $c'$ is the periodised version of $c$, and 
+$p_2(c) = \Pr(c(A'')=c(B''))$ given by Process~\ref{encore}. Then 
+there is a positive universal constant $\kappa \leq 2$ so that 
 $$ | p'(c) - p(c)| \leq \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}.$$
 \end{lemma}
 
 \begin{proof}
+%%%%%%%
+% Cas A(K(P,1)) = A(P) ?
+%%%%%%%
 We will show that the inequality is true for $\kappa =2$, but this is probably 
 not the best constant.
+
+When $\mathcal{A}(K(\mathbf{P},1)) = \mathcal{A}(\mathbf{P})$ the result is clear,
+so we may suppose that these areas differ, which means that there are needles 
+inside $\P$ and conditional probabilities will be well defined.
 
 Let $r = \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$. When 
 $r \geq \frac12$ the inequality is obvious, so we will now suppose that 
@@ -377,12 +387,12 @@ falls inside of $\mathbf{P}$''. Then $P(\mathcal{N}^c) \leq r$, indeed, $B$ can
 be outside of $\mathbf{P}$ only
 when $A$ is in $K(\mathbf{P},1)$. Easy computation shows that
 \begin{eqnarray*}
-p(c) - p'(c) & = & P(\mathcal{M}) - P(\mathcal{M} \mid \mathcal{N}) \\
+p_1(c) - p_2(c) & = & P(\mathcal{M}) - P(\mathcal{M} \mid \mathcal{N}) \\
 & = & \frac{P(\mathcal{N}^c)}{P(\mathcal{N})} \left( P(\mathcal{M}\mid \mathcal{N}^c) - P(\mathcal{M})\right),
 \end{eqnarray*}
 and using the fact that $P(\mathcal{N}^c) \leq r$ and 
 $P(\mathcal{N}) \geq 1-r \geq \frac12$ we get 
-$$ |p(c) - p'(c)| \leq 2r.$$
+$$ |p_1(c) - p_2(c)| \leq 2r.$$
 \end{proof}
 
 Since we already have bounds on $p$, we can therefore deduce bounds on $p'$.

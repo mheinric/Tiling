@@ -47,12 +47,8 @@
 \begin{abstract} Colouring a table with $k$ colours, and throwing a needle
 randomly on it gives a certain probablity that the endpoints fall on 
 different colours. How can one make this probability maximal?
-This problem is here related to finite graphs having unit-lengthed edges, and 
+This problem is related to finite graphs having unit-lengthed edges, and 
 some bounds on the optimal probability are deduced.\end{abstract}
-
-%%%%%%%
-% toujours k comme nombre de couleurs
-%%%%%%%
 
 \section{Introduction}
 
@@ -421,7 +417,7 @@ However, the unequality of theorem~\ref{ineg2} should remain true for these diff
 \label{dim}
 The previous considerations can be extended to dimension $d \geq 3$, however, 
 it becomes more complicated to write down. We have to consider a basis of 
-vector leaving our colouring unchanged, and still denote by $\mathbf{P}$ the 
+vector leaving our colouring unchanged ; we still denote by $\mathbf{P}$ the 
 parallelepiped induced by these vectors.
 
 The first process for choosing a needle now consist in~: 
@@ -429,11 +425,11 @@ The first process for choosing a needle now consist in~:
 	\item choosing one point uniformly in the parallelepiped $ \mathbf{P} $ as 
 	one point of the needle~;
 	\item choosing independently one point uniformly on the unit sphere 
-	$S^{d-1}$, uniformly to give the relative position of the second point.
+	$S^{d-1}$, to give the relative position of the second point.
 \end{itemize}
 
-Sending a unit-length graph on the $d$-dimensional space becomes somehow more 
-complicated. We have to choose one initial point in $ \mathbf{P} $, and an independent 
+Sending a unit-length graph on the $d$-dimensional space becomes a bit more 
+tricky. We have to choose one initial point in $ \mathbf{P} $, and an independent 
 rotation of the graph ; this can be achieved 
 by using the Haar measure of $SO(d)$ uniformly. The second process now consists 
 in : rotating the graph thanks to the matrix of $SO(d)$ chosen, translating it 
@@ -442,30 +438,28 @@ edges independently as your needle.
 
 One can verify that the proof of Lemma~\ref{huitre} adapts to that definitions. 
 It means that previous results still hold - namely, the probability that both 
-ends fall on the same colour remains the same for the two processes. Crucial 
-points of the proof are the invariance of the Haar measure under matrix product, and the 
-fact that the image measure of said Haar measure by the application 
-$M\mapsto Mv$, where $v$ is a given unit vector, is the uniform Lebesgue 
-measure of $S^{d-1}$.
+ends fall on the same colour remains the same for the two processes.
+%Crucial 
+%points of the proof are the invariance of the Haar measure under matrix product, and the 
+%fact that the image measure of said Haar measure by the application 
+%$M\mapsto Mv$, where $v$ is a given unit vector, is the uniform Lebesgue 
+%measure of $S^{d-1}$.
 
 Thus, to find lower bonds on our probability, the same techniques may be applied 
-in any finite dimension. For instance, in any dimension $d$ with $2$ colours,
+in any finite dimension. For instance, in dimension $d$ with $2$ colours,
 the probability to get a monochromatic  
 needle is always at least $\frac{1}{3}$ because of the equilateral triangle. 
 We still don't know whether the bound of $\frac{1}{3}$ is achieved or not in 
-dimension $3$ or more. 
+dimension $3$ or more.
 
 Remark that in higher dimension, better minorants may be provided by 
 Corollary~\ref{ineg}, since new graphs can 
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
 tetrahedron gives a better lower bound 
 of $\frac 1 6 >\frac 1 {11}$. More generally, considering the complete graph 
-$K_{k+1}$ in dimension $n$, which is unit distance and not $k$-colourable, the 
+$K_{k+1}$ in dimension $k$ (also known as the regular $k+1$-simplex). It is a unit distance graph and is not $k$-colourable, so the 
 probability of getting a monochromatic needle is at least $\frac{1}{\binom{k+1}{2}}$ 
 for $k$ colours in dimension $k$.
-%%%%%%%
-% hyper-lasagnes
-%%%%%%%
 
 \subsection*{Acknowledgements}
 We are very grateful to David Naccache for his constant help in the writing of

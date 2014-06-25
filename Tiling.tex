@@ -33,6 +33,7 @@
 \newcommand{\Esp}{\mathbb{E}}
 \renewcommand{\P}{\mathbf{P}}
 \newcommand{\pper}{p^{\mathrm{per}}}
+\newcommand{\ptable}{p^{\mathrm{table}}}
 \newcommand{\Cp}{\mathcal{C}^{\mathrm{per}}}
 \newcommand{\Ca}{\mathcal{C}}
 
@@ -103,14 +104,14 @@ $$\pper(c) = \Pr(c(A)=c(B)).$$
 
 \begin{definition}
 \
-\begin{enumerate}[i)] 
+\begin{enumerate}[i)]\label{defas}
 \item If $A$ is a measurable subset of $\R^2$ and $c$ a colouring, let $\N_A$ be
 the set of \textit{needles inside} $A$, and $\M_A$ the set of \textit{monochromatic
 needles inside} A :
 \[\N_A = \{(x,y) \in A ^2 \mid d(x,y)=1\}, \]
 \[\M_A (c) = \M (c) \cap \N_A. \]
 
-The colouring $c$ is said to be \textit{asymptotic} if the ratio
+\item  \label{asympt}The colouring $c$ is said to be \textit{asymptotic} if the ratio
 $\frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$ 
 converges to a limit $p(c) \in [0,1]$ as $R$ tends to infinity (where $\lambda$ 
 is the Lebesgue measure on $\mathbb{R}^4$).
@@ -257,7 +258,7 @@ We still don't know wether or not the left-hand inequality of theorem~\ref{ineg}
 $n=2$, as will be shown thereafter.
 
 \section{Applications} \label{appli}
-\subsection{2 colours}
+\subsection{2 colours} \label{2col}
 
 With two colors, we consider an equilateral triangle as a unit distance graph. 
 As there are always at least two vertices with the same color, it's clear that 
@@ -343,8 +344,8 @@ process to be well defined, we need to assume that $\mathbf{P}$ can contain at
 least one needle.
 \begin{itemize}
 \item Consider the law $\mathcal{L}$ of $(A,B)$ given by Pocess~\ref{premier} on $\P$.
-\item Let $(A'',B'')$ be random points in $\P$ following the conditional law
-$\mathcal{L}$ given the event $\{B \in \mathbf{P} \}$.
+\item Let $(A'',B'')$ be random points in $\P$ following the law
+$\mathcal{L}$ conditioned by the event $\{B \in \mathbf{P} \}$.
 \end{itemize}
 \end{process}
 
@@ -360,18 +361,15 @@ For $r>0$, let $K(\mathbf{P},r)$ the $r$-wide inner border of $\mathbf{P}$~:
 \caption{\label{tablefinie} The set $K(\mathbf{P},r)$ in grey}
 \end{figure}
 
-\begin{lemma}
-Let $c$ be a $k$-colouring of $\mathbf{P}$. Denote by $p_1(c)$ the probability 
-$\pper(c')$ where $c'$ is the periodised version of $c$, and 
-$p_2(c) = \Pr(c(A'')=c(B''))$ given by Process~\ref{encore}. Then 
+\begin{lemma}\label{choco}
+Let $c$ be a $k$-colouring of $\mathbf{P}$. Let $\tilde{c}$ be the periodised version of
+$c$ given by repeating $\P$. Let
+$\ptable(c) = \Pr(c(A'')=c(B''))$ be the probability given by Process~\ref{encore}. Then 
 there is a positive universal constant $\kappa \leq 2$ so that 
-$$ | p'(c) - p(c)| \leq \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}.$$
+$$ | \pper(\tilde{c}) - \ptable(c)| \leq \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}.$$
 \end{lemma}
 
 \begin{proof}
-%%%%%%%
-% Cas A(K(P,1)) = A(P) ?
-%%%%%%%
 We will show that the inequality is true for $\kappa =2$, but this is probably 
 not the best constant.
 
@@ -381,28 +379,44 @@ inside $\P$ and conditional probabilities will be well defined.
 
 Let $r = \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$. When 
 $r \geq \frac12$ the inequality is obvious, so we will now suppose that 
-$r < \frac12$. Consider Process~\ref{premier} and denote by $\mathcal{M}$ the 
-event ``both ends have same colours'', and by $\mathcal{N}$ the event ``$B$ 
-falls inside of $\mathbf{P}$''. Then $P(\mathcal{N}^c) \leq r$, indeed, $B$ can 
+$r < \frac12$. Consider $(A,B)$ a needle whose law is given by Process~\ref{premier} on $\P$ and let $M$and $N$ be the following events:
+$$ M = \{\tilde{c} (A) = \tilde{c} (B) \}, \ N = \{B\notin \P \}.$$
+Then $P(N^c) \leq r$, indeed, $B$ can 
 be outside of $\mathbf{P}$ only
-when $A$ is in $K(\mathbf{P},1)$. Easy computation shows that
+when $A$ is in $K(\mathbf{P},1)$. Easy computation then shows that
 \begin{eqnarray*}
-p_1(c) - p_2(c) & = & P(\mathcal{M}) - P(\mathcal{M} \mid \mathcal{N}) \\
-& = & \frac{P(\mathcal{N}^c)}{P(\mathcal{N})} \left( P(\mathcal{M}\mid \mathcal{N}^c) - P(\mathcal{M})\right),
+\pper(\tilde{c}) - \ptable(c) & = & P(M) - P(M \mid N) \\
+& = & \frac{P(N^c)}{P(N)} \left( P(M\mid N^c) - P(M)\right),
 \end{eqnarray*}
-and using the fact that $P(\mathcal{N}^c) \leq r$ and 
-$P(\mathcal{N}) \geq 1-r \geq \frac12$ we get 
-$$ |p_1(c) - p_2(c)| \leq 2r.$$
+and using the fact that $P(N^c) \leq r$ and 
+$P(N) \geq 1-r \geq \frac12$ we get 
+$$ |\pper(\tilde{c}) - \ptable(c)| \leq 2r.$$
 \end{proof}
 
-Since we already have bounds on $p$, we can therefore deduce bounds on $p'$.
+Since we already have bounds on $\pper$, we can therefore deduce bounds on $\ptable$.
 For instance, with $2$ colours, we see that 
-$p'(c) \geq \frac13 - \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$. 
+$\ptable(c) \geq \frac13 - \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$. 
 This bound becames sharper as the table parallelogram $\mathbf{P}$ becomes bigger.
-%%%%%%%
-% Finir preuve théorème 2
-% Parler du choix du carré dans la def 3ii. Exemple de coloriage qui diffère pour une boule mais mêmes estimations
-%%%%%%%
+\begin{proof}[Proof of Theorem~\ref{ineg2}]
+If $c$ is an asymptotic colouring, let $\tilde{c_R}$ be the periodised version of $c_{|[-R;R]^2}$ (that is, restrict $c$ to $[-R;R]^2$ and tile the plane by repeating this square). By lemma~\ref{choco},
+\begin{equation} \label{estim}
+|\pper(\tilde{c_R}) - \ptable(c_{|[-R;R]^2}) | \leq \kappa \frac{\mathcal{A}(K([-R;R]^2,1))}{\mathcal{A}([-R;R]^2)} \leq \kappa \frac{4R}{R^2}.
+\end{equation}
+But $\ptable(c_{|[-R;R]^2}) = \frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$ (see definition~\ref{defas} for notations) and this ratio converges to $p(c)$ as $R\rightarrow +\infty$. The bounds on $\pper(\tilde{c_R})$ given by theorem~\ref{ineg} and the estimate~(\ref{estim}) yield theorem~\ref{ineg2}.
+\end{proof}
+
+It may seem a bit odd to chose a square to define asymptotic colourings in definition~\ref{defas}. One could have, for instance, replaced $[-R,R]^2$ by the disk $D(O,R)$ in this definition. The advantage of the square is that it made the previous proof easier, given that periodic colourings were already studied. Getting similar results for a disk (or with any open set bounded by a smooth curve) would require a result similar to lemma~\ref{huitre} with an estimation similar to the one in lemma~\ref{choco}.
+
+Still, it should be noted that the value of $p(c)$ defined by asymptotics on different shapes may differ. For instance, consider the 2-colouring of figure \ref{contrex} where stripes are $\frac{\sqrt{3}}{2}$ appart. In the striped region the probability is approximately $\frac13$ (see section \ref{2col}), and it is $1$ in the rest of the plane. So $p(c)$ is related to the fraction of a square (resp. disk) occupied by the striped region, and this fraction is different in these two cases.
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.5]{contrex.png}
+\caption{\label{contrex} An asymptotic 2-colouring of the plane}
+\end{figure}
+
+However, the unequality of theorem~\ref{ineg2} should remain true for these different possible values of asymptotic $p(c)$'s.
+
 \subsection{Higher dimensions}
 \label{dim}
 The previous considerations can be extended to dimension $d \geq 3$, however, 

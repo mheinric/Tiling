@@ -73,7 +73,7 @@ the latter being a generalization of the former.
 \begin{definition}
 \
 \begin{enumerate}[i)] 
-\item A $k$-\textit{colouring} of the plane is a borelian function $c$ from the euclidian 
+\item A $k$-\textit{colouring} of the plane is a measurable function $c$ from the euclidian 
 plane~$\R ^2$ to the finite set $\{1, \dots , k \}$.
 
 A \textit{colouring} is a $k$-colouring for some $k$.
@@ -115,11 +115,9 @@ is the Lebesgue measure on $\mathbb{R}^4$).
 \end{definition}
 
 It should be clear that a periodic colouring $c$ is also an asymptotic colouring,
-and $\pper(c)=p(c)$ in that case. If this isn't clear already, it will be proven
-thereafter.
-%%%%%%%
-%Discuss it thereafter
-%%%%%%%
+and $\pper(c)=p(c)$ in that case. However, contrary to $\pper(c)$, $p(c)$ is not
+in general a probability and shouldn't be seen as such ; we may call it an 
+asymptotic probability.
 
 Our aim will be to make $p(c)$ as small as possible, since it is not hard
 to make it big.
@@ -396,7 +394,7 @@ This bound becames sharper as the table parallelogram $\mathbf{P}$ becomes bigge
 \begin{proof}[Proof of Theorem~\ref{ineg2}]
 If $c$ is an asymptotic colouring, let $\tilde{c_R}$ be the periodised version of $c_{|[-R;R]^2}$ (that is, restrict $c$ to $[-R;R]^2$ and tile the plane by repeating this square). By lemma~\ref{choco},
 \begin{equation} \label{estim}
-|\pper(\tilde{c_R}) - \ptable(c_{|[-R;R]^2}) | \leq \kappa \frac{\mathcal{A}(K([-R;R]^2,1))}{\mathcal{A}([-R;R]^2)} \leq \kappa \frac{4R}{R^2}.
+|\pper(\tilde{c_R}) - \ptable(c_{|[-R;R]^2}) | \leq \kappa \frac{\mathcal{A}(K([-R;R]^2,1))}{\mathcal{A}([-R;R]^2)} \leq \kappa \frac{4R}{R^2} = \frac{4\kappa}{R}.
 \end{equation}
 But $\ptable(c_{|[-R;R]^2}) = \frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$ (see definition~\ref{defas} for notations) and this ratio converges to $p(c)$ as $R\rightarrow +\infty$. The bounds on $\pper(\tilde{c_R})$ given by theorem~\ref{ineg} and the estimate~(\ref{estim}) yield theorem~\ref{ineg2}.
 \end{proof}

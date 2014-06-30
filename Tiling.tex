@@ -89,7 +89,7 @@ which is a measurable subset of $\R ^4$.
 \item A colouring $c$ is said to be \textit{periodic} if there are two free
 vectors $(u,v)$ so that for any $x$ in $\R ^2$, $c(x+u)=c(x+v)=c(x)$. In that
 case we note $\P_c$ the parallelogram formed on $u$ and $v$.
-\item For a periodic coloring $c$, consider the following random variables :
+\item For a periodic coloring $c$, consider the following random variables:
 let $A$ be a point chosen uniformly in $\P_c$, and $B=A + e^{i \theta}$ where
 $\theta$ is a random angle taken uniformly in $[0;2 \pi[$ indepedently of $A$.
 
@@ -103,7 +103,7 @@ $$\pper(c) = \Pr(c(A)=c(B)).$$
 \begin{enumerate}[i)]\label{defas}
 \item If $A$ is a measurable subset of $\R^2$ and $c$ a colouring, let $\N_A$ be
 the set of \textit{needles inside} $A$, and $\M_A$ the set of \textit{monochromatic
-needles inside} A :
+needles inside} A:
 \[\N_A = \{(x,y) \in A ^2 \mid d(x,y)=1\}, \]
 \[\M_A (c) = \M (c) \cap \N_A. \]
 
@@ -116,7 +116,7 @@ is the Lebesgue measure on $\mathbb{R}^4$).
 
 It should be clear that a periodic colouring $c$ is also an asymptotic colouring,
 and $\pper(c)=p(c)$ in that case. However, contrary to $\pper(c)$, $p(c)$ is not
-in general a probability and shouldn't be seen as such ; we may call it an 
+in general a probability and shouldn't be seen as such; we may call it an 
 asymptotic probability.
 
 Our aim will be to make $p(c)$ as small as possible, since it is not hard
@@ -170,7 +170,7 @@ generalizations to higher dimentions.
 
 Let $c$ be a periodic colouring, and consider the needle-throwing ``processes'':
 \begin{process} \label{premier}
-Consider the following random variables :
+Consider the following random variables:
 \begin{itemize}
   \item let $A$ be a point chosen uniformly 
   in $\P_c$ ;
@@ -215,7 +215,7 @@ have~:\\
 \begin{proof}
 We call $\mathcal{A}(\P_c)$ the area of $\P_c$.
 
-We prove the lemma by the following series of equalities :
+We prove the lemma by the following series of equalities:
 \begin{eqnarray*}
 & & \mathbb{P}(c(A') = c_1, c(B') = c_2) \\
   &=& \frac{1}{m}\sum_{j=1}^{m} \mathbb{P}(c(A') = c_1, c(B') = c_2 | J=j)  \\
@@ -329,7 +329,7 @@ corollary~\ref{con}.
 Previously we used periodicity so that we didn't have to worry about the second 
 endpoint $B$ falling outside of $\mathbf{P}$, which made things technically easier. We now 
 try to require that $B$ fall in $\mathbf{P}$ to match a somewhat more practical 
-view : we want to describe the throwing of the needle on an ``actual'' bounded 
+view: we want to describe the throwing of the needle on an ``actual'' bounded 
 table. The first difficulty is to find a natural distribution for our needle.
 
 \begin{process} \label{encore}
@@ -430,18 +430,18 @@ Sending a unit-length graph on the $d$-dimensional space becomes a bit more
 tricky. We have to choose one initial point in $ \mathbf{P} $, and an independent 
 rotation of the graph ; this can be achieved 
 by using the Haar measure of $SO(d)$ uniformly. The second process now consists 
-in : rotating the graph thanks to the matrix of $SO(d)$ chosen, translating it 
+in: rotating the graph thanks to the matrix of $SO(d)$ chosen, translating it 
 to the point of $\mathbf{P}$ chosen, and chosing one of the 
 edges independently as your needle.
 
 One can verify that the proof of Lemma~\ref{huitre} adapts to that definitions. 
-It means that previous results still hold - namely, the probability that both 
-ends fall on the same colour remains the same for the two processes.
-%Crucial 
-%points of the proof are the invariance of the Haar measure under matrix product, and the 
-%fact that the image measure of said Haar measure by the application 
-%$M\mapsto Mv$, where $v$ is a given unit vector, is the uniform Lebesgue 
-%measure of $S^{d-1}$.
+%It means that previous results still hold - namely, the probability that both 
+%ends fall on the same colour remains the same for the two processes.
+Crucial 
+points of the proof are the invariance of the Haar measure under matrix product, and the 
+fact that the image measure of said Haar measure by the application 
+$M\mapsto Mv$, where $v$ is a given unit vector, is the uniform Lebesgue 
+measure of $S^{d-1}$.
 
 Thus, to find lower bonds on our probability, the same techniques may be applied 
 in any finite dimension. For instance, in dimension $d$ with $2$ colours,
@@ -450,8 +450,8 @@ needle is always at least $\frac{1}{3}$ because of the equilateral triangle.
 We still don't know whether the bound of $\frac{1}{3}$ is achieved or not in 
 dimension $3$ or more.
 
-Remark that in higher dimension, better minorants may be provided by 
-Corollary~\ref{ineg}, since new graphs can 
+Remark that in higher dimension, better minorations may be provided by 
+Theorems~\ref{ineg}~and~\ref{ineg2}, since new graphs can 
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
 tetrahedron gives a better lower bound 
 of $\frac 1 6 >\frac 1 {11}$. More generally, considering the complete graph 

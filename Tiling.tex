@@ -17,6 +17,8 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{cons}{Corollary}
 \newtheorem{theo}{Theorem}
+\newtheorem*{cons*}{Corollary}
+\newtheorem*{theo*}{Theorem}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
@@ -55,19 +57,55 @@ some bounds on the optimal probability are deduced.\end{abstract}
 A well-known problem of geometric graph theory is the following: how many colors
 are needed to color the plane so that no two points at unit distance are the 
 same color? This is known as the Hadwiger-Nelson problem, and the answer to that
-question is often refered as the \textit{chromatic number of the plane}. It 
+question is often referred to as the \textit{chromatic number of the plane}. It 
 seems that the problem was first stated by Nelson in 1950, and first published by 
 Gardner in \cite{gardner}.
-For a nice review about this problem and close relatives, see Soifer's book
-\cite{soifer}. This question is still very mysterious to that day, and all that 
-is known for sure is that the chromatic number of the plane is at least 4 and at
-most 7.
+For a nice review about this problem and many others, see Soifer's book
+\cite{soifer}, chapters~2~and~3. This question is still very mysterious to that day, and all that 
+is known for sure is that the chromatic number of the plane is not greater than
+7 and not smaller than 4.
 
 The questions presented here may be seen as a probabilistic version of this 
 problem, since we don't try to make \textit{every} unit-lengthed segment 
 bichromatic but a large fraction of them.
 
-We first state some definitions to clarify what kinds of colourings we will consider.
+\medskip
+
+Let's state our results in a rough, unprecise way: a $k$-\textit{colouring} is a borelian 
+function from, say, a square, to the finite set $\{1, \dots , k \}$. If $c$
+is a colouring, let $p(c)$ be the probability that when throwing a unit-length
+segment (or \textit{needle}) on $c$, you get both endpoints on the same colour.
+Our aim will be to make $p(c)$ as small as possible, since it is not hard
+to make it big.
+
+For a finite graph $g$, let $m_k(g)$ be the smallest fraction of monochromatic
+edges in a $k$-colouring of $g$. Then, if $\mathcal{G}$ denotes the set of 
+\textit{unit distance graphs} -- that is, graphs that can be embedded in the
+plane with all edges of length 1 -- and $\C_k$ the set of $k$-colourings, we
+have:
+\begin{theo*}
+$$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \C_k} \ \pper(c) \leq \frac{1}{k}. $$
+\end{theo*}
+We don't know if the left hand of the unequality is actually an equality in
+the general case, but we prove that it is for $k=2$.
+
+We also prove the following consequence, regarding the Hadwiger-Nelson problem:
+\begin{cons} \label{con}
+If \ $\inf_{c \in \Ca_k} \ p(c) = 0$ \ then the chromatic number of the
+plane is not bigger than $k$.
+\end{cons}
+
+The paper is organised as follows: in section~\ref{defsection} we clarify the
+definitions and tools we will use. Section~\ref{equiv} is devoted to the proof 
+of the theorem in the case of periodic colourings of the plane; a generalisation
+to what we call ``asymptotic colourings'' is rejected to section~\ref{ext}.
+In section~\ref{appli} we give some applications, studying the particular cases $k=2,3$,
+and proving the aforementioned corollary.
+We study in section~\ref{ext} the case of a finite table instead of the whole plane, 
+and give some remarks on possible 
+generalizations to higher dimentions.
+
+\section{Definitions} \label{defsection}
 We will be interested in \textit{periodic} and \textit{asymptotic} colourings,
 the latter being a generalization of the former.
 \begin{definition}
@@ -118,14 +156,10 @@ It should be clear that a periodic colouring $c$ is also an asymptotic colouring
 and $\pper(c)=p(c)$ in that case. However, contrary to $\pper(c)$, $p(c)$ is not
 in general a probability and shouldn't be seen as such; we may call it an 
 asymptotic probability.
+\smallskip
 
-Our aim will be to make $p(c)$ as small as possible, since it is not hard
-to make it big.
-\\
-
-Some other defintions are needed in order to relate this problem to finite
-graphs. In particular, we need to describe how a finite
-graph can be ``well $k$-coloured'' even when its chromatic number is greater
+Let's turn to the definitions regarding finite graphs, that describe how a graph
+can be ``well $k$-coloured'' even when its chromatic number is greater
 than $k$.
 \begin{definition}
 \ 
@@ -141,29 +175,19 @@ Then we define $m_k(G)$ as:
 an embedding in $\R^2$ in which all edges have length $1$.
 \end{enumerate}
 \end{definition}
-In section~\ref{equiv} we prove the following:
+Now the theorem can be properly stated:
 \begin{theo} \label{ineg}
 Let $\mathcal{G}$ be the set of unit distance graphs and $\Cp_k$ the set 
 of periodic $k$-colourings of the plane, then
 $$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \Cp_k} \ \pper(c) \leq \frac{1}{k}. $$
 \end{theo}
 The rest of the paper aims at proving the analogous theorem for asymptotic 
-colourings, whose proof is ended in section~\ref{ext}:
+colourings:
 \begin{theo} \label{ineg2}
 Let $\mathcal{G}$ be the set of unit distance graphs and $\C_k$ the set 
 of asymptotic $k$-colourings of the plane, then
 $$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \C_k} \ p(c) \leq \frac{1}{k}. $$
 \end{theo}
-
-In section~\ref{appli} we study the particular cases $k=2,3$ are discussed,
-and prove the following consiquence of the theorems:
-\begin{cons}\label{con}
-If \ $\inf_{c \in \Ca_k} \ p(c) = 0$ \ then the chromatic number of the
-plane is at most $k$.
-\end{cons}
-We study in section~\ref{ext} the case of a finite table instead of the whole plane,
-complete the proof of theorem~\ref{ineg2}, and give some remarks on possible 
-generalizations to higher dimentions.
 
 \section{Process equivalence}
 \label{equiv}
@@ -248,8 +272,6 @@ and an application of Fubini's theorem shows that
 $$\Esp[\pper(C)] = \frac1k$$
 so that there is a realisation $c_0$ with $\pper(c_0) \leq \frac1k$.
 \end{proof}
-We still don't know wether or not the left-hand inequality of theorem~\ref{ineg} is actually an equality. It is for 
-$n=2$, as will be shown thereafter.
 
 \section{Applications} \label{appli}
 \subsection{2 colours} \label{2col}
@@ -290,8 +312,8 @@ that this colouring achieves a probability of $\frac{1}{3}$ indeed.
 We don't know if the previous bound is optimal. We believe that Figure~\ref{trois} 
 can give a rather good $3$-colouring of the plane, for some well chosen length 
 of the edge of the hexagons. Rough simulations and optimisation have shown that 
-this colouring gives a $\pper(c)$ of about $0.12$ for an edge of length about 
-$0.61$, but $0.12$ is still greater than $\frac{1}{11} \simeq 0.091$.
+this colouring gives a $\pper(c)$ of about $0.13$ for an edge of length about 
+$0.61$, but $0.13$ is still greater than $\frac{1}{11} \simeq 0.091$.
 %Still, we did not compute the exact optimum in that case because the 
 %estimation is still far away from $\frac{1}{11}$.
 
@@ -318,7 +340,7 @@ If there exist a unit distance graph (finite by definition) which cannot
 be coloured with $k$ colours, it 
 follows from our study that the probability $p(c)$ for $c$ a valid 
 $k$-colouring is always greater than a certain constant. Taking the 
-contrapositive of this statement and using the De Bruijn-Erdős theorem yields 
+contrapositive of this statement and using the De Bruijn-Erdős theorem yield 
 corollary~\ref{con}.
 
 \section{Extensions}
@@ -329,8 +351,8 @@ corollary~\ref{con}.
 Previously we used periodicity so that we didn't have to worry about the second 
 endpoint $B$ falling outside of $\mathbf{P}$, which made things technically easier. We now 
 try to require that $B$ fall in $\mathbf{P}$ to match a somewhat more practical 
-view: we want to describe the throwing of the needle on an ``actual'' bounded 
-table. The first difficulty is to find a natural distribution for our needle.
+view: we want to throw the needle on an ``actual'' bounded 
+table. The first difficulty is to find a natural distribution for the needle.
 
 \begin{process} \label{encore}
 Denote by $\mathbf{P}$ an open parallelogram, representing the table. For the 
@@ -390,7 +412,7 @@ $$ |\pper(\tilde{c}) - \ptable(c)| \leq 2r.$$
 Since we already have bounds on $\pper$, we can therefore deduce bounds on $\ptable$.
 For instance, with $2$ colours, we see that 
 $\ptable(c) \geq \frac13 - \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$. 
-This bound becames sharper as the table parallelogram $\mathbf{P}$ becomes bigger.
+This bound becomes sharper as the table parallelogram $\mathbf{P}$ becomes bigger.
 \begin{proof}[Proof of Theorem~\ref{ineg2}]
 If $c$ is an asymptotic colouring, let $\tilde{c_R}$ be the periodised version of $c_{|[-R;R]^2}$ (that is, restrict $c$ to $[-R;R]^2$ and tile the plane by repeating this square). By lemma~\ref{choco},
 \begin{equation} \label{estim}
@@ -399,17 +421,17 @@ If $c$ is an asymptotic colouring, let $\tilde{c_R}$ be the periodised version o
 But $\ptable(c_{|[-R;R]^2}) = \frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$ (see definition~\ref{defas} for notations) and this ratio converges to $p(c)$ as $R\rightarrow +\infty$. The bounds on $\pper(\tilde{c_R})$ given by theorem~\ref{ineg} and the estimate~(\ref{estim}) yield theorem~\ref{ineg2}.
 \end{proof}
 
-It may seem a bit odd to chose a square to define asymptotic colourings in definition~\ref{defas}. One could have, for instance, replaced $[-R,R]^2$ by the disk $D(O,R)$ in this definition. The advantage of the square is that it made the previous proof easier, given that periodic colourings were already studied. Getting similar results for a disk (or with any open set bounded by a smooth curve) would require a result similar to lemma~\ref{huitre} with an estimation similar to the one in lemma~\ref{choco}.
+It may seem a bit odd to chose a square to define asymptotic colourings in definition~\ref{defas}. One could have, for instance, replaced $[-R,R]^2$ by the disk $D(O,R)$ in this definition. The advantage of the square is that it made the previous proof easier, given that periodic colourings were already studied. Getting similar results for a disk (or with any open set bounded by a smooth curve) shouldn't be harder, but it would require a result similar to lemma~\ref{huitre} with an estimation similar to the one in lemma~\ref{choco}.
 
-Still, it should be noted that the value of $p(c)$ defined by asymptotics on different shapes may differ. For instance, consider the 2-colouring of figure \ref{contrex} where stripes are $\frac{\sqrt{3}}{2}$ appart. In the striped region the probability is approximately $\frac13$ (see section \ref{2col}), and it is $1$ in the rest of the plane. So $p(c)$ is related to the fraction of a square (resp. disk) occupied by the striped region, and this fraction is different in these two cases.
+However, it should be noted that the value of $p(c)$ defined by asymptotics on different shapes may differ. For instance, consider the 2-colouring of figure \ref{contrex} where stripes are $\frac{\sqrt{3}}{2}$ appart. In the striped region the probability is approximately $\frac13$ (see section \ref{2col}), and it is $1$ in the rest of the plane. So $p(c)$ is related to the fraction of a square (resp. disk) occupied by the striped region, and this fraction is different in these two cases.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \center
-\includegraphics[scale=0.5]{contrex.png}
+\includegraphics[scale=0.45]{contrex.png}
 \caption{\label{contrex} An asymptotic 2-colouring of the plane}
 \end{figure}
 
-However, the unequality of theorem~\ref{ineg2} should remain true for these different possible values of asymptotic $p(c)$'s.
+The unequality of theorem~\ref{ineg2} should nevertheless remain true for these different possible values of asymptotic $p(c)$'s.
 
 \subsection{Higher dimensions}
 \label{dim}
@@ -453,9 +475,9 @@ dimension $3$ or more.
 Remark that in higher dimension, better minorations may be provided by 
 Theorems~\ref{ineg}~and~\ref{ineg2}, since new graphs can 
 become unit-length. For example, with $3$ colours in dimension $3$, the regular 
-tetrahedron gives a better lower bound 
-of $\frac 1 6 >\frac 1 {11}$. More generally, considering the complete graph 
-$K_{k+1}$ in dimension $k$ (also known as the regular $k+1$-simplex). It is a unit distance graph and is not $k$-colourable, so the 
+tetrahedron gives a lower bound 
+of $\frac 1 6$, while we could only achieve a lower bound of $\frac 1 {11}$ in dimention $2$. More generally, consider the complete graph 
+$K_{k+1}$ in dimension $k$ (also known as the regular $k+1$-simplex): it is a unit distance graph and is not $k$-colourable, so the 
 probability of getting a monochromatic needle is at least $\frac{1}{\binom{k+1}{2}}$ 
 for $k$ colours in dimension $k$.
 

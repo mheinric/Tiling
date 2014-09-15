@@ -10,7 +10,8 @@
 \usepackage{dsfont}  % pour les indicatrices 
 \usepackage{graphicx} 
 \usepackage{textcomp}  
-\usepackage{enumerate}                             
+\usepackage{enumerate}     
+\usepackage{authblk}                        
 \sloppy              % Ne pas faire déborder les lignes dans la marge
 
 
@@ -40,8 +41,21 @@
 \newcommand{\Ca}{\mathcal{C}}
 
 \title{Throwing needles on a coloured plane.}
-\author{Thomas Bourgeat \and Marc Heinrich \and Paul Melotti 
-\and Jean-Marc Robert}
+
+\author[1]{Thomas Borgeat}
+\author[1]{Marc Heinrich}
+\author[1]{Paul Melotti}
+\affil[1]{Computer science departement,\authorcr
+\'Ecole Normale Sup\'erieure, Paris, France\authorcr
+		  \texttt{\{surname\}.\{name\}@ens.fr}
+}
+
+\author[2]{Jean-Marc Robert}
+\affil[2]{Software engeneering and IT departement,\authorcr
+Ecole de Technologie Sup\'erieure, Montreal, Canada\authorcr
+		  \texttt{jean-marc.robert@etsmlt.ca}
+}
+
 
 \begin{document}
 \maketitle
@@ -166,7 +180,7 @@ than $k$.
 \begin{enumerate}[i)]
 \item For a finite graph $G=(V,E)$ and a $k$-colouring $c$ of the vertices of $G$, 
 let $M_G(c)$ be the number of monochromatic edges in $G$ when couloured with $c$:
-$$M_G(c) = \sum_{i \sim j} \mathds{1}_{c(i)=c(j)}.$$
+$$M_G(c) = \sum_{(i, j) \in E} \mathds{1}_{c(i)=c(j)}.$$
 where the sum is on the edges of $G$.
 
 Then we define $m_k(G)$ as:
@@ -359,7 +373,7 @@ Denote by $\mathbf{P}$ an open parallelogram, representing the table. For the
 process to be well defined, we need to assume that $\mathbf{P}$ can contain at
 least one needle.
 \begin{itemize}
-\item Consider the law $\mathcal{L}$ of $(A,B)$ given by Pocess~\ref{premier} on $\P$.
+\item Consider the law $\mathcal{L}$ of $(A,B)$ given by Process~\ref{premier} on $\P$.
 \item Let $(A'',B'')$ be random points in $\P$ following the law
 $\mathcal{L}$ conditioned by the event $\{B \in \mathbf{P} \}$.
 \end{itemize}
@@ -431,7 +445,7 @@ However, it should be noted that the value of $p(c)$ defined by asymptotics on d
 \caption{\label{contrex} An asymptotic 2-colouring of the plane}
 \end{figure}
 
-The unequality of theorem~\ref{ineg2} should nevertheless remain true for these different possible values of asymptotic $p(c)$'s.
+The inequality of theorem~\ref{ineg2} should nevertheless remain true for these different possible values of asymptotic $p(c)$'s.
 
 \subsection{Higher dimensions}
 \label{dim}

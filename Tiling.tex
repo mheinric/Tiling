@@ -52,8 +52,8 @@
 
 \author[2]{Jean-Marc Robert}
 \affil[2]{Software engineering and IT department,\authorcr
-Ecole de Technologie Sup\'erieure, Montreal, Canada\authorcr
-		  \texttt{jean-marc.robert@etsmlt.ca}
+\'Ecole de Technologie Sup\'erieure, Montr\'eal, Canada\authorcr
+		  \texttt{jean-marc.robert@etsmtl.ca}
 }
 
 
@@ -68,54 +68,60 @@ some bounds on the optimal probability are deduced.\end{abstract}
 
 \section{Introduction}
 
-A well-known problem of geometric graph theory is the following: how many colors
-are needed to color the plane so that no two points at unit distance are the 
-same color? This is known as the Hadwiger-Nelson problem, and the answer to that
-question is often referred to as the \textit{chromatic number of the plane}. It 
-seems that the problem was first stated by Nelson in 1950, and first published by 
+A well-known problem in geometric graph theory is the following: how many colors
+are needed to color the Euclidian plane so that no two points at unit distance have the 
+same color? This is known as the Hadwiger-Nelson problem. It is often stated in 
+the language of graph theory: let $E^2$ be the graph whose set of vertices is $\R^2$,
+and so that two vertices are joined by an edge \textit{iff} their euclidian distance
+is 1. Then what we are looking for is the \textit{chromatic number} of $E^2$.
+
+It seems that the problem was first stated by Nelson in 1950, and first published by 
 Gardner in \cite{gardner}.
 For a nice review about this problem and many others, see Soifer's book
-\cite{soifer}, chapters~2~and~3. This question is still very mysterious to that day, and all that 
+\cite{soifer}. This question is still very mysterious to that day, and all that 
 is known for sure is that the chromatic number of the plane is not greater than
-7 and not smaller than 4.
+7 and not smaller than 4. The upper bound is derived from a tesselation of the 
+plane with regular hexagons proposed by Isbell \cite{soifer}. On the other hand,
+the lower bound is obtained from the \textit{Moser spindle}.\cite{moser}, a graph with edges
+of length 1 which cannot be colored with three colors (see Section \ref{3col} for
+a definition of this graph).
 
 The questions presented here may be seen as a probabilistic version of this 
-problem, since we don't try to make \textit{every} unit-length segment 
+problem, since we do not try to make \textit{every} unit-length segment 
 bi-chromatic but a large fraction of them.
 
 \medskip
 
-Let's state our results in a rough, imprecise way: a $k$-\textit{coloring} is a borelian 
-function from, say, a square, to the finite set $\{1, \dots , k \}$. If $c$
-is a coloring, let $p(c)$ be the probability that when throwing a unit-length
-segment (or \textit{needle}) on $c$, you get both endpoints on the same color.
-Our aim will be to make $p(c)$ as small as possible, since it is not hard
-to make it big.
+Let's state our results in a rough, imprecise way: a $k$-\textit{coloring} is a Borelian 
+function $c$ from, say, a square, to the finite set $\{1, \dots , k \}$, and let $p(c)$ be the probability that when throwing a unit-length
+segment (or \textit{needle}) on $c$, both endpoints of the needle have the same color.
+Our aim is to find a coloring $c$ such that $p(c)$ is as small as possible.
 
 For a finite graph $g$, let $m_k(g)$ be the smallest fraction of monochromatic
-edges in a $k$-coloring of $g$. Then, if $\mathcal{G}$ denotes the set of 
+edges in a $k$-coloring of $g$. Then, let $\mathcal{G}$ be the set of 
 \textit{unit distance graphs} -- that is, graphs that can be embedded in the
-plane with all edges of length 1 -- and $\C_k$ the set of $k$-colorings, we
+Euclidian plane with all edges of unit-length, or equivalently, such that there is
+a graph morphism from $g$ to $E^2$ -- and let $\C_k$ be the set of $k$-colorings. We
 have:
 \begin{theo*}
-$$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \C_k} \ \pper(c) \leq \frac{1}{k}. $$
+$$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \C_k} \ p(c) \leq \frac{1}{k}. $$
 \end{theo*}
-We don't know if the left hand of the inequality is actually an equality in
-the general case, but we prove that it is for $k=2$.
+We do not know whether the left hand-side of the inequality is actually an equality in
+the general case or not, but we prove that it is so for $k=2$.
 
 We also prove the following consequence, regarding the Hadwiger-Nelson problem:
 \begin{cons} \label{con}
 If \ $\inf_{c \in \Ca_k} \ p(c) = 0$ \ then the chromatic number of the
-plane is not bigger than $k$.
+plane is not greater than $k$.
 \end{cons}
 
-The paper is organized as follows: in section~\ref{defsection} we clarify the
+The paper is organized as follows: in Section~\ref{defsection} we clarify the
 definitions and tools we will use. Section~\ref{equiv} is devoted to the proof 
-of the theorem in the case of periodic colorings of the plane; a generalization
-to what we call ``asymptotic colorings'' is rejected to section~\ref{ext}.
-In section~\ref{appli} we give some applications, studying the particular cases $k=2,3$,
+of the Theorem in the case of periodic colorings of the plane; a generalization
+to what we call ``asymptotic colorings'' is rejected to Section~\ref{ext}.
+In Section~\ref{appli} we give some applications, studying the particular cases $k=2,3$,
 and proving the corollary.
-We study in section~\ref{ext} the case of a finite table instead of the whole plane, 
+We study in Section~\ref{ext} the case of a finite table instead of the whole plane, 
 and give some remarks on possible 
 generalizations to higher dimensions.
 
@@ -125,28 +131,27 @@ the latter being a generalization of the former.
 \begin{definition}
 \
 \begin{enumerate}[i)] 
-\item A $k$-\textit{coloring} of the plane is a measurable function $c$ from the euclidean 
+\item A $k$-\textit{coloring} of the plane is a measurable function $c$ from the Euclidean 
 plane~$\R ^2$ to the finite set $\{1, \dots , k \}$.
 
-A \textit{coloring} is a $k$-coloring for some $k$.
-\item The set of \textit{monochromatic needles} of a coloring $c$ is the set
-\[ \M (c) = \{x,y \in \R ^2 \times \R ^2 \mid d(x,y) = 1, \ c(x) = c(y) \} \]
+A \textit{coloring} of the plane is simply is a $k$-coloring for some fixed $k \in \N$.
+\item The set of \textit{monochromatic needles} of a coloring $c$ of the plane is the set
+\[ \M (c) = \{(x,y) \in \R ^2 \times \R ^2 \mid d(x,y) = 1 \ \ \mathrm{and} \ \ c(x) = c(y) \} \]
 which is a measurable subset of $\R ^4$.
 \end{enumerate}
 \end{definition}
 
 \begin{definition}
 \
-\begin{enumerate}[i)] 
+\begin{enumerate}[i)] \label{pper}
 \item A coloring $c$ is said to be \textit{periodic} if there are two free
-vectors $(u,v)$ so that for any $x$ in $\R ^2$, $c(x+u)=c(x+v)=c(x)$. In that
-case we note $\P_c$ the parallelogram formed on $u$ and $v$, that is:
+vectors $u,v\in \R^2$ so that for any $x$ in $\R ^2$, $c(x+u)=c(x+v)=c(x)$. In such a
+case let $\P_c$ be the parallelogram formed on $u$ and $v$, \textit{i.e.}:
 \[\P_c = \{tu+sv, \ 0\leq t,s< 1 \} \subset \R ^2. \]
 \item For a periodic coloring $c$, consider the following random variables:
-let $A$ be a point chosen uniformly in $\P_c$, and $B=A + e^{i \theta}$ where
+$A$ is a random point chosen uniformly in $\P_c$, and $B=A + e^{i \theta}$ where
 $\theta$ is a random angle taken uniformly in $[0;2 \pi[$ independently of $A$.
-
-Then we note $\pper(c)$ the probability
+Then let $\pper(c)$ denote the probability
 $$\pper(c) = \Pr(c(A)=c(B)).$$
 \end{enumerate}
 \end{definition}
@@ -154,20 +159,22 @@ $$\pper(c) = \Pr(c(A)=c(B)).$$
 \begin{definition}
 \
 \begin{enumerate}[i)]\label{defas}
-\item If $A$ is a measurable subset of $\R^2$ and $c$ a coloring, let $\N_A$ be
-the set of \textit{needles inside} $A$, and $\M_A$ the set of \textit{monochromatic
-needles inside} A:
-\[\N_A = \{(x,y) \in A ^2 \mid d(x,y)=1\}, \]
-\[\M_A (c) = \M (c) \cap \N_A. \]
+\item If $K$ is a compact subset of $\R^2$ and $c$ a coloring, let $\N_K$ be
+the set of \textit{needles inside} $K$, and $\M_K$ the set of \textit{monochromatic
+needles inside} $K$. Thus,
+\[\N_K = \{(x,y) \in K \times K \mid d(x,y)=1\}, \]
+\[\M_K (c) = \M (c) \cap \N_K. \]
+For example, $K$ can be the square $[-R;R]\times [-R;R]$ for some $R\in \R_{>0}$.
 
 \item  \label{asympt}The coloring $c$ is said to be \textit{asymptotic} if the ratio
-$\frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$ 
+$\frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$, where $\lambda$ is the
+3-dimensional ``surface'' in $\R^4$,
 converges to a limit $p(c) \in [0,1]$ as $R$ tends to infinity.
 \end{enumerate}
 \end{definition}
 
 It should be clear that a periodic coloring $c$ is also an asymptotic coloring,
-and $\pper(c)=p(c)$ in that case. However, contrary to $\pper(c)$, $p(c)$ is not
+and $\pper(c)=p(c)$ in that case. However, $p(c)$ is not
 in general a probability and should not be seen as such; we may call it an 
 asymptotic probability.
 \smallskip
@@ -179,23 +186,23 @@ than $k$.
 \ 
 \begin{enumerate}[i)]
 \item For a finite graph $G=(V,E)$ and a $k$-coloring $c$ of the vertices of $G$, 
-let $M_G(c)$ be the number of monochromatic edges in $G$ when colored with $c$:
+let $M_G(c)$ be the number of monochromatic edges in $G$ when colored with $c$, \textit{i.e.}
 $$M_G(c) = \sum_{(i, j) \in E} \mathds{1}_{c(i)=c(j)}.$$
-where the sum is on the edges of $G$.
+where the function $\mathds{1}_{c(i)=c(j)}$ returns 1 if $c(i)=c(j)$ and 0 otherwise. Here the sum is taken on the edges of $G$, meaning that every edge appears exactly one time in the sum.
 
-Then we define $m_k(G)$ as:
-\[m_k(G) = \min_{c \ k-\mathrm{coloring \ of} \ G} \frac{M_G(c)}{|E|}.\]
-\item A finite graph is said to be a \emph{unit distance graph} if it has 
-an embedding in $\R^2$ in which all edges have length $1$.
+Then let $m_k(G)$ be
+\[m_k(G) = \min_{c \ \mathrm{is \ a} \ k-\mathrm{coloring \ of} \ G} \frac{M_G(c)}{|E|}.\]
+\item A finite graph is said to be a \emph{unit-distance graph} if it has 
+an embedding in $\R^2$ in which all edges have unit-length, that we will call an \textit{embedding in} $E^2$.
 \end{enumerate}
 \end{definition}
-Now the theorem can be properly stated:
+Now the main result of this paper can be properly stated:
 \begin{theo} \label{ineg}
 Let $\mathcal{G}$ be the set of unit distance graphs and $\Cp_k$ the set 
 of periodic $k$-colorings of the plane, then
 $$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \Cp_k} \ \pper(c) \leq \frac{1}{k}. $$
 \end{theo}
-We will then deduce an analogous theorem for asymptotic 
+We will then deduce an analogous Theorem for asymptotic 
 colorings:
 \begin{theo} \label{ineg2}
 Let $\mathcal{G}$ be the set of unit distance graphs and $\C_k$ the set 
@@ -206,14 +213,13 @@ $$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \C_k} \ p(c) \leq \frac{1}
 \section{Process equivalence}
 \label{equiv}
 
-Let $c$ be a periodic coloring, and consider the needle-throwing ``processes'':
+Let $c$ be a periodic coloring of the plane, and consider the following needle-throwing ``processes''. The first is only a rephrasement of Definition~\ref{pper}, given here for clarity purposes.
 \begin{process} \label{premier}
 Consider the following random variables:
 \begin{itemize}
-  \item let $A$ be a point chosen uniformly 
+  \item a random point $A$ chosen uniformly 
   in $\P_c$ ;
-  \item let $\theta$ be an independent angle chosen uniformly in $[0;2 \pi[$ ;
-  \item let $B$ be $A + e^{i \theta}$.
+  \item an independent random angle $\theta$ chosen uniformly in $[0;2 \pi[$, and define $B$ as $A + e^{i \theta}$.
 \end{itemize}
 \end{process}
 
@@ -222,22 +228,21 @@ defined using the periodicity of the coloring.
 Our goal is to evaluate and minimize the probability that both ends have the 
 same color.
 
-We consider the following, second process that will be very useful in our 
+Now consider the second process that will be very useful in our 
 proofs. The idea is to throw a unit distance graph on the 
 plane, and then to choose a needle on that graph:
 \begin{process}
-Given a unit distance graph $G = (V,E)$, embedded in the plane in 
-a unit distance way. Label its edges with numbers from 
+Given a unit distance graph $G = (V,E)$, embedded in $E^2$. Label its edges with numbers from 
 $1$ to $m$. The complex coordinates of the vertices of the $j^{th}$ edges are 
-named $z_j $ and $z_j + e^{i.\theta_j}$. Choose: 
+named $z_j $ and $z_j + e^{i.\theta_j}$. Then let: 
 \begin{itemize}
-\item one point $A_0$ uniformly in $\P_c$ ;
-\item an independent angle $\theta$ uniformly in $[0;2\pi[$ (to rotate the graph) ;
-\item an independent integer $J$ in $[| 1;m|]$.
+\item $A_0$ be a random point taken uniformly in $\P_c$ ;
+\item $\theta$ be an independent angle taken uniformly in $[0;2\pi[$ (to rotate the graph) ;
+\item $J$ be an integer in $[| 1;m|]$, independent from all of the above.
 \end{itemize}
-Then, rotate the graph by the angle $\theta$, translate it so that the origin 
-falls on $A_0$, and take the needle $(A',B')$ corresponding to the $J^{th}$ 
-edge of the obtained graph. In other words:
+Then, rotate the graph $G$ by the angle $\theta$, translate it so that the origin 
+of the plane falls on $A_0$, and take the needle $(A',B')$ corresponding to the $J^{th}$ 
+edge of the obtained graph. In other words, the endpoints of the needle have the law:
 $$A' = e^{i.\theta} z_J + A_0, \ B' = e^{i.\theta} (z_J + e^{i.\theta_J}) + A_0.$$
 \end{process}
 
@@ -246,7 +251,7 @@ Let $c_1$ and $c_2$ denote
 two colors. Then, we 
 have~:\\
  $$\mathbb{P}(c(A) = c_1, c(B) = c_2) = \mathbb{P}(c(A') = c_1, c(B') = c_2) $$ \\
- In particular, the probability does not depend on the graph 
+ In particular, this probability does not depend on the graph 
  chosen.
 \end{lemma}
 
@@ -262,27 +267,27 @@ We prove the lemma by the following series of equalities:
     &=& \frac{1}{m 2\pi \mathcal{A}(\P_c)}\sum_{j=1}^{m} \int_{\theta =0} ^{2\pi} \int_{A_0 \in \P_c} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i (\theta + \theta_j)}) = c_2 ) d\theta dx dy \hspace{1 cm} (*)\\ 
     &=& \frac{1}{m 2\pi \mathcal{A}(\P_c)}\sum_{j=1}^{m} \int_{\theta =0} ^{2\pi} \int_{A_0 \in \P_c} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
     &=& \frac{1}{2\pi \mathcal{A}(\P_c)}\int_{\theta =0} ^{2\pi} \int_{A_0 \in \P_c} \mathds{1}(c(A_0) = c_1, c(A_0 + e^{i \theta}) = c_2 ) d\theta dx dy \\ 
+    &=& \mathbb{P}(c(A) = c_1, c(B) = c_2)
 \end{eqnarray*}
-Which gives exactly the same probability as the first process.
 
 Equality $(*)$ is justified by the periodicity of our coloring.
 \end{proof}
 
-\begin{proof}[Proof of theorem~\ref{ineg}]
+\begin{proof}[Proof of Theorem~\ref{ineg}]
 Consider a graph $g$ colored with $k$ colors. When one chooses a needle
 randomly on this graph the probability that both ends have the same
 colors is clearly greater than $m_k(g)$. Applying lemma \ref{huitre} with $g$, 
 it follows from the description of the second process that the probability 
 $\pper(c)$ for any coloring $c$ is greater than $m_k(g)$.
 
-Now to get the right-hand side of the theorem, let $\P$ be a square of side $R$,
+Now to get the right-hand side of the Theorem, let $\P$ be a square of side $R$,
 and cut $\P$ into $n^2$ squares of side $R/n$. Let $C$ be a \textit{random} 
 coloring obtained by assigning to these $n^2$ smaller squares i.i.d. colors
 taken uniformly in $\{1,\dots,k\}$, and by repeating $\P$ to get a periodic 
 coloring. Then one easily checks that for $R$ large enough and $R/n$ small
 enough, for any needle $(A,B)$, $A$ and $B$ are in distinct small squares so
 $$\Pr(C(A)=C(B)) = \frac1k,$$
-and an application of Fubini's theorem shows that
+and an application of Fubini's Theorem shows that
 $$\Esp[\pper(C)] = \frac1k,$$
 so that there is a realization $c_0$ with $\pper(c_0) \leq \frac1k$.
 \end{proof}
@@ -295,7 +300,7 @@ As there are always at least two vertices with the same color, it's clear that
 $m_2(g) = \frac{1}{3}$. Thanks to Theorem~\ref{ineg}, 
 we know that $\pper(c) \geq \frac13$ for any periodic coloring $c$.
 
-This bound is optimal. Indeed, consider the coloring in figure~\ref{couleur}, 
+This bound is optimal. Indeed, consider the coloring in Figure~\ref{couleur}, 
 constructed with parallel strips of width 
 $l = \frac {\sqrt3}{2}$, with the upper side opened and the lower side closed. 
 
@@ -312,8 +317,8 @@ three vertices with the same colors. Applying Lemma~\ref{huitre}, we conclude
 that this coloring achieves a probability of $\frac{1}{3}$ indeed.
 %CLASSE DE SOLUTIONS?
 
-\subsection{3 colors}
- With three colors, we use the Moser spindle of figure~\ref{color} - a unit 
+\subsection{3 colors}\label{3col}
+ With three colors, we use the Moser spindle of Figure~\ref{color} - a unit 
  distance graph with $m_3(g) = \frac{1}{11}$.
  We similarly get that for $k=3$, $p(c) \geq \frac{1}{11}$ for any valid coloring. 
 
@@ -323,10 +328,10 @@ that this coloring achieves a probability of $\frac{1}{3}$ indeed.
 \caption{\label{color} The Moser spindle}
 \end{figure}
 
-We don't know if the previous bound is optimal. We believe that Figure~\ref{trois} 
+We do not know if the previous bound is optimal. We believe that Figure~\ref{trois} 
 can give a rather good $3$-coloring of the plane, for some well chosen length 
 of the edge of the hexagons. Rough simulations and optimization have shown that 
-this coloring gives a $\pper(c)$ of about $0.13$ for an edge of about 
+this coloring gives a $\pper(c)$ of about $0.13$ if the edge-length of the hexagons is about 
 $0.61$, but $0.13$ is still greater than $\frac{1}{11} \simeq 0.091$.
 %Still, we did not compute the exact optimum in that case because the 
 %estimation is still far away from $\frac{1}{11}$.
@@ -338,12 +343,12 @@ $0.61$, but $0.13$ is still greater than $\frac{1}{11} \simeq 0.091$.
 \end{figure}
 
 \subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
-The results shown in this section will be derived using the axiom of choice. 
+The results shown in this Section will be derived using the axiom of choice. 
 This is important to notice, since the answer to the Hadwiger-Nelson problem is 
-suspected to depend on the set of axioms used. We will use the 
-De Bruijn - Erd\H{o}s theorem, established in \cite{erdos}, whose proof uses 
+suspected to depend on the set of axioms used; see \cite{choice}, \cite{choice2}. We will use the 
+De Bruijn - Erd\H{o}s Theorem, established in \cite{erdos}, whose proof uses 
 the axiom of choice.
-\begin{theo}[De Bruijn - Erdős]
+\begin{theo}[De Bruijn - Erd\H{o}s]
  A graph $G$ can be colored with $k$ colors iff all of its finite subgraphs 
  can be colored with $k$ colors.
 \end{theo}
@@ -354,7 +359,7 @@ If there exist a unit distance graph (finite by definition) which cannot
 be colored with $k$ colors, it 
 follows from our study that the probability $p(c)$ for $c$ a valid 
 $k$-coloring is always greater than a certain positive constant. Taking the 
-contrapositive of this statement and using the De Bruijn-Erdős theorem yield 
+contrapositive of this statement and using the De Bruijn-Erd\H{o}s Theorem yield 
 corollary~\ref{con}.
 
 \section{Extensions}
@@ -373,16 +378,16 @@ Denote by $\mathbf{P}$ an open parallelogram, representing the table. For the
 process to be well defined, we need to assume that $\mathbf{P}$ can contain at
 least one needle.
 \begin{itemize}
-\item Consider the law $\mathcal{L}$ of $(A,B)$ given by Process~\ref{premier} on $\P$.
-\item Let $(A'',B'')$ be random points in $\P$ following the law
-$\mathcal{L}$ conditioned by the event $\{B \in \mathbf{P} \}$.
+\item Let $(A,B)$ be a random needle on $\P$ as in Process~\ref{premier}. Let $(A'',B'')$ be random points in $\P$ following the law
+of $(A,B)$ conditioned by the event $\{B \in \mathbf{P} \}$.
 \end{itemize}
 \end{process}
 
 %To evaluate $P(B \in \mathbf{P})$ we need to define the border of a parallelogram~:
 \begin{definition}
 For $r>0$, let $K(\mathbf{P},r)$ the $r$-wide inner border of $\mathbf{P}$~:
-\[K(\mathbf{P},r) = \{ z \in \mathbf{P} \mid d(z,\mathbf{P}^c) < r\} \] 
+\[K(\mathbf{P},r) = \{ z \in \mathbf{P} \mid d(z,\mathbf{P}^c) < r\} \]
+where $d(z,\mathbf{P}^c)$ is the usual Euclidian distance from the point $z$ to the set $\mathbf{P}^c$.
 \end{definition}
 
 \begin{figure}[h]
@@ -428,16 +433,16 @@ For instance, with $2$ colors, we see that
 $\ptable(c) \geq \frac13 - \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$. 
 This bound becomes sharper as the table parallelogram $\mathbf{P}$ becomes bigger.
 \begin{proof}[Proof of Theorem~\ref{ineg2}]
-If $c$ is an asymptotic coloring, let $\tilde{c_R}$ be the periodic version of $c_{|[-R;R]^2}$ (that is, restrict $c$ to $[-R;R]^2$ and tile the plane by repeating this square). By lemma~\ref{choco},
+If $c$ is an asymptotic coloring, let $\tilde{c_R}$ be the periodic version of $c_{|[-R;R]^2}$ (that is, restrict $c$ to $[-R;R]^2$ and tile the plane by repeating this square). By Lemma~\ref{choco},
 \begin{equation} \label{estim}
 |\pper(\tilde{c_R}) - \ptable(c_{|[-R;R]^2}) | \leq \kappa \frac{\mathcal{A}(K([-R;R]^2,1))}{\mathcal{A}([-R;R]^2)} \leq \kappa \frac{4R}{R^2} = \frac{4\kappa}{R}.
 \end{equation}
-Recall that $\ptable(c_{|[-R;R]^2}) = \frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$ (see definition~\ref{defas} for notations) and this ratio converges to $p(c)$ as $R\rightarrow +\infty$. The bounds on $\pper(\tilde{c_R})$ given by theorem~\ref{ineg} and the estimate~(\ref{estim}) yield theorem~\ref{ineg2}.
+Recall that $\ptable(c_{|[-R;R]^2}) = \frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$ (see definition~\ref{defas} for notations) and this ratio converges to $p(c)$ as $R\rightarrow +\infty$. The bounds on $\pper(\tilde{c_R})$ given by Theorem~\ref{ineg} and the estimate~(\ref{estim}) yield Theorem~\ref{ineg2}.
 \end{proof}
 
-It may seem a bit odd to chose a square to define asymptotic colorings in definition~\ref{defas}. One could have, for instance, replaced $[-R,R]^2$ by the disk $D(O,R)$ in this definition. The advantage of the square is that it made the previous proof easier, given that periodic colorings were already studied. Getting similar results for a disk (or with any open set bounded by a smooth curve) shouldn't be harder, but it would require a result similar to lemma~\ref{huitre} with an estimation similar to the one in lemma~\ref{choco}.
+It may seem a bit odd to chose a square to define asymptotic colorings in definition~\ref{defas}. One could have, for instance, replaced $[-R,R]^2$ by the disk $D(O,R)$ in this definition. The advantage of the square is that it made the previous proof easier, given that periodic colorings were already studied. Getting similar results for a disk (or with any open set bounded by a smooth curve) shouldn't be harder, but it would require a result similar to Lemma~\ref{huitre} with an estimation similar to the one in Lemma~\ref{choco}.
 
-However, it should be noted that the value of $p(c)$ defined by asymptotic colorings on different shapes may differ. For instance, consider the 2-coloring of figure \ref{contrex} where stripes are $\frac{\sqrt{3}}{2}$ apart. In the striped region the probability is approximately $\frac13$ (see section \ref{2col}), and it is $1$ in the rest of the plane. So $p(c)$ is related to the fraction of a square (resp. disk) occupied by the striped region, and this fraction depends on the shape.
+However, it should be noted that the value of $p(c)$ defined by asymptotic colorings on different shapes may differ. For instance, consider the 2-coloring of Figure~\ref{contrex} where stripes are $\frac{\sqrt{3}}{2}$ apart. In the striped region the probability is approximately $\frac13$ (see Section \ref{2col}), and it is $1$ in the rest of the plane. So $p(c)$ is related to the fraction of a square (resp. disk) occupied by the striped region, and this fraction depends on the shape.
 
 \begin{figure}[!ht]
 \center
@@ -445,7 +450,7 @@ However, it should be noted that the value of $p(c)$ defined by asymptotic color
 \caption{\label{contrex} An asymptotic 2-coloring of the plane}
 \end{figure}
 
-The inequality of theorem~\ref{ineg2} should nevertheless remain true for these different possible values of asymptotic $p(c)$'s.
+The inequality of Theorem~\ref{ineg2} should nevertheless remain true for these different possible values of asymptotic $p(c)$'s.
 
 \subsection{Higher dimensions}
 \label{dim}

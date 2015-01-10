@@ -30,7 +30,7 @@
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\M}{\mathcal{M}}
-\newcommand{\N}{\mathcal{N}}
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\C}{\mathcal{C}}
 \renewcommand{\Pr}{\mathbb{P}}
 \newcommand{\Esp}{\mathbb{E}}
@@ -111,8 +111,7 @@ the general case or not, but we prove that it is so for $k=2$.
 
 We also prove the following consequence, regarding the Hadwiger-Nelson problem:
 \begin{cons} \label{con}
-If \ $\inf_{c \in \Ca_k} \ p(c) = 0$ \ then the chromatic number of the
-plane is not greater than $k$.
+If \ $\inf_{c \in \Ca_k} \ p(c) = 0$ \ then the plane can be $k$-colored.
 \end{cons}
 
 The paper is organized as follows: in Section~\ref{defsection} we clarify the
@@ -120,7 +119,7 @@ definitions and tools we will use. Section~\ref{equiv} is devoted to the proof
 of the Theorem in the case of periodic colorings of the plane; a generalization
 to what we call ``asymptotic colorings'' is rejected to Section~\ref{ext}.
 In Section~\ref{appli} we give some applications, studying the particular cases $k=2,3$,
-and proving the corollary.
+and we prove the corollary.
 We study in Section~\ref{ext} the case of a finite table instead of the whole plane, 
 and give some remarks on possible 
 generalizations to higher dimensions.
@@ -129,16 +128,10 @@ generalizations to higher dimensions.
 We will be interested in \textit{periodic} and \textit{asymptotic} colorings,
 the latter being a generalization of the former.
 \begin{definition}
-\
-\begin{enumerate}[i)] 
-\item A $k$-\textit{coloring} of the plane is a measurable function $c$ from the Euclidean 
+A $k$-\textit{coloring} of the plane is a measurable function $c$ from the Euclidean 
 plane~$\R ^2$ to the finite set $\{1, \dots , k \}$.
 
-A \textit{coloring} of the plane is simply is a $k$-coloring for some fixed $k \in \N$.
-\item The set of \textit{monochromatic needles} of a coloring $c$ of the plane is the set
-\[ \M (c) = \{(x,y) \in \R ^2 \times \R ^2 \mid d(x,y) = 1 \ \ \mathrm{and} \ \ c(x) = c(y) \} \]
-which is a measurable subset of $\R ^4$.
-\end{enumerate}
+A \textit{coloring} of the plane is simply is a $k$-coloring for some $k \geq 2$.
 \end{definition}
 
 \begin{definition}
@@ -149,28 +142,26 @@ vectors $u,v\in \R^2$ so that for any $x$ in $\R ^2$, $c(x+u)=c(x+v)=c(x)$. In s
 case let $\P_c$ be the parallelogram formed on $u$ and $v$, \textit{i.e.}:
 \[\P_c = \{tu+sv, \ 0\leq t,s< 1 \} \subset \R ^2. \]
 \item For a periodic coloring $c$, consider the following random variables:
-$A$ is a random point chosen uniformly in $\P_c$, and $B=A + e^{i \theta}$ where
-$\theta$ is a random angle taken uniformly in $[0;2 \pi[$ independently of $A$.
+$A$ is a random point chosen uniformly in $\P_c$, 
+$\theta$ is a random angle taken uniformly in $[0;2 \pi[$, independent of $A$, 
+and $B=A + e^{i \theta}$.
 Then let $\pper(c)$ denote the probability
 $$\pper(c) = \Pr(c(A)=c(B)).$$
 \end{enumerate}
 \end{definition}
 
 \begin{definition}
-\
-\begin{enumerate}[i)]\label{defas}
-\item If $K$ is a compact subset of $\R^2$ and $c$ a coloring, let $\N_K$ be
-the set of \textit{needles inside} $K$, and $\M_K$ the set of \textit{monochromatic
-needles inside} $K$. Thus,
-\[\N_K = \{(x,y) \in K \times K \mid d(x,y)=1\}, \]
-\[\M_K (c) = \M (c) \cap \N_K. \]
-For example, $K$ can be the square $[-R;R]\times [-R;R]$ for some $R\in \R_{>0}$.
+\label{defas}For a general coloring $c$, and $R>1$, consider the 
+following random variables:
+$A_R$ is a random point chosen uniformly in $[-R;R]^2$, 
+$\theta$ is a random angle taken uniformly in $[0;2 \pi[$, independent of $A_R$, 
+and $B_R=A_R + e^{i \theta}$.
+Then let $\ptable_R(c)$ denote the conditional probability
+$$\ptable_R(c) = \Pr \left( c(A_R)=c(B_R) \ \mid \ B_R \in [-R;R]^2 \right),$$
+which is well defined because $R>1$.
 
-\item  \label{asympt}The coloring $c$ is said to be \textit{asymptotic} if the ratio
-$\frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$, where $\lambda$ is the
-3-dimensional ``surface'' in $\R^4$,
-converges to a limit $p(c) \in [0,1]$ as $R$ tends to infinity.
-\end{enumerate}
+The coloring $c$ is said to be \textit{asymptotic} if $\ptable_R(c)$
+converges to a limit as $R$ tends to infinity. This limit is called $p(c)$.
 \end{definition}
 
 It should be clear that a periodic coloring $c$ is also an asymptotic coloring,
@@ -293,6 +284,27 @@ so that there is a realization $c_0$ with $\pper(c_0) \leq \frac1k$.
 \end{proof}
 
 \section{Applications} \label{appli}
+\subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
+The results shown in this Section will be derived using the axiom of choice. 
+This is important to notice, since the answer to the Hadwiger-Nelson problem is 
+suspected to depend on the set of axioms used; see \cite{choice}, \cite{choice2}. We will use the 
+De Bruijn - Erd\H{o}s Theorem, established in \cite{erdos}, whose proof uses 
+the axiom of choice.
+\begin{theo}[De Bruijn - Erd\H{o}s]
+ A graph $G$ can be colored with $k$ colors iff all of its finite subgraphs 
+ can be colored with $k$ colors.
+\end{theo}
+In other words, the chromatic number of a graph is the maximum chromatic number 
+of its finite subgraphs.
+
+\begin{proof}[Proof of corollary~\ref{con}]If there exist a unit distance graph (finite by definition) which cannot 
+be colored with $k$ colors, it 
+follows from our study that the probability $p(c)$ for $c$ a valid 
+$k$-coloring is always greater than a certain positive constant. Taking the 
+contrapositive of this statement and using the De Bruijn-Erd\H{o}s Theorem yield 
+the corollary.
+\end{proof}
+
 \subsection{2 colors} \label{2col}
 
 With two colors, we consider an equilateral triangle as a unit distance graph. 
@@ -333,6 +345,12 @@ can give a rather good $3$-coloring of the plane, for some well chosen length
 of the edge of the hexagons. Rough simulations and optimization have shown that 
 this coloring gives a $\pper(c)$ of about $0.13$ if the edge-length of the hexagons is about 
 $0.61$, but $0.13$ is still greater than $\frac{1}{11} \simeq 0.091$.
+
+This also tells us that a unit distance graph of chromatic number greater than 3
+has at least $8$ edges, because otherwise theorem~\ref{ineg} would imply that
+all $3$-colorings of the plane satisfy $p(c) \geq \frac17$, and this is not the
+case in our simulation. Thus, simulations can be used to provide lower bounds on the
+number of edges of a non-$k$-colorable unit distance, for any $k$.
 %Still, we did not compute the exact optimum in that case because the 
 %estimation is still far away from $\frac{1}{11}$.
 
@@ -341,26 +359,6 @@ $0.61$, but $0.13$ is still greater than $\frac{1}{11} \simeq 0.091$.
 \includegraphics[scale=0.5]{trois.png}
 \caption{\label{trois} A hexagonal $3$-coloring and its parallelogram of periodicity}
 \end{figure}
-
-\subsection{Connections with the Hadwiger-Nelson problem} \label{hn}
-The results shown in this Section will be derived using the axiom of choice. 
-This is important to notice, since the answer to the Hadwiger-Nelson problem is 
-suspected to depend on the set of axioms used; see \cite{choice}, \cite{choice2}. We will use the 
-De Bruijn - Erd\H{o}s Theorem, established in \cite{erdos}, whose proof uses 
-the axiom of choice.
-\begin{theo}[De Bruijn - Erd\H{o}s]
- A graph $G$ can be colored with $k$ colors iff all of its finite subgraphs 
- can be colored with $k$ colors.
-\end{theo}
-In other words, the chromatic number of a graph is the maximum chromatic number 
-of its finite subgraphs.
-
-If there exist a unit distance graph (finite by definition) which cannot 
-be colored with $k$ colors, it 
-follows from our study that the probability $p(c)$ for $c$ a valid 
-$k$-coloring is always greater than a certain positive constant. Taking the 
-contrapositive of this statement and using the De Bruijn-Erd\H{o}s Theorem yield 
-corollary~\ref{con}.
 
 \section{Extensions}
 \label{ext}
@@ -397,8 +395,7 @@ where $d(z,\mathbf{P}^c)$ is the usual Euclidian distance from the point $z$ to 
 \end{figure}
 
 \begin{lemma}\label{choco}
-Let $c$ be a $k$-coloring of $\mathbf{P}$. Let $\tilde{c}$ be the periodic version of
-$c$ given by repeating $\P$. Let
+Let $c$ be a $k$-coloring of $\mathbf{P}$. Let
 $\ptable(c) = \Pr(c(A'')=c(B''))$ be the probability given by Process~\ref{encore}. Then 
 there is a positive universal constant $\kappa \leq 2$ so that 
 $$ | \pper(\tilde{c}) - \ptable(c)| \leq \kappa \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}.$$
@@ -414,7 +411,8 @@ inside $\P$, so all conditional probabilities will be well defined.
 
 Let $r = \frac{\mathcal{A}(K(\mathbf{P},1))}{\mathcal{A}(\mathbf{P})}$. When 
 $r \geq \frac12$ the inequality is obvious, so we will now suppose that 
-$r < \frac12$. Consider $(A,B)$ a needle whose law is given by Process~\ref{premier} on $\P$ and let $M$and $N$ be the following events:
+$r < \frac12$. Let $\tilde{c}$ be the periodic version of
+$c$ given by repeating $\P$. Consider $(A,B)$ a needle whose law is given by Process~\ref{premier} on $\P$ and let $M$and $N$ be the following events:
 $$ M = \{\tilde{c} (A) = \tilde{c} (B) \}, \ N = \{B\notin \P \}.$$
 Then $P(N^c) \leq r$, indeed, $B$ can 
 be outside of $\mathbf{P}$ only
@@ -437,7 +435,7 @@ If $c$ is an asymptotic coloring, let $\tilde{c_R}$ be the periodic version of $
 \begin{equation} \label{estim}
 |\pper(\tilde{c_R}) - \ptable(c_{|[-R;R]^2}) | \leq \kappa \frac{\mathcal{A}(K([-R;R]^2,1))}{\mathcal{A}([-R;R]^2)} \leq \kappa \frac{4R}{R^2} = \frac{4\kappa}{R}.
 \end{equation}
-Recall that $\ptable(c_{|[-R;R]^2}) = \frac{\lambda (\M_{[-R;R]^2})}{\lambda (\N_{[-R;R]^2})}$ (see definition~\ref{defas} for notations) and this ratio converges to $p(c)$ as $R\rightarrow +\infty$. The bounds on $\pper(\tilde{c_R})$ given by Theorem~\ref{ineg} and the estimate~(\ref{estim}) yield Theorem~\ref{ineg2}.
+The probability $\ptable(c_{|[-R;R]^2})$ converges to $p(c)$ as $R\rightarrow +\infty$. The bounds on $\pper(\tilde{c_R})$ given by Theorem~\ref{ineg} and the estimate~(\ref{estim}) yield Theorem~\ref{ineg2}.
 \end{proof}
 
 It may seem a bit odd to chose a square to define asymptotic colorings in definition~\ref{defas}. One could have, for instance, replaced $[-R,R]^2$ by the disk $D(O,R)$ in this definition. The advantage of the square is that it made the previous proof easier, given that periodic colorings were already studied. Getting similar results for a disk (or with any open set bounded by a smooth curve) shouldn't be harder, but it would require a result similar to Lemma~\ref{huitre} with an estimation similar to the one in Lemma~\ref{choco}.

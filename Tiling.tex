@@ -47,7 +47,7 @@
 \author[1]{Paul Melotti}
 \affil[1]{Computer science department,\authorcr
 \'Ecole Normale Sup\'erieure, Paris, France\authorcr
-		  \texttt{\{surname\}.\{name\}@ens.fr}
+		  \texttt{\{first name\}.\{name\}@ens.fr}
 }
 
 \author[2]{Jean-Marc Robert}
@@ -116,7 +116,7 @@ If \ $\inf_{c \in \Ca_k} \ p(c) = 0$ \ then the plane can be $k$-colored.
 
 The paper is organized as follows: in Section~\ref{defsection} we clarify the
 definitions and tools we will use. Section~\ref{equiv} is devoted to the proof 
-of the Theorem in the case of periodic colorings of the plane; a generalization
+of the theorem in the case of periodic colorings of the plane; a generalization
 to what we call ``asymptotic colorings'' is rejected to Section~\ref{ext}.
 In Section~\ref{appli} we give some applications, studying the particular cases $k=2,3$,
 and we prove the corollary.
@@ -193,7 +193,7 @@ Let $\mathcal{G}$ be the set of unit distance graphs and $\Cp_k$ the set
 of periodic $k$-colorings of the plane, then
 $$ \sup_{g \in \mathcal{G}} \ m_k(g) \leq \inf_{c \in \Cp_k} \ \pper(c) \leq \frac{1}{k}. $$
 \end{theo}
-We will then deduce an analogous Theorem for asymptotic 
+We will then deduce an analogous theorem for asymptotic 
 colorings:
 \begin{theo} \label{ineg2}
 Let $\mathcal{G}$ be the set of unit distance graphs and $\C_k$ the set 
@@ -271,7 +271,7 @@ colors is clearly greater than $m_k(g)$. Applying lemma \ref{huitre} with $g$,
 it follows from the description of the second process that the probability 
 $\pper(c)$ for any coloring $c$ is greater than $m_k(g)$.
 
-Now to get the right-hand side of the Theorem, let $\P$ be a square of side $R$,
+Now to get the right-hand side of the theorem, let $\P$ be a square of side $R$,
 and cut $\P$ into $n^2$ squares of side $R/n$. Let $C$ be a \textit{random} 
 coloring obtained by assigning to these $n^2$ smaller squares i.i.d. colors
 taken uniformly in $\{1,\dots,k\}$, and by repeating $\P$ to get a periodic 
@@ -288,7 +288,7 @@ so that there is a realization $c_0$ with $\pper(c_0) \leq \frac1k$.
 The results shown in this Section will be derived using the axiom of choice. 
 This is important to notice, since the answer to the Hadwiger-Nelson problem is 
 suspected to depend on the set of axioms used; see \cite{choice}, \cite{choice2}. We will use the 
-De Bruijn - Erd\H{o}s Theorem, established in \cite{erdos}, whose proof uses 
+De Bruijn - Erd\H{o}s theorem, established in \cite{erdos}, whose proof uses 
 the axiom of choice.
 \begin{theo}[De Bruijn - Erd\H{o}s]
  A graph $G$ can be colored with $k$ colors iff all of its finite subgraphs 
@@ -301,7 +301,7 @@ of its finite subgraphs.
 be colored with $k$ colors, it 
 follows from our study that the probability $p(c)$ for $c$ a valid 
 $k$-coloring is always greater than a certain positive constant. Taking the 
-contrapositive of this statement and using the De Bruijn-Erd\H{o}s Theorem yield 
+contrapositive of this statement and using the De Bruijn-Erd\H{o}s theorem yield 
 the corollary.
 \end{proof}
 
@@ -347,7 +347,7 @@ this coloring gives a $\pper(c)$ of about $0.13$ if the edge-length of the hexag
 $0.61$, but $0.13$ is still greater than $\frac{1}{11} \simeq 0.091$.
 
 This also tells us that a unit distance graph of chromatic number greater than 3
-has at least $8$ edges, because otherwise theorem~\ref{ineg} would imply that
+has at least $8$ edges, because otherwise Theorem~\ref{ineg} would imply that
 all $3$-colorings of the plane satisfy $p(c) \geq \frac17$, and this is not the
 case in our simulation. Thus, simulations can be used to provide lower bounds on the
 number of edges of a non-$k$-colorable unit distance, for any $k$.
@@ -435,7 +435,7 @@ If $c$ is an asymptotic coloring, let $\tilde{c_R}$ be the periodic version of $
 \begin{equation} \label{estim}
 |\pper(\tilde{c_R}) - \ptable(c_{|[-R;R]^2}) | \leq \kappa \frac{\mathcal{A}(K([-R;R]^2,1))}{\mathcal{A}([-R;R]^2)} \leq \kappa \frac{4R}{R^2} = \frac{4\kappa}{R}.
 \end{equation}
-The probability $\ptable(c_{|[-R;R]^2})$ converges to $p(c)$ as $R\rightarrow +\infty$. The bounds on $\pper(\tilde{c_R})$ given by Theorem~\ref{ineg} and the estimate~(\ref{estim}) yield Theorem~\ref{ineg2}.
+The probability $\ptable(c_{|[-R;R]^2})$ converges to $p(c)$ as $R\rightarrow +\infty$. The bounds on $\pper(\tilde{c_R})$ provided by Theorem~\ref{ineg} and the estimate~(\ref{estim}) yield Theorem~\ref{ineg2}.
 \end{proof}
 
 It may seem a bit odd to chose a square to define asymptotic colorings in definition~\ref{defas}. One could have, for instance, replaced $[-R,R]^2$ by the disk $D(O,R)$ in this definition. The advantage of the square is that it made the previous proof easier, given that periodic colorings were already studied. Getting similar results for a disk (or with any open set bounded by a smooth curve) shouldn't be harder, but it would require a result similar to Lemma~\ref{huitre} with an estimation similar to the one in Lemma~\ref{choco}.
